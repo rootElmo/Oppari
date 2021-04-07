@@ -72,6 +72,7 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
   * DAC (Digital to Analog Converter) -
   * SPI (Serial Peripheral Interface) -
   * PCB (Printed Circuit Board) - 
+  * DFM (Design For Manufacturability) - Tuotekehityksen prosessi, jossa tuottetta optimoidaan tuotannon prosesseja varten. [d4m](http://www.design4manufacturability.com/DFM_article.htm)
 
 ## 2. Taustaa
 
@@ -97,15 +98,27 @@ Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järje
 
 // Listaa tänne oppareita/julkaisuja, joissa prototyyppi/valmis laite ei koskaan joudu teknisen monistamisen kohteeksi.
 
-Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa jonkin teknisen laitteen monistamista fyysisesti. Teknisen monistamisen vaiheessa jostakin laitteesta, joka on ylensä prototyyppi, pyritään luomaan helposti monistettavissa oleva kokonaisuus. Sulautettujen järjestelmien prototyypit voivat olla käsin rakennettuja ja niissä voi olla paljon ei-toivottuja ominaisuuksia, joita mahdollisesti lopullisessa laitteessa ei tulisi olemaan. 
+// Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa jonkin teknisen laitteen monistamista fyysisesti. Teknisen monistamisen vaiheessa jostakin laitteesta, joka on ylensä prototyyppi, pyritään luomaan helposti monistettavissa oleva kokonaisuus. Sulautettujen järjestelmien prototyypit voivat olla käsin rakennettuja ja niissä voi olla paljon ei-toivottuja ominaisuuksia, joita mahdollisesti lopullisessa laitteessa ei tulisi olemaan.
+
+Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
+
+Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältää kuin pakollisen määrän komponentteja, jotka vaativat ihmisen asentamista varten. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
+
+
 
 ## x Sekvensserin prototyypin rakentaminen
 
 // Tässä luvussa käsitellään sekvensserin prototyypin rakentamista
 
+Sekvensserin prototyypin rakennus tapahtui asteittain ja jokaista laitteen osaa ja toiminnallisuutta pyrittiin testaamaan yksitellen, sekä osana suurempaa kokonaisuutta. Laitteen pohjana ja inspiraationa toimi pitkälti Matthew Cieplakin "Super Sixteen"-sekvensseri.
+
+Rakennuksessa käytettiin pelkästään koekytkentälautaa projektin alussa, mutta projektin edetessä ja komponenttien määrän kasvaessa joitain laitteen osia jouduttiin rakentamaan omiksi irrallisiksi kokonaisuuksiksiin.
+
 **x.1 Ohjelmisto**
 
 // Ohjelmakoodin läpikäyntiä tärkeimmiltä komponenteilta. Kerro myös menetelmistä ja työkaluista (VSCode, PlatformIO, Teensy LC)
+
+Laitteen lähdekoodi kirjoitettiin C++-ohjelmointikielellä Arduino koodipohjalle. Kehitysympäristönä toimi PlatformIO, joka on Arduino-yhteensopiva integroitu kehitysympäristö Visual Studio Codelle [(PlatformIO)](https://docs.platformio.org/en/latest/what-is-platformio.html). Kehitysalustana laitteessa toimii Teensy LC. Lopullisen laitteen on suunniteltu käyttävän ATmega328 mikroprosessoria, mutta kehityksen aikana Teensy LC oli pienemmän koonsa takia parempi vaihtoehto kuin esimerkiksi Arduino Uno.
 
 **x.1.1 Käyttäjän syötteet**
 
@@ -113,6 +126,10 @@ Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa jonkin tekni
 // MCP23S17 ja "Näppäimistö"
 // Enkooderi
 // Mahdolliset ulkoiset clock in jne. (PPQ, MIDI clock)
+
+Sekvensserin toiminnan kannalta muutamia käyttäjän syötteitä pitäisi pystyä lukemaan. Laitteen suunnitteluvaiheessa 16 painikkeen painikematriisi tulisi vastaamaan sekvenssin askeleen valinnasta, sekä funktiopainikkeen kanssa käytettynä erinäisistä funktioista. Käyttäjän tulisi myös pystyä muokkaamaan liukuvia arvoja, kuten sekvenssin askeleiden nuottien korkeutta, tempoa, sekä erinäisiä asetuksia, jotka vaikuttavat sekvensserin toimintaan. Liukuvien arvojen muokkaamiseen laite käyttää 24 askeleen enkooderia.
+
+// Kirjoita funktiopainikkeen tuomista "lisäpainikkeista"
 
 **x.1.2 Sekvensseri**
 
@@ -137,8 +154,39 @@ Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaihe
 
 **x.1 Piirilevyn, sekä etupaneelin piirto**
 
-// KiCad, kytkentäkaavat, silkscreen piirto.
-// Etupaneelin leikkaukset piirilevyn mukaan.
+Laiten prototyypin valmistuttua siihen vaiheeseen, että kaikki kriittisimmät toiminnot olivat valmiita alkoi piirilevyn sekä etupaneelin suunnittelu. Etupaneelin muotoilu noudatti pitkälti piirilevypiirroksen luomia rajoitteita. Piirilevypiirros taas pohjautui käyttöliittymän suunnitteluvaiheessa tehtyihin päätöksiin. Prototyyppivaiheen aikana ylläpidetyn kytkentäkaavan avulla prototyypin kytkennät oli helppo kääntää piirilevyllä komponenttien välisiksi juoviksi, kun kytkentäkaavaa ei erikseen tarvinnut piirtää tyhjästä.
+
+// Tähän kuva käyttöliittymän paperiprototyypistä
+
+Piirilevy, sekä etupaneeli suunniteltin KiCad-ohjelmistolla. Koska piirilevyissä käytetty FR4-lasikuitukomposiitti on ominaisuuksiltaan suhteellisen vahvaa käy se materiaaliksi myös etupaneeleissa.
+
+Etupaneelin grafiikoiden suunnittelussa käytettiin KiCadin lisäksi myös GIMP-kuvankäsittelyohjelmaa. Projektin tavoitteena ei ollut luoda yhteneväistä estetiikkaa laitteelle, mutta pyrkimys oli löytää yhdenmukainen graafinen ulkoasu. Piirilevystä otettiin kaikki kriittiset mitat, jotka määräisivät mm. enkooderin sekä potentiometrin vaativat reijät.
+
+// TARKENNA TÄHÄN YKSITYISKOHTAISEMMIN MITTOJEN PIIRRON PROSESSI
+
+**x.1.1 Piirilevy**
+
+Piirilevyn piirron aikana ensiksi asetettiin paikoilleen käyttöliittymän kriittisimmät komponentit, kuten painikkeet, segmenttinäytöt sekä ulostulojakit.
+
+![kicad_in_process001](./imgs/kicad_in_process001.png)
+
+_Piirilevyn mitat päätetty, sekä kriittisimmät komponentit asetettu paikoilleen._
+
+Laitteen komponentit sijoitettiin piirilevylle "funktioittain"; esimerkiksi segmenttinäytön ohjauksesta vastaavat piirit, vastukset ja transistorit reititettiin yhtenä kokonaisuutena. Tämän jälkeen näyttö kokonaisuutena sijoitettiin piirilevylle muiden komponenttien sekaan. Tarvittaessa komponentteja siirrettiin toisten tieltä, sekä reititystä optimoitiin.
+
+![kicad_in_process002](./imgs/kicad_in_process002.png)
+
+_Segmenttinäytöt, sekä niiden ohjauksesta vastaavat komponentit._
+
+// Tähän vielä lisää reitityksen prosesseista
+
+Lopuksi kun kaikki komponentit olivat paikoillaan ja piirit reititetty otettiin käyttöliittymän kannalta kriittisistä komponenteista mitat suhteessa toisiinsa. Tämä helpottaisi etupaneelin suunnittelua.
+
+![pcb_measurements001](./imgs/pcb_measurements001.png)
+
+**x.1.2 Etupaneeli**
+
+
 
 **x.2 Komponenttien listaus ja tilaus**
 
@@ -156,8 +204,14 @@ Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaihe
 // Lainausmerkinnät/viittaukset varsinaisessa opinnäytetyössä eivät valmiita
 // Näihinkin tarvittavat tiedot vvvvvvv
 
+
+0. [d4m - DFM määritelmä](http://www.design4manufacturability.com/DFM_article.htm)
 1. [Reverb - Eurorack formaatti](https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters) luettu 7.3.2021
 2. [Doepfer - A-100 construction details](http://www.doepfer.de/a100_man/a100m_e.htm) Luettu 7.3.2021
 3. [Doepfer - A-100 technical details](http://www.doepfer.de/a100_man/a100t_e.htm) Luettu 10.3.2021
 4. [learningmodular - 1 v/oct](https://learningmodular.com/glossary/1-voct/) Luettu 10.3.2021
 5. [barrgroup - embedded systems - glossary e](https://barrgroup.com/embedded-systems/glossary-e)
+6. [PlatformIO - About](https://docs.platformio.org/en/latest/what-is-platformio.html)
+X. [internet of things agenda](https://internetofthingsagenda.techtarget.com/definition/embedded-system) (Tämä ei käytössä missään)
+X. [Karvinen & Karvinen - Make: Sensors] (Tämäkään ei vielä missään, katso onko hyödyllisiä juttuja)
+X. [Karvinen & Karvinen - Sulautetut] (Katso tämä, saako kirjastosta??)
