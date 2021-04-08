@@ -98,13 +98,32 @@ Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järje
 
 // Listaa tänne oppareita/julkaisuja, joissa prototyyppi/valmis laite ei koskaan joudu teknisen monistamisen kohteeksi.
 
-// Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa jonkin teknisen laitteen monistamista fyysisesti. Teknisen monistamisen vaiheessa jostakin laitteesta, joka on ylensä prototyyppi, pyritään luomaan helposti monistettavissa oleva kokonaisuus. Sulautettujen järjestelmien prototyypit voivat olla käsin rakennettuja ja niissä voi olla paljon ei-toivottuja ominaisuuksia, joita mahdollisesti lopullisessa laitteessa ei tulisi olemaan.
-
 Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
 
-Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältää kuin pakollisen määrän komponentteja, jotka vaativat ihmisen asentamista varten. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
+Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältämään kuin pakollisen määrän komponentteja, jotka vaativat ihmisen niiden asennukseen. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
 
 
+## x Tutkimuksen tavoite ja hyödyt (viilaa vielä otsikkoa)
+
+Tässä opinnäytetyössä haluan tarkastella jo kirjoitettujen opinnäytetöiden, sekä artikkelien pohjalta teknistä monistamista. Prototyyppien rakennusta käsitteleviä opinnäytetöitä on monia, mutta harvoissa mietitään prototyypin viemistä monistettavaan muotoon.
+
+Julkaistuista opinnäytetöistä ja artikkeleista katsotaan kuinka kirjoittavat ovat luoneet toimivan prototyypin, mutta jättäneet avoimeksi laitteen jatkokehityksen. Näiden töiden myötä annan myös ehdotuksia ja ideoita siitä, kuinka laitteita oltaisiin voitu viedä teknisesti monistettavampaan muotoon.
+
+**x.1 Esimerkkityö 1 (Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin)**
+
+// Aleksi Karppila - Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin (2014)
+
+Aleksi Karppilan opinnäytetyö "Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin" (2014) käsittelee Arduino-pohjaisen monitorointilaitteen rakentamista (viittaa tiivistelmään, 2014). Projektin aikana Karppila rakentaa toimivan laitteen, käy läpi sen toimintaa, ohjelmointia, sekä yleisiä käsitteitä Arduino-kehitysalustaan liittyen.
+
+Karpilla kertoo valmistuksessa ja suunnittelussa pyrkineensä yksinkertaisuuteen, jotta laitteen toiminta olisi moitteetonta ja luodulla laitteella olisi mahdollisimman laaja kohderyhmä (viittaa sivu 13, 2014). Kuitenkin lopullinen laite, jota opinnäytetyössä on kuvattu muistuttaa pitkälti prototyypinomaista laitetta, jossa kytkennät ovat tehty hyppylangoilla korkytkentälaudan kautta. (Tähän vaikka kuva siitä opparista, laitteesta siis :---))
+
+Jotta Karppilan laite saavuttaisi halutun laajan kohderyhmänsä tulisi laitteen kytkentöjen olla pysyviä ja laitteen eri komponenttien osana yhtä kokonaisuutta. Karppilan laitteen kohderyhmää rajoittaa näin ollen se, että laitetta tulisi harkitsemaan vain ne, joilla olisi osaamista ja halukkuutta rakentaa käsin Arduino-kehitysalustalle oma laitteensa.
+
+Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekseen, vaan Arduino-alustan komponenteista oltaisiin voitu rakentaa "Arduino-kilpi". Arduino-kilvet ovat valmiita laitekokonaisuuksia, jotka voidaan kytkeä suoraan Arduino-kehitysalustaan [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields). Laitteen käyttäjän olisi vielä kuitenkin tarvinnut ohjelmoida laite.
+
+**x.2 Esimerkkityö 2**
+
+// Tähän esimerkkityö 2
 
 ## x Sekvensserin prototyypin rakentaminen
 
@@ -135,6 +154,8 @@ Sekvensserin toiminnan kannalta muutamia käyttäjän syötteitä pitäisi pysty
 
 // Sekvenssin soitto, muokkaus, luonti, tallennus
 
+
+
 **x.1.3 Eurorack yhteensopivuus**
 
 // DAC (tietty malli ja kirjasto, jota käytetty)
@@ -156,8 +177,6 @@ Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaihe
 
 Laiten prototyypin valmistuttua siihen vaiheeseen, että kaikki kriittisimmät toiminnot olivat valmiita alkoi piirilevyn sekä etupaneelin suunnittelu. Etupaneelin muotoilu noudatti pitkälti piirilevypiirroksen luomia rajoitteita. Piirilevypiirros taas pohjautui käyttöliittymän suunnitteluvaiheessa tehtyihin päätöksiin. Prototyyppivaiheen aikana ylläpidetyn kytkentäkaavan avulla prototyypin kytkennät oli helppo kääntää piirilevyllä komponenttien välisiksi juoviksi, kun kytkentäkaavaa ei erikseen tarvinnut piirtää tyhjästä.
 
-// Tähän kuva käyttöliittymän paperiprototyypistä
-
 Piirilevy, sekä etupaneeli suunniteltin KiCad-ohjelmistolla. Koska piirilevyissä käytetty FR4-lasikuitukomposiitti on ominaisuuksiltaan suhteellisen vahvaa käy se materiaaliksi myös etupaneeleissa.
 
 Etupaneelin grafiikoiden suunnittelussa käytettiin KiCadin lisäksi myös GIMP-kuvankäsittelyohjelmaa. Projektin tavoitteena ei ollut luoda yhteneväistä estetiikkaa laitteelle, mutta pyrkimys oli löytää yhdenmukainen graafinen ulkoasu. Piirilevystä otettiin kaikki kriittiset mitat, jotka määräisivät mm. enkooderin sekä potentiometrin vaativat reijät.
@@ -165,6 +184,8 @@ Etupaneelin grafiikoiden suunnittelussa käytettiin KiCadin lisäksi myös GIMP-
 // TARKENNA TÄHÄN YKSITYISKOHTAISEMMIN MITTOJEN PIIRRON PROSESSI
 
 **x.1.1 Piirilevy**
+
+Teknisen monistamisen helpottamiseksi piirilevyllä päätettiin käyttää pintaliitoskomponentteja niin paljon kuin mahdollista. Pintaliitoskomponentit on mahdollista juotatuttaa kiinni piirilevyyn valmiiksi monilla piirilevyjä valmistavilla tehtailla. Tämä laskisi merkittävästi laitteen rakennusaikaa ja näin laskisi laitteen mahdollista katteetonta hintaa.
 
 Piirilevyn piirron aikana ensiksi asetettiin paikoilleen käyttöliittymän kriittisimmät komponentit, kuten painikkeet, segmenttinäytöt sekä ulostulojakit.
 
@@ -178,13 +199,43 @@ Laitteen komponentit sijoitettiin piirilevylle "funktioittain"; esimerkiksi segm
 
 _Segmenttinäytöt, sekä niiden ohjauksesta vastaavat komponentit._
 
-// Tähän vielä lisää reitityksen prosesseista
+Piirien reititystapahtuu seuraamalla kytkentäkaaviota, sekä piirilevyn piirto-ohjelman "ratsnest"-verkkoa, joka näyttää kaikki piirilevyllä kytkemättä olevat piirit. Vaikka "ratsnest" tarjoaa helpon visuaalisen työkalun reititykseen, kytkentäkaavion seuraaminen on silti tärkeää.
 
-Lopuksi kun kaikki komponentit olivat paikoillaan ja piirit reititetty otettiin käyttöliittymän kannalta kriittisistä komponenteista mitat suhteessa toisiinsa. Tämä helpottaisi etupaneelin suunnittelua.
+![pcb_routing001](./imgs/pcb_routing001.png)
+
+_Osittain kytketty mikroprosessori. Avoimet piirit näkyvät valkoisina viivoina._
+
+Lopuksi kun kaikki komponentit olivat paikoillaan ja piirit reititetty otettiin käyttöliittymän kannalta kriittisistä komponenteista mitat suhteessa toisiinsa. Tämä helpottaisi etupaneelin suunnittelua. Piirilevyn piirto-ohjelmasta löytyy työkalu, jolla eri komponenttien välisiä etäisyyksiä pystyy mittaamaan ja asettamaan näkyville tasoille, jotka voidaan myöhemmin joko tulostaa tai kääntä pdf-tiedostoksi.
+
+![pcb_measurements002](./imgs/pcb_measurements002.png)
+
+_Funktiopainikkeiden leikkausalueen mittausta näkyvälle tasolle._
 
 ![pcb_measurements001](./imgs/pcb_measurements001.png)
 
+_Mittojen vektoripiirros. Sinisellä värillä komponenttien keskinäiset mitat ja punaisella värillä etupaneelin mitat._
+
 **x.1.2 Etupaneeli**
+
+Etupaneelin piirto oli suhteellisen nopea prosessi, sillä Eurorack-formaatti määrittelee pitkälti paneelien mahdolliset mitat ja piirilevyn komponenttien asettelu määräsi mahdolliset reiät ja leikkaukset etupaneeliin.
+
+// Tähän kuva käyttöliittymän paperiprototyypistä
+
+_Etupaneelin prototyyppäystä paperilla, näppäinhatuilla ja erinäisillä laitteesta löytyvillä komponenteilla._
+
+Paneelin mittojen määrittelyn ja kiinnitysruuvien reikien jälkeen paneeliin leikattiin alueet kytkimille, sekä segmenttinäytöille.
+
+![panel001](./imgs/panel001.png)
+
+_Etupaneeli oikeissa mitoissaan._
+
+// Tähän tekstiä paneelin muiden leikkausten ja reikien teosta.
+
+Etupaneelin grafiikat luotiin GIMP-kuvankäsittelyohjelmalla, jonka jälkeen luodut kuvat muutettiin KiCadille sopivaan "footprint"-muotoon. Jokainen yksittäinen teksti tai muu graafinen elementti on oma "komponenttinsa" piirilevyllä. Jokaisen kuvan resoluutio asetettiin olemaan 1000ppcm, jolloin 1000 pixeliä leveys-, tai korkeussuunnassa vastaisi yhtä senttimetriä leveys-, tai korkeussuunnassa etupaneelilla. KiCad-ohjelmasta löytää aliohjelma "bitmap2component.exe", jolla kuvat muutetaan haluttuun muotoon. Ohjelma tunnistaa kuvan tarkkuuden automaattisesti.
+
+![panel002](./imgs/panel002.png)
+
+_Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa (vas.) ja valmiissa etupaneelipiirroksessa (oik.)_
 
 
 
@@ -211,7 +262,9 @@ Lopuksi kun kaikki komponentit olivat paikoillaan ja piirit reititetty otettiin 
 3. [Doepfer - A-100 technical details](http://www.doepfer.de/a100_man/a100t_e.htm) Luettu 10.3.2021
 4. [learningmodular - 1 v/oct](https://learningmodular.com/glossary/1-voct/) Luettu 10.3.2021
 5. [barrgroup - embedded systems - glossary e](https://barrgroup.com/embedded-systems/glossary-e)
+x. [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields)
 6. [PlatformIO - About](https://docs.platformio.org/en/latest/what-is-platformio.html)
 X. [internet of things agenda](https://internetofthingsagenda.techtarget.com/definition/embedded-system) (Tämä ei käytössä missään)
 X. [Karvinen & Karvinen - Make: Sensors] (Tämäkään ei vielä missään, katso onko hyödyllisiä juttuja)
 X. [Karvinen & Karvinen - Sulautetut] (Katso tämä, saako kirjastosta??)
+X. [Aleksi Karppila - Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin]
