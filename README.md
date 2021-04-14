@@ -67,16 +67,16 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
   * Gate -
   * Oskillaattori - 
   * Sekvensseri - Musiikin tuotannossa käytetty ylensä elektroninen laite tai ohjelmisto, jonka avulla voidaan toistaa, muokata ja soittaa musikaalisia sekvenssejä.
-  * Step -
-  * PPQ (Parts Per Quarter) -
-  * DAC (Digital to Analog Converter) -
-  * SPI (Serial Peripheral Interface) -
-  * PCB (Printed Circuit Board) - 
-  * DFM (Design For Manufacturability) - Tuotekehityksen prosessi, jossa tuottetta optimoidaan tuotannon prosesseja varten. [d4m](http://www.design4manufacturability.com/DFM_article.htm)
+  * Step - Askel. Sekvenssereissä käytetty määre, jolla mitataan sekvenssin pituutta.
+  * PPQ (Parts Per Quarter) - /*Tarvitseeko tätä?*/
+  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi. (Tähän lähde)
+  * SPI (Serial Peripheral Interface) - Tietoteknisten järjestelmiän käyttämä väylä, jonka avulla kokonaisen laitteen eri komponentit keskustelevat keskenään. (Etsi tähän lähde)
+  * PCB (Printed Circuit Board) - Piirilevy.
+  * DFM (Design For Manufacturability) - /*Tarvitaanko tätä?*/ Tuotekehityksen prosessi, jossa tuottetta optimoidaan tuotannon prosesseja varten. [d4m](http://www.design4manufacturability.com/DFM_article.htm)
 
 ## 2. Taustaa
 
-Tämän luvun tarkoituksena on avata opinnäytetyön taustoja liittyen luotuun Eurorack-sekvensseriin, tekniseen monistamiseen, sekä erinäisiin kehitysmenetelmiin joita laitteen kehittämisessä tarvitaan.
+Tämän luvun tarkoituksena on avata opinnäytetyön taustoja liittyen luotuun Eurorack-sekvensseriin, tekniseen monistamiseen, sekä erinäisiin kehitysmenetelmiin joita laitteen kehittämisessä tarvitaan. // Tähän ehdottomasti vähän enemmän tekstiä.
 
 **2.1 Eurorack**
 
@@ -274,10 +274,33 @@ _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa 
 // BOM
 // Mouser, JLCPCB/AllPCB,/Seeed jne.
 
+KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
+
+![bomtools001](./imgs/bomtools001.png)
+
+_KiCadin Bill of Materials työkalu löytyy kytkentäkaavaohjelman ylävalikosta_
+
+![bomtools002](./imgs/bomtools002.png)
+
+_Bill of Materials -työkalun eri vaihtoehtoja listan luomiselle_
+
+Tämän opinnäytetyön projektia varten tavallinen Excel-taulukko toimisi BOM:na. Taulukosta näkyisi kaikkien komponenttien kytkentäkaavassa käytetty viite, komponenttien arvo tai nimi, vaadittu lukumäärä, sekä Mouser verkkokaupan viitenumero kyseiselle komponentille. Niiden komponenttien osalta, joita Mouserin valikoimista ei löydy on ilmoitettu vaihtoehtoisen yrityksen nimi, sekä heidän komponentille käyttämänsä viite.
+
+![bom001.png](./imgs/bom001.png)
+
+_Mouser verkkokaupan ostoskori, sekä KISSe-projektin Bill of Materials_
+
+Projektin laitteen komponentit koottiin aluksi Mouser verkkokaupassa ostoskoriin, jonka jälkeen ostoskori tallennettiin käyttäjän projekteihin. Näin tulevaisuudessa samat komponentit voitaisiin tilata pelkästään projektin viemisellä ostoskoriin. Sarjatuotantovaiheessa voitaisiin tässä kohti ostaa yksi "projekti" useita kertoja, jolloin projektien määrä kerrotaan haluttujen laitteiden määrällä.
+
+![bom002.png](./imgs/bom002.png)
+
+_Ostoskori muutettuna projektiksi_
+
 **x.3 Monistamisen laskelmat (otsikko työn alla)**
 
 // BOM * haluttujen laitteiden määrä
 // Muutaman laitteen käsin asennus (Tätä ennen käytävä lopullisen laitteen rakennus ja ajoitus)
+// Pintaliitoskomponentteja ei oteta laskuissa mukaan, sillä ne saadaan suoraan piirilevylle asennettuna tehtailta.
 
 **x Tulokset ja retrospektio**
 
@@ -296,6 +319,7 @@ _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa 
 5. (Elicia White, Making Embedded Systems, chapter 1, etsi sivu myöhemmin.)
 x. [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields)
 6. [PlatformIO - About](https://docs.platformio.org/en/latest/what-is-platformio.html)
+X. [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
 X. [internet of things agenda](https://internetofthingsagenda.techtarget.com/definition/embedded-system) (Tämä ei käytössä missään)
 X. [Karvinen & Karvinen - Make: Sensors] (Tämäkään ei vielä missään, katso onko hyödyllisiä juttuja)
 X. [Karvinen & Karvinen - Sulautetut] (Katso tämä, saako kirjastosta??)
