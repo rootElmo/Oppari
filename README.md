@@ -90,7 +90,7 @@ Eurorack-syntetisaattoreita on myös mahdollista ohjata ulkopuolisilla laitteist
 
 **2.2 Sulautettu järjestelmä**
 
-Sulautettu järjestelmä on koostuu erinäisistä tietokoneen fyysisistä osista, sekä ohjelmistosta, jolla järjestelmä suorittaa siltä vaadittuja toimintoja [(barrgroup)](https://barrgroup.com/embedded-systems/glossary-e). Sulautettu järjestelmä toimii usein joko itsenäisesti, tai osana laajempaa tietoteknistä järjestelmää. Siinä missä työasemina käytetyt tietokoneet käyttävät usein graafista käyttöliittymää, sekä erinäisiä ulkoisia ohjauslaitteita kuten mm. hiiret ja näppäimistöt, sulautettu järjestelmä ei välttämättä sisällä näitä ollenkaan. Esimerkiksi puhelimet ja älykellot ovat sulautettuja järjestelmiä.
+Sulautettu järjestelmä on digitalisoitu järjestelmä, jonka toiminta on suppeampaa kuin tavallisen tietokoneen. Sulautettu järjestelmä on vain tiettyä tarkoitusta varten luotu järjestelmä. Sulautetuille järjestelmille on myös tyypillistä laskentaresurssien niukkuus, sekä suppea tuki ulkoisille laitteille. (Elicia White, Making Embedded Systems, chapter 1, etsi sivu myöhemmin.)
 
 Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järjestelmä. Laite itsessään ei pidä sisällään mitään käyttöjärjestelmää ja sen ensisijainen tarkoitus on toimia Eurorack-syntetisaattorin sekvensserinä.
 
@@ -102,12 +102,27 @@ Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytety
 
 Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältämään kuin pakollisen määrän komponentteja, jotka vaativat ihmisen niiden asennukseen. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
 
+**2.4 Projektin rakenne ja prosessit**
+
+Opinnäytetyön projekti prototyypistä teknisesti monistettavaan laitteeseen on melko laaja. Projektin prosessi on osittain kuvattuna projektisuunnitelmassa liitteessä 1, "Projektin tehtävät, työmäärät ja ajoitus". Projektin tehtävistä ei kuitenkaan suoranaisestä käy ilmi laitteen rakennuksen prosessi alusta loppuun. Prosessi kulkisi pääpiirteittäin seuraavasti:
+
+  * Laitteen suunnittelu. Mietitään mahdollisesti käytettävät teknologiat ja käydään läpi aiemmin tuotettuja vastaavanlaisia projekteja/laitteita.
+  * Prototyypin rakentamisen aloittaminen. Aloitetaan muutamalla keskeisellä ominaisuudella laitteen toiminnan kannalta ja rakennetaan muita ominaisuuksia siihen päälle.
+  * Kaikkien yksittäisten ominaisuuksien kokeilu prototyypin aikana. Tässä vaiheessa kaikki lopulliselta laitteelta vaaditut tai toivotut ominaisuudet ovat käyty läpi.
+  * Laitteen käyttöliittymän suunnittelu. Kokeillaan eri keinoilla mahdollisesti sopivaa käyttöliittymän muotoa.
+  * Piirilevyjen ja etupaanelien suunnittelu, piirtäminen ja tilaus. Tässä vaiheessa prototyypin aikana syntyneet piirit käännetään piirilevylle luotujen kytkentäkaavojen mukaan. Myös etupaneeli hahmotellan piirilevyn, sekä aiemmin suunniteltujen toimintojen mukaan.
+  * Komponenttien listaus, sekä tilaus. Prototyypin aikana käytetyt komponentit listataan ja tästä listauksesta luodaan projektille "Bill of Materials", jonka avulla komponentteja on mahdollista tilata yhteen tai useampaan vastaavaan laitteeseen.
+  * Laitteen rakentaminen. Tässä vaiheessa rakennetaan yksi tai useampi teknisesti monistettava laite ja ajoitetaan rakennus lopullisia laskelmia varten.
+  * Laskelmien teko ja tulosten läpikäynti. Tässä vaiheessa lasketaan laitteen rakennuksen ja suunnittelun kulut, sekä näiden perusteella tehdään laskelmia mahdollista sarjatuotantoa varten. Projektin tuloksia käydään myös läpi niiltä osin kun ne ovat merkittäviä.
+
 
 ## x Tutkimuksen tavoite ja hyödyt (viilaa vielä otsikkoa)
 
 Tässä opinnäytetyössä haluan tarkastella jo kirjoitettujen opinnäytetöiden, sekä artikkelien pohjalta teknistä monistamista. Prototyyppien rakennusta käsitteleviä opinnäytetöitä on monia, mutta harvoissa mietitään prototyypin viemistä monistettavaan muotoon.
 
 Julkaistuista opinnäytetöistä ja artikkeleista katsotaan kuinka kirjoittavat ovat luoneet toimivan prototyypin, mutta jättäneet avoimeksi laitteen jatkokehityksen. Näiden töiden myötä annan myös ehdotuksia ja ideoita siitä, kuinka laitteita oltaisiin voitu viedä teknisesti monistettavampaan muotoon.
+
+Opinnäytetyön tuloksista alasta kiinnostuneet harrastajat, opiskelijat ja ehkä jopa ammattilaiset saavat yleisen kuvan siitä, mitä sulautetun järjestelmän prototyypin luominen vaatii. Tämän lisäksi opinnäytetyön tavoitteena on antaa yleistä kuvaa prosesseista, joilla luotu prototyyppi voitaisiin muokata teknisesti monistettavaan muotoon.
 
 **x.1 Esimerkkityö 1 (Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin)**
 
@@ -121,9 +136,13 @@ Jotta Karppilan laite saavuttaisi halutun laajan kohderyhmänsä tulisi laitteen
 
 Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekseen, vaan Arduino-alustan komponenteista oltaisiin voitu rakentaa "Arduino-kilpi". Arduino-kilvet ovat valmiita laitekokonaisuuksia, jotka voidaan kytkeä suoraan Arduino-kehitysalustaan [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields). Laitteen käyttäjän olisi vielä kuitenkin tarvinnut ohjelmoida laite.
 
+// Viittaa täällä vielä konkreettisiin prosesseihin, joita Karppila olisi voinut tehdä (Kicad, kytkentäkaavat jne.) Viittaa tähän opinnäytetyön ja projektin rakennusvaiheisiin
+
 **x.2 Esimerkkityö 2**
 
 // Tähän esimerkkityö 2
+
+
 
 ## x Sekvensserin prototyypin rakentaminen
 
@@ -141,14 +160,25 @@ Laitteen lähdekoodi kirjoitettiin C++-ohjelmointikielellä Arduino koodipohjall
 
 **x.1.1 Käyttäjän syötteet**
 
-// Käyttäjän syötteidin luku, sekä käsittely.
-// MCP23S17 ja "Näppäimistö"
-// Enkooderi
-// Mahdolliset ulkoiset clock in jne. (PPQ, MIDI clock)
+Sekvensserin toiminnan kannalta muutamia käyttäjän syötteitä pitäisi pystyä lukemaan. Laitteen suunnitteluvaiheessa 16 painikkeen painikematriisi tulisi vastaamaan sekvenssin askeleen valinnasta, sekä funktiopainikkeen kanssa käytettynä erinäisistä funktioista. Käyttäjän tulisi myös pystyä muokkaamaan liukuvia arvoja, kuten sekvenssin askeleiden nuottien korkeutta, tempoa, sekä erinäisiä asetuksia, jotka vaikuttavat sekvensserin toimintaan. Liukuvien arvojen muokkaamiseen laite käyttää 24 askeleen enkooderia. Laitteessa on myös potentiometri, jolla käyttäjä voi säätä nuottien välistä liukumaa.
 
-Sekvensserin toiminnan kannalta muutamia käyttäjän syötteitä pitäisi pystyä lukemaan. Laitteen suunnitteluvaiheessa 16 painikkeen painikematriisi tulisi vastaamaan sekvenssin askeleen valinnasta, sekä funktiopainikkeen kanssa käytettynä erinäisistä funktioista. Käyttäjän tulisi myös pystyä muokkaamaan liukuvia arvoja, kuten sekvenssin askeleiden nuottien korkeutta, tempoa, sekä erinäisiä asetuksia, jotka vaikuttavat sekvensserin toimintaan. Liukuvien arvojen muokkaamiseen laite käyttää 24 askeleen enkooderia.
+Painikematriisia luetaan MCP23S17 GPIO-laajentimen kanssa. Laitteella voidaan SPI-väylän välityksellä käyttää maksimissaan 16 GPIO-lisäpinniä [(TI - MCP23S17, sivu 1)](https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf). Koska MCP23S17 vaatii onnistuneeseen tiedon välitykseen yhteensä 4 GPIO-pinniä mikroprosessorista saadaan MCP23S17:ta käyttämällä laajennettua mikroprosessorin GPIO-pinnien määrää 12:sta.
 
-// Kirjoita funktiopainikkeen tuomista "lisäpainikkeista"
+![buttonmatrix001](./imgs/buttonmatrix001.png)
+
+_Painikematriisin skannausta prototyyppi-vaiheessa MCP23S17:n avulla._
+
+Resurssien säästämiseksi laitteen jokaisella funktiolla ei ole erillistä painiketta. Laitteesta löytyisi "funktio"-painike, jota painettaessa käyttäjä voisi käyttää laitteen painikematriisien painikkeita sekundaaristen funktioiden suorittamiseen. Tällöin 16 painikkeella pystyisiin teoreettisesti suorittamaan 32 eri toimintoa.
+
+![buttons001](./imgs/buttons001.jpg)
+
+_Painikkeiden sekundaariset funktiot lueteltu panikesarakkeittain_
+
+Käyttäjä voi myös lähettää signaaleja muista Eurorack-moduuleista. Laitteessa on kaksi sisääntuloa signaaleille: "Clock" ja "Reset". "Clock"-signaalilla käyttäjä voi synkronoida laitteen toisten sekvensserien tai ohjainlaitteiden kanssa lähettämällä pulsseja sisääntuloon. "Reset"-signaalilla käyttäjä voi pysäyttää käynnissä olevan sekvenssin ulkoisella pulssilla. 
+
+![inputs001](./imgs/inputs001.jpg)
+
+_Signaalien sisään- ja ulostulot. Sisöäntulevat signaalit mustalla tekstillä valkoisella taustalla_
 
 **x.1.2 Sekvensseri**
 
@@ -249,6 +279,8 @@ _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa 
 // BOM * haluttujen laitteiden määrä
 // Muutaman laitteen käsin asennus (Tätä ennen käytävä lopullisen laitteen rakennus ja ajoitus)
 
+**x Tulokset ja retrospektio**
+
 ## Lähteet
 
 // lainausjärjestyksessä.
@@ -261,7 +293,7 @@ _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa 
 2. [Doepfer - A-100 construction details](http://www.doepfer.de/a100_man/a100m_e.htm) Luettu 7.3.2021
 3. [Doepfer - A-100 technical details](http://www.doepfer.de/a100_man/a100t_e.htm) Luettu 10.3.2021
 4. [learningmodular - 1 v/oct](https://learningmodular.com/glossary/1-voct/) Luettu 10.3.2021
-5. [barrgroup - embedded systems - glossary e](https://barrgroup.com/embedded-systems/glossary-e)
+5. (Elicia White, Making Embedded Systems, chapter 1, etsi sivu myöhemmin.)
 x. [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields)
 6. [PlatformIO - About](https://docs.platformio.org/en/latest/what-is-platformio.html)
 X. [internet of things agenda](https://internetofthingsagenda.techtarget.com/definition/embedded-system) (Tämä ei käytössä missään)
