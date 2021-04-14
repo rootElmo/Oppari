@@ -194,14 +194,31 @@ _Signaalien sisään- ja ulostulot. Sisöäntulevat signaalit mustalla tekstill�
 **x.2 Fyysinen laitteisto**
 
 // Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
+// Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
 
 **x.3 Kokoonpano**
 
 // Lopullisen prototyypin rakennus ja kokoonpano. Tähän juotoksista, käytetyistä materiaaleista jne. Vertaa muihin opinnäytetöihin/julkaisuihin, joissa aihe päättyy tähän vaiheeseen, eikä teknistä monistamista mietitä.
 
+// Siirrä tämä alempaan kohtaan? Rikkoo jatkumon jos täällä keskellä esiintyy lopullisen laitteen rakennusta.
+
 ## x Tekninen monistaminen
 
-Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaiheet. Tässä voidaan tarkastella muutoksia monistettavan version, sekä prototyypin välillä (esim. läpiladottavat komponentit vs. SMD, tavalliset nappikytkimet vs. Cherry MX tai vastaavat "kunnon kytkimet").
+// Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaiheet. Tässä voidaan tarkastella muutoksia monistettavan version, sekä prototyypin välillä (esim. läpiladottavat komponentit vs. SMD, tavalliset nappikytkimet vs. Cherry MX tai vastaavat "kunnon kytkimet").
+
+Prototyypin kaikkien merkittävien komponenttien testauksen jälkeen seuraava työvaihe oli suunnitella laite monistettavaan muotoon. Laitteen monistaminen toiselle koekytkentälaudalle olisi erittäin työläs prosessi, eikä laitetta voisi millään tapaa käyttää integroituna osana Eurorack-syntetisaattoria laitteen suuren koon takia.
+
+Jotta laite olisi teknisesti monistettava täytyisi sen manuaalisia asennusvaiheita eliminoida niin pitkälle kuin mahdollista. Näin voitaisiin tehdä mm. piirilevyjen kanssa niin, että käytettäisiin niin paljon pintaliitoskomponentteja kuin mahdollista. Pintaliitoskomponentit ovat perinteisiä läpiladottavia komponentteja huomattavasti pienempiä ja niiden asennus piirilevyille voidaan useimmiten suorittaa piirilevyjä tuottavilla tehtailla.
+
+![smdtht001](./imgs/smdtht001.jpg)
+
+_100 kilo-Ohmin vastuksia. Yllä yksi läpiladottava ja alla neljä pintaliitosvastusta_
+
+// Tähän vaikka kuva JLCPCB:n PCBA-palvelusta
+
+![jlcpcb001](./imgs/jlcpcb001.png)
+
+_JLCPCB tarjoaa piirilevyjen valmistuksen yhteydessä "SMT Assembly"-palvelua_
 
 **x.1 Piirilevyn, sekä etupaneelin piirto**
 
@@ -210,8 +227,6 @@ Laiten prototyypin valmistuttua siihen vaiheeseen, että kaikki kriittisimmät t
 Piirilevy, sekä etupaneeli suunniteltin KiCad-ohjelmistolla. Koska piirilevyissä käytetty FR4-lasikuitukomposiitti on ominaisuuksiltaan suhteellisen vahvaa käy se materiaaliksi myös etupaneeleissa.
 
 Etupaneelin grafiikoiden suunnittelussa käytettiin KiCadin lisäksi myös GIMP-kuvankäsittelyohjelmaa. Projektin tavoitteena ei ollut luoda yhteneväistä estetiikkaa laitteelle, mutta pyrkimys oli löytää yhdenmukainen graafinen ulkoasu. Piirilevystä otettiin kaikki kriittiset mitat, jotka määräisivät mm. enkooderin sekä potentiometrin vaativat reijät.
-
-// TARKENNA TÄHÄN YKSITYISKOHTAISEMMIN MITTOJEN PIIRRON PROSESSI
 
 **x.1.1 Piirilevy**
 
@@ -247,17 +262,21 @@ _Mittojen vektoripiirros. Sinisellä värillä komponenttien keskinäiset mitat 
 
 **x.1.2 Etupaneeli**
 
-Etupaneelin piirto oli suhteellisen nopea prosessi, sillä Eurorack-formaatti määrittelee pitkälti paneelien mahdolliset mitat ja piirilevyn komponenttien asettelu määräsi mahdolliset reiät ja leikkaukset etupaneeliin.
+Etupaneelin piirto oli suhteellisen nopea prosessi, sillä Eurorack-formaatti määrittelee pitkälti paneelien mahdolliset mitat ja piirilevyn komponenttien asettelu määräsi mahdolliset reiät ja leikkaukset etupaneeliin. Käyttöliittymää laitteelle prototyypattiin paperilla, jotta saataisiin jonkin näköinen käsitys laitteen "käsituntumasta".
 
-// Tähän kuva käyttöliittymän paperiprototyypistä
+![ui_planning001](./imgs/uiplanning001.jpg)
 
 _Etupaneelin prototyyppäystä paperilla, näppäinhatuilla ja erinäisillä laitteesta löytyvillä komponenteilla._
 
-Paneelin mittojen määrittelyn ja kiinnitysruuvien reikien jälkeen paneeliin leikattiin alueet kytkimille, sekä segmenttinäytöille.
+Paneelin mittojen määrittelyn ja kiinnitysruuvien reikien jälkeen paneeliin leikattiin alueet kytkimille, sekä segmenttinäytöille. Myös potentiometrien, sekä ulos- ja sisääntulojakkien reiät asetettiin kohdilleen.
 
 ![panel001](./imgs/panel001.png)
 
-_Etupaneeli oikeissa mitoissaan._
+_Etupaneeli oikeissa mitoissaan_
+
+![panel003](./imgs/panel003.png)
+
+_Etupaneeli kaikkine vaadittavine leikkauksineen_
 
 // Tähän tekstiä paneelin muiden leikkausten ja reikien teosta.
 
@@ -267,12 +286,14 @@ Etupaneelin grafiikat luotiin GIMP-kuvankäsittelyohjelmalla, jonka jälkeen luo
 
 _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa (vas.) ja valmiissa etupaneelipiirroksessa (oik.)_
 
+![panel004](./imgs/panel004.)
 
+_Valmiin etupaneelin 3D-renderi_
 
 **x.2 Komponenttien listaus ja tilaus**
 
 // BOM
-// Mouser, JLCPCB/AllPCB,/Seeed jne.
+// Mouser
 
 KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
 
@@ -302,14 +323,22 @@ _Ostoskori muutettuna projektiksi_
 // Muutaman laitteen käsin asennus (Tätä ennen käytävä lopullisen laitteen rakennus ja ajoitus)
 // Pintaliitoskomponentteja ei oteta laskuissa mukaan, sillä ne saadaan suoraan piirilevylle asennettuna tehtailta.
 
+// SIIRRÄ POIS TÄÄLTÄ ALEMMAKSI
+
+**x Laitteen rakennus ja laskelmat monistamisesta**
+
+// Siirrä tänne "**x.3 Monistamisen laskelmat (otsikko työn alla)**", sekä "**x.3 Kokoonpano**" ja yhdistä ne järkeväksi kokonaisuudeksi. Nämä on luontevaa käydä näin opinnäytetyön lopussa, eikä keskellä, sillä kyseessä on prosessin yksi myöhäisimmistä vaiheista.
+
 **x Tulokset ja retrospektio**
+
+// Tässä käydään läpi opinnäytetyön tuloksia, katsotaan onnistumiset, epäonnistumiset ja arvioidaan tulosten vaikuttavuus.
 
 ## Lähteet
 
-// lainausjärjestyksessä.
+// lainausjärjestyksessä (ehkä, TARKISTA!!!!).
 // Lainausmerkinnät/viittaukset varsinaisessa opinnäytetyössä eivät valmiita
-// Näihinkin tarvittavat tiedot vvvvvvv
 
+// KÄY NÄMÄ LÄPI HUOLELLISESTI JA KORJAA MERKINNÄT OIKEIN TEKSTIIN!!!!!
 
 0. [d4m - DFM määritelmä](http://www.design4manufacturability.com/DFM_article.htm)
 1. [Reverb - Eurorack formaatti](https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters) luettu 7.3.2021
@@ -319,8 +348,13 @@ _Ostoskori muutettuna projektiksi_
 5. (Elicia White, Making Embedded Systems, chapter 1, etsi sivu myöhemmin.)
 x. [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields)
 6. [PlatformIO - About](https://docs.platformio.org/en/latest/what-is-platformio.html)
+
 X. [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
+
 X. [internet of things agenda](https://internetofthingsagenda.techtarget.com/definition/embedded-system) (Tämä ei käytössä missään)
+
 X. [Karvinen & Karvinen - Make: Sensors] (Tämäkään ei vielä missään, katso onko hyödyllisiä juttuja)
+
 X. [Karvinen & Karvinen - Sulautetut] (Katso tämä, saako kirjastosta??)
+
 X. [Aleksi Karppila - Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin]
