@@ -286,7 +286,7 @@ Etupaneelin grafiikat luotiin GIMP-kuvankäsittelyohjelmalla, jonka jälkeen luo
 
 _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa (vas.) ja valmiissa etupaneelipiirroksessa (oik.)_
 
-![panel004](./imgs/panel004.)
+![panel004](./imgs/panel004.png)
 
 _Valmiin etupaneelin 3D-renderi_
 
