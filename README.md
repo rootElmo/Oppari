@@ -1,3 +1,9 @@
+**Tämä on vielä keskeneräinen opinnäytetyö**, mutta voit lueskella sitä jo rullaamalla alaspäin.
+
+![sofarsogood](./imgs/sofarsogood.jpg)
+
+_KISSen testailua_
+
 # Opinnäytetyö (Eurorack-syntetisaattorin sekvensserin kehitys ja tekninen monistaminen)
 
 Elmo Rohula
