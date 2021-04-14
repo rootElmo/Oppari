@@ -38,13 +38,13 @@ Eurorack, Arduino, sulautettu järjestelmä, monistaminen, c++, sekvensseri
 
 ## 1. Johdanto
 
-// tekstiä
+  // tekstiä
 
 **1.1 Tavoitteet ja rajaus**
 
 Opinnäytetyön tavoitteena on selkeyttää teknisen monistamisen prosessia. Opinnäytetyön aikana luotu Eurorack-sekvensseri toimii tämän teknisen monistamisen kohteena. Näihin tavoitteisiin pääsemiseen vaaditaan myös itse laitteen luominen, joten valmis laite, tai ainakin sen pitkälle viety prototyyppi syntyy myös projektin aikana.
 
-// Päätä alle julkaisun lisenssi!!!!
+  // Päätä alle julkaisun lisenssi!!!!
 
 Laitteen kehittämisestä syntyvä dokumentaatio, lähdekoodi, sekä kytkentäkaaviot tullaan julkaisemaan GitHubissa.
 
@@ -56,7 +56,7 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
 
 **1.2 Käsitteet**
 
-// Etsi näille myös lähteitä.
+  // Etsi näille myös lähteitä.
 
   * Arduino - 
   * Teensy - 
@@ -76,7 +76,8 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
 
 ## 2. Taustaa
 
-Tämän luvun tarkoituksena on avata opinnäytetyön taustoja liittyen luotuun Eurorack-sekvensseriin, tekniseen monistamiseen, sekä erinäisiin kehitysmenetelmiin joita laitteen kehittämisessä tarvitaan. // Tähän ehdottomasti vähän enemmän tekstiä.
+  Tämän luvun tarkoituksena on avata opinnäytetyön taustoja liittyen luotuun Eurorack-sekvensseriin, tekniseen monistamiseen, sekä erinäisiin kehitysmenetelmiin joita laitteen kehittämisessä tarvitaan. 
+  // Tähän ehdottomasti vähän enemmän tekstiä.
 
 **2.1 Eurorack**
 
@@ -86,7 +87,7 @@ Eurorack-syntetisaattorit, sekä modulaariset syntetisaattorit yleisesti eivät 
 
 Eurorack-syntetisaattoreita on myös mahdollista ohjata ulkopuolisilla laitteistoilla, sekä ohjelmistoilla, mutta näiden lähettämät signaalit muutetaan aina analogiseen muotoon.
 
-// Esimerkkejä järjestelmistä.
+  // Esimerkkejä järjestelmistä.
 
 **2.2 Sulautettu järjestelmä**
 
@@ -96,7 +97,7 @@ Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järje
 
 **2.3 Tekninen monistaminen**
 
-// Listaa tänne oppareita/julkaisuja, joissa prototyyppi/valmis laite ei koskaan joudu teknisen monistamisen kohteeksi.
+  // Listaa tänne oppareita/julkaisuja, joissa prototyyppi/valmis laite ei koskaan joudu teknisen monistamisen kohteeksi.
 
 Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
 
@@ -126,7 +127,7 @@ Opinnäytetyön tuloksista alasta kiinnostuneet harrastajat, opiskelijat ja ehk�
 
 **x.1 Esimerkkityö 1 (Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin)**
 
-// Aleksi Karppila - Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin (2014)
+  // Aleksi Karppila - Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin (2014)
 
 Aleksi Karppilan opinnäytetyö "Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin" (2014) käsittelee Arduino-pohjaisen monitorointilaitteen rakentamista (viittaa tiivistelmään, 2014). Projektin aikana Karppila rakentaa toimivan laitteen, käy läpi sen toimintaa, ohjelmointia, sekä yleisiä käsitteitä Arduino-kehitysalustaan liittyen.
 
@@ -136,17 +137,18 @@ Jotta Karppilan laite saavuttaisi halutun laajan kohderyhmänsä tulisi laitteen
 
 Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekseen, vaan Arduino-alustan komponenteista oltaisiin voitu rakentaa "Arduino-kilpi". Arduino-kilvet ovat valmiita laitekokonaisuuksia, jotka voidaan kytkeä suoraan Arduino-kehitysalustaan [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields). Laitteen käyttäjän olisi vielä kuitenkin tarvinnut ohjelmoida laite.
 
-// Viittaa täällä vielä konkreettisiin prosesseihin, joita Karppila olisi voinut tehdä (Kicad, kytkentäkaavat jne.) Viittaa tähän opinnäytetyön ja projektin rakennusvaiheisiin
+  // Viittaa täällä vielä konkreettisiin prosesseihin, joita Karppila olisi voinut tehdä (Kicad, kytkentäkaavat jne.) Viittaa tähän opinnäytetyön ja projektin rakennusvaiheisiin
 
 **x.2 Esimerkkityö 2**
 
-// Tähän esimerkkityö 2
-
+  // Tähän esimerkkityö 2
+  // Käy läpi samalla tavalla kuin ylemmässä kohdassa.
+  // Etsi jokin samantyylinen, mutta sellainen työ, joka on käynyt projektissa eri työvaiheita kuin Karppilan työ
 
 
 ## x Sekvensserin prototyypin rakentaminen
 
-// Tässä luvussa käsitellään sekvensserin prototyypin rakentamista
+  // Tässä luvussa käsitellään sekvensserin prototyypin rakentamista
 
 Sekvensserin prototyypin rakennus tapahtui asteittain ja jokaista laitteen osaa ja toiminnallisuutta pyrittiin testaamaan yksitellen, sekä osana suurempaa kokonaisuutta. Laitteen pohjana ja inspiraationa toimi pitkälti Matthew Cieplakin "Super Sixteen"-sekvensseri.
 
@@ -154,7 +156,7 @@ Rakennuksessa käytettiin pelkästään koekytkentälautaa projektin alussa, mut
 
 **x.1 Ohjelmisto**
 
-// Ohjelmakoodin läpikäyntiä tärkeimmiltä komponenteilta. Kerro myös menetelmistä ja työkaluista (VSCode, PlatformIO, Teensy LC)
+  // Ohjelmakoodin läpikäyntiä tärkeimmiltä komponenteilta. Kerro myös menetelmistä ja työkaluista (VSCode, PlatformIO, Teensy LC)
 
 Laitteen lähdekoodi kirjoitettiin C++-ohjelmointikielellä Arduino koodipohjalle. Kehitysympäristönä toimi PlatformIO, joka on Arduino-yhteensopiva integroitu kehitysympäristö Visual Studio Codelle [(PlatformIO)](https://docs.platformio.org/en/latest/what-is-platformio.html). Kehitysalustana laitteessa toimii Teensy LC. Lopullisen laitteen on suunniteltu käyttävän ATmega328 mikroprosessoria, mutta kehityksen aikana Teensy LC oli pienemmän koonsa takia parempi vaihtoehto kuin esimerkiksi Arduino Uno.
 
@@ -182,29 +184,29 @@ _Signaalien sisään- ja ulostulot. Sisöäntulevat signaalit mustalla tekstill�
 
 **x.1.2 Sekvensseri**
 
-// Sekvenssin soitto, muokkaus, luonti, tallennus
+  // Sekvenssin soitto, muokkaus, luonti, tallennus
 
 
 
 **x.1.3 Eurorack yhteensopivuus**
 
-// DAC (tietty malli ja kirjasto, jota käytetty)
-// 1V/oct, Gate, clock jne.
+  // DAC (tietty malli ja kirjasto, jota käytetty)
+  // 1V/oct, Gate, clock jne.
 
 **x.2 Fyysinen laitteisto**
 
-// Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
-// Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
+  // Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
+  // Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
 
 **x.3 Kokoonpano**
 
-// Lopullisen prototyypin rakennus ja kokoonpano. Tähän juotoksista, käytetyistä materiaaleista jne. Vertaa muihin opinnäytetöihin/julkaisuihin, joissa aihe päättyy tähän vaiheeseen, eikä teknistä monistamista mietitä.
+  // Lopullisen prototyypin rakennus ja kokoonpano. Tähän juotoksista, käytetyistä materiaaleista jne. Vertaa muihin opinnäytetöihin/julkaisuihin, joissa aihe päättyy tähän vaiheeseen, eikä teknistä monistamista mietitä.
 
-// Siirrä tämä alempaan kohtaan? Rikkoo jatkumon jos täällä keskellä esiintyy lopullisen laitteen rakennusta.
+  // Siirrä tämä alempaan kohtaan? Rikkoo jatkumon jos täällä keskellä esiintyy lopullisen laitteen rakennusta.
 
 ## x Tekninen monistaminen
 
-// Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaiheet. Tässä voidaan tarkastella muutoksia monistettavan version, sekä prototyypin välillä (esim. läpiladottavat komponentit vs. SMD, tavalliset nappikytkimet vs. Cherry MX tai vastaavat "kunnon kytkimet").
+  // Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaiheet. Tässä voidaan tarkastella muutoksia monistettavan version, sekä prototyypin välillä (esim. läpiladottavat komponentit vs. SMD, tavalliset nappikytkimet vs. Cherry MX tai vastaavat "kunnon kytkimet").
 
 Prototyypin kaikkien merkittävien komponenttien testauksen jälkeen seuraava työvaihe oli suunnitella laite monistettavaan muotoon. Laitteen monistaminen toiselle koekytkentälaudalle olisi erittäin työläs prosessi, eikä laitetta voisi millään tapaa käyttää integroituna osana Eurorack-syntetisaattoria laitteen suuren koon takia.
 
@@ -213,8 +215,6 @@ Jotta laite olisi teknisesti monistettava täytyisi sen manuaalisia asennusvaihe
 ![smdtht001](./imgs/smdtht001.jpg)
 
 _100 kilo-Ohmin vastuksia. Yllä yksi läpiladottava ja alla neljä pintaliitosvastusta_
-
-// Tähän vaikka kuva JLCPCB:n PCBA-palvelusta
 
 ![jlcpcb001](./imgs/jlcpcb001.png)
 
@@ -278,7 +278,7 @@ _Etupaneeli oikeissa mitoissaan_
 
 _Etupaneeli kaikkine vaadittavine leikkauksineen_
 
-// Tähän tekstiä paneelin muiden leikkausten ja reikien teosta.
+  // Tähän tekstiä paneelin muiden leikkausten ja reikien teosta.
 
 Etupaneelin grafiikat luotiin GIMP-kuvankäsittelyohjelmalla, jonka jälkeen luodut kuvat muutettiin KiCadille sopivaan "footprint"-muotoon. Jokainen yksittäinen teksti tai muu graafinen elementti on oma "komponenttinsa" piirilevyllä. Jokaisen kuvan resoluutio asetettiin olemaan 1000ppcm, jolloin 1000 pixeliä leveys-, tai korkeussuunnassa vastaisi yhtä senttimetriä leveys-, tai korkeussuunnassa etupaneelilla. KiCad-ohjelmasta löytää aliohjelma "bitmap2component.exe", jolla kuvat muutetaan haluttuun muotoon. Ohjelma tunnistaa kuvan tarkkuuden automaattisesti.
 
@@ -292,8 +292,8 @@ _Valmiin etupaneelin 3D-renderi_
 
 **x.2 Komponenttien listaus ja tilaus**
 
-// BOM
-// Mouser
+  // BOM
+  // Mouser
 
 KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
 
@@ -319,26 +319,26 @@ _Ostoskori muutettuna projektiksi_
 
 **x.3 Monistamisen laskelmat (otsikko työn alla)**
 
-// BOM * haluttujen laitteiden määrä
-// Muutaman laitteen käsin asennus (Tätä ennen käytävä lopullisen laitteen rakennus ja ajoitus)
-// Pintaliitoskomponentteja ei oteta laskuissa mukaan, sillä ne saadaan suoraan piirilevylle asennettuna tehtailta.
+  // BOM * haluttujen laitteiden määrä
+  // Muutaman laitteen käsin asennus (Tätä ennen käytävä lopullisen laitteen rakennus ja ajoitus)
+  // Pintaliitoskomponentteja ei oteta laskuissa mukaan, sillä ne saadaan suoraan piirilevylle asennettuna tehtailta.
 
-// SIIRRÄ POIS TÄÄLTÄ ALEMMAKSI
+  // SIIRRÄ POIS TÄÄLTÄ ALEMMAKSI
 
 **x Laitteen rakennus ja laskelmat monistamisesta**
 
-// Siirrä tänne "**x.3 Monistamisen laskelmat (otsikko työn alla)**", sekä "**x.3 Kokoonpano**" ja yhdistä ne järkeväksi kokonaisuudeksi. Nämä on luontevaa käydä näin opinnäytetyön lopussa, eikä keskellä, sillä kyseessä on prosessin yksi myöhäisimmistä vaiheista.
+  // Siirrä tänne "**x.3 Monistamisen laskelmat (otsikko työn alla)**", sekä "**x.3 Kokoonpano**" ja yhdistä ne järkeväksi kokonaisuudeksi. Nämä on luontevaa käydä näin opinnäytetyön lopussa, eikä keskellä, sillä kyseessä on prosessin yksi myöhäisimmistä vaiheista.
 
 **x Tulokset ja retrospektio**
 
-// Tässä käydään läpi opinnäytetyön tuloksia, katsotaan onnistumiset, epäonnistumiset ja arvioidaan tulosten vaikuttavuus.
+  // Tässä käydään läpi opinnäytetyön tuloksia, katsotaan onnistumiset, epäonnistumiset ja arvioidaan tulosten vaikuttavuus.
 
 ## Lähteet
 
-// lainausjärjestyksessä (ehkä, TARKISTA!!!!).
-// Lainausmerkinnät/viittaukset varsinaisessa opinnäytetyössä eivät valmiita
+  // lainausjärjestyksessä (ehkä, TARKISTA!!!!).
+  // Lainausmerkinnät/viittaukset varsinaisessa opinnäytetyössä eivät valmiita
 
-// KÄY NÄMÄ LÄPI HUOLELLISESTI JA KORJAA MERKINNÄT OIKEIN TEKSTIIN!!!!!
+  // KÄY NÄMÄ LÄPI HUOLELLISESTI JA KORJAA MERKINNÄT OIKEIN TEKSTIIN!!!!!
 
 0. [d4m - DFM määritelmä](http://www.design4manufacturability.com/DFM_article.htm)
 1. [Reverb - Eurorack formaatti](https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters) luettu 7.3.2021
