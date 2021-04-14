@@ -264,7 +264,7 @@ _Mittojen vektoripiirros. Sinisellä värillä komponenttien keskinäiset mitat 
 
 Etupaneelin piirto oli suhteellisen nopea prosessi, sillä Eurorack-formaatti määrittelee pitkälti paneelien mahdolliset mitat ja piirilevyn komponenttien asettelu määräsi mahdolliset reiät ja leikkaukset etupaneeliin. Käyttöliittymää laitteelle prototyypattiin paperilla, jotta saataisiin jonkin näköinen käsitys laitteen "käsituntumasta".
 
-![ui_planning001](./imgs/uiplanning001.jpg)
+![ui_planning001](./imgs/ui_planning001.jpg)
 
 _Etupaneelin prototyyppäystä paperilla, näppäinhatuilla ja erinäisillä laitteesta löytyvillä komponenteilla._
 
