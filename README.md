@@ -64,17 +64,14 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
 
   // Etsi näille myös lähteitä.
 
-  * Arduino - 
-  * Teensy - 
-  * Eurorack - Modulaarinen syntetisaattoriformaatti, jossa kokonainen syntetisaattori koostuu useasta eri moduulista.
-  * Rackunit (??) - 
-  * HP (Horizontal Pitch) -
-  * CV (Control Voltage) - 
-  * Gate -
+  * Arduino - Avoimen lähdekoodin alusta elektroniikka projektien kehitykseen [(Arduino)](https://www.arduino.cc/en/Guide/Introduction).
+  * Teensy - Arduinon kaltainen, elektroniikka projektien kehitysalusta [(pjrc)](https://www.pjrc.com/teensy/).
+  * Eurorack - De-facto standardi pienikokoisille modulaarisille syntetisaattoreille [(Nora Codes - Modular Synthesis and UNIX)](https://nora.codes/post/modular-synthesis-and-unix/).
+  * CV (Control Voltage) - Ohjausjännite, jolla voidaan ohjata analogisten syntetisaattoreiden eri osia.
+  * Gate - 
   * Oskillaattori - 
   * Sekvensseri - Musiikin tuotannossa käytetty ylensä elektroninen laite tai ohjelmisto, jonka avulla voidaan toistaa, muokata ja soittaa musikaalisia sekvenssejä.
   * Step - Askel. Sekvenssereissä käytetty määre, jolla mitataan sekvenssin pituutta.
-  * PPQ (Parts Per Quarter) - /*Tarvitseeko tätä?*/
   * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi. (Tähän lähde)
   * SPI (Serial Peripheral Interface) - Tietoteknisten järjestelmiän käyttämä väylä, jonka avulla kokonaisen laitteen eri komponentit keskustelevat keskenään. (Etsi tähän lähde)
   * PCB (Printed Circuit Board) - Piirilevy.
@@ -107,6 +104,8 @@ Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järje
 
 Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
 
+Tekninen monistaminen voidaan nähdä osana "rapid prototyping" teknologioita. "Rapid prototyping" teknologiat sekä prosessit ovat teollisuudessa käytettyjä prosesseja, joilla pyritään nopeuttamaan tuotteiden ja prototyyppien valmistusta. Näihin teknologioihin kuuluu esimerkiksi 3D-tulostus (Kai, C. C., & Fai, L. K. (1997). Rapid Prototyping. _Nanyang technological university_). Esimerkiksi opinnäytetyön laitteen piirilevyt piirretään CAD-ohjelmistolla, jonka jälkeen piirilevyt tilataan niitä valmistavalta tehtaalta. Tällä prosessilla vältyytään piirilevyjen valmistamiselta itse ja lopputuloksena ovat yhdenmukaiset piirilevyt.
+
 Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältämään kuin pakollisen määrän komponentteja, jotka vaativat ihmisen niiden asennukseen. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
 
 **2.4 Projektin rakenne ja prosessit**
@@ -127,7 +126,7 @@ Opinnäytetyön projekti prototyypistä teknisesti monistettavaan laitteeseen on
 
 Tässä opinnäytetyössä haluan tarkastella jo kirjoitettujen opinnäytetöiden, sekä artikkelien pohjalta teknistä monistamista. Prototyyppien rakennusta käsitteleviä opinnäytetöitä on monia, mutta harvoissa mietitään prototyypin viemistä monistettavaan muotoon.
 
-Julkaistuista opinnäytetöistä ja artikkeleista katsotaan kuinka kirjoittavat ovat luoneet toimivan prototyypin, mutta jättäneet avoimeksi laitteen jatkokehityksen. Näiden töiden myötä annan myös ehdotuksia ja ideoita siitä, kuinka laitteita oltaisiin voitu viedä teknisesti monistettavampaan muotoon.
+Julkaistuista opinnäytetöistä ja artikkeleista katsotaan kuinka kirjoittajat ovat luoneet toimivan prototyypin, mutta jättäneet avoimeksi laitteen jatkokehityksen. Näiden töiden myötä annan myös ehdotuksia ja ideoita siitä, kuinka laitteita oltaisiin voitu viedä teknisesti monistettavampaan muotoon.
 
 Opinnäytetyön tuloksista alasta kiinnostuneet harrastajat, opiskelijat ja ehkä jopa ammattilaiset saavat yleisen kuvan siitä, mitä sulautetun järjestelmän prototyypin luominen vaatii. Tämän lisäksi opinnäytetyön tavoitteena on antaa yleistä kuvaa prosesseista, joilla luotu prototyyppi voitaisiin muokata teknisesti monistettavaan muotoon.
 
@@ -346,11 +345,15 @@ _Ostoskori muutettuna projektiksi_
 
   // KÄY NÄMÄ LÄPI HUOLELLISESTI JA KORJAA MERKINNÄT OIKEIN TEKSTIIN!!!!!
 
+X. [Arduino](https://www.arduino.cc/en/Guide/Introduction)
+X. [pjrc](https://www.pjrc.com/teensy/)
+X. [Nora Codes - Modular Synthesis and UNIX](https://nora.codes/post/modular-synthesis-and-unix/).
 0. [d4m - DFM määritelmä](http://www.design4manufacturability.com/DFM_article.htm)
 1. [Reverb - Eurorack formaatti](https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters) luettu 7.3.2021
 2. [Doepfer - A-100 construction details](http://www.doepfer.de/a100_man/a100m_e.htm) Luettu 7.3.2021
 3. [Doepfer - A-100 technical details](http://www.doepfer.de/a100_man/a100t_e.htm) Luettu 10.3.2021
 4. [learningmodular - 1 v/oct](https://learningmodular.com/glossary/1-voct/) Luettu 10.3.2021
+X. Kai, C. C., & Fai, L. K. (1997). Rapid Prototyping. _Nanyang technological university_.
 5. (Elicia White, Making Embedded Systems, chapter 1, etsi sivu myöhemmin.)
 x. [(Arduino - arduino shields)](https://www.arduino.cc/en/Main/arduinoShields)
 6. [PlatformIO - About](https://docs.platformio.org/en/latest/what-is-platformio.html)
