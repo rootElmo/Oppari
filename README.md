@@ -1,6 +1,6 @@
 **Tämä on vielä keskeneräinen opinnäytetyö**, mutta voit lueskella sitä jo rullaamalla alaspäin.
 
-![sofarsogood](./imgs/sofarsogood.jpg)
+![pcb_done002](pcb_done002.png)
 
 _KISSen testailua_
 
@@ -333,6 +333,34 @@ _Ostoskori muutettuna projektiksi_
 **x Laitteen rakennus ja laskelmat monistamisesta**
 
   // Siirrä tänne "**x.3 Monistamisen laskelmat (otsikko työn alla)**", sekä "**x.3 Kokoonpano**" ja yhdistä ne järkeväksi kokonaisuudeksi. Nämä on luontevaa käydä näin opinnäytetyön lopussa, eikä keskellä, sillä kyseessä on prosessin yksi myöhäisimmistä vaiheista.
+
+Mahdollisesti tuotteeksi päätyvän laitteen lopullisen hinnan laskemiseksi tarvittaisiin laskelmat tai tarkat arvioit kaikista laitteen rakennukseen liittyvistä kuluista. Laite vaatii jonkin verran käsin asennusta ja tämän työmäärän rahallinen arvo on aina arvio riippuen siitä, kuinka nopeasti ja millä tuntipalkalla rakentaminen pystytään toteuttamaan. Näistä saaduista laskelmista voidaan laskea suhteellisen tarkka katteeton hinta laitteelle. 
+
+**x.1 Laitteen kokoonpano**
+
+Laitteen kokoonpanossa pintaliitoskomponenttien asennukseen kulunutta aikaa ei olla otettu huomioon. Projektin ajoituksessa ollaan lähdetty oletuksesta, että pintaliitoskomponentit ovat juotettu tehtaalla valmiiksi piirilevyille. Tätä ei kuitenkaan tehty tämän projektin puitteissa komponenttien saatavuuden ja koronarajoitusten aiheuttamien mahdollisten tuotantoviivästyksien takia.
+
+![smd_populated001](./imgs/smd_populated001.png)
+
+_Pintaliitoskomponentit asennettuna piirilevylle_
+
+Käsinasennusta varten piirilevy asetettiin piirilevytelineeseen. Etupaneelia käytettiin apuna lähtöjakkien, enkooderin, segmenttinäyttöjen, sekä potentiometrin asettamiseen paikoilleen. Asennus ajoitettiin puhelimen sekuntikellolla. Kaikki käsin asennettavat komponentit otettiin valmiiksi esille ja järjestettiin asennusjärjestyksen mukaan.
+
+![smd_populated002](./imgs/smd_populated002.png)
+
+_Työpiste ennen asennusta_
+
+Käsin asennus kesti yhteensä 21 minuuttia ja 19 sekuntia. Lopullisissa laskelmissa tämä voidaan pyöristää 20 minuuttiin, sillä asennuksen aikana piirilevytelineen ruuveja jouduttiin jatkuvasti kiristämään laitteen huonon kunnon takia.
+
+![pcb_done001](./imgs/pcb_done001.png)
+
+_Valmis laite ilman etupaneelia_
+
+Harjoittelun myötä laiteen asennukseen kuluva aika voisi olla 15 minuuttia. Laitteen rakennukseen kuluva aika voitaisiin jopa puolittaa, jos laitteen käyttämät kytkimet eivät vaatisi läpiladottavien LED-komponenttien käyttöä.
+
+**x.2 Laskelmat laitteen monistamisesta**
+
+Tämän opinnäytetyön projektin aikana on jätetty pois tarkka laitteen ohjelmistokehitykseen kuluva aika, sekä tästä koituvat kustannukset. Projektisuunnitelmassa tämän ajan on kuitenkin arvioitu kustantavan 10 000€. Tämä luku on muodostunut 750€ teoreettisesta viikkopalkasta, joka on kerrottu 13:sta työviikolla.
 
 **x Tulokset ja retrospektio**
 
