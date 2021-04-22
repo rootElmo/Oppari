@@ -350,17 +350,27 @@ Käsinasennusta varten piirilevy asetettiin piirilevytelineeseen. Etupaneelia k�
 
 _Työpiste ennen asennusta_
 
-Käsin asennus kesti yhteensä 21 minuuttia ja 19 sekuntia. Lopullisissa laskelmissa tämä voidaan pyöristää 20 minuuttiin, sillä asennuksen aikana piirilevytelineen ruuveja jouduttiin jatkuvasti kiristämään laitteen huonon kunnon takia.
+Käsin asennus kesti yhteensä 21 minuuttia ja 19 sekuntia. Lopullisissa laskelmissa tämä voidaan pyöristää 20 minuuttiin, sillä asennuksen aikana piirilevytelineen ruuveja jouduttiin jatkuvasti kiristämään laitteen huonon kunnon takia. Laitteesta jäivät asentamatta ICSP-, sekä piikkirimaliittimet Teensy LC:lle. Näiden asentaminen on kuitenkin helppoa ja suoraviivaista, joten niiden puuttuminen ei vaikuta lopulliseen 20 minuutin aikaan.
 
 ![pcb_done001](./imgs/pcb_done001.png)
 
 _Valmis laite ilman etupaneelia_
 
-Harjoittelun myötä laiteen asennukseen kuluva aika voisi olla 15 minuuttia. Laitteen rakennukseen kuluva aika voitaisiin jopa puolittaa, jos laitteen käyttämät kytkimet eivät vaatisi läpiladottavien LED-komponenttien käyttöä.
+Harjoittelun myötä laiteen asennukseen kuluva aika voisi olla 15 minuuttia. Laitteen rakennukseen kuluva aika voitaisiin jopa puolittaa 10 minuuttiin, jos laitteen käyttämät kytkimet eivät vaatisi läpiladottavien LED-komponenttien käyttöä.
 
 **x.2 Laskelmat laitteen monistamisesta**
 
-Tämän opinnäytetyön projektin aikana on jätetty pois tarkka laitteen ohjelmistokehitykseen kuluva aika, sekä tästä koituvat kustannukset. Projektisuunnitelmassa tämän ajan on kuitenkin arvioitu kustantavan 10 000€. Tämä luku on muodostunut 750€ teoreettisesta viikkopalkasta, joka on kerrottu 13:sta työviikolla.
+Tämän opinnäytetyön projektin aikana on jätetty pois tarkka laitteen ohjelmistokehitykseen kuluva aika, sekä tästä koituvat kustannukset. Projektisuunnitelmassa tämän ajan on kuitenkin arvioitu kustantavan 10 000 euroa. Tämä luku on muodostunut 750 euron teoreettisesta viikkopalkasta, joka on kerrottu 13:sta työviikolla. Tätä lukua ei kuitenkaan tulla suhteuttamaan laitteen rakennuskustannuksiin.
+
+Laitteen rakennuksen kustannuksissa oletetaan yhden työtunnin maksavan 20 euroa. Yhden tunnin aikana pystyisi realistisesti rakentamaan kolme valmista laitetta. Yhden laitteen rakennukseen käytettävä aika tulisi siis maksamaan n. 6,67 euroa. Seuraavaksi kaikkien komponenttien hinta lisättiin laskuihin. Piirilevyjen ja etupaneelien hinta saatiin suoraan aiemmin tehdyn tilauksen tilausvahvistuksesta. Yhden laitteen rakentamisen kokonaiskustannuksiksi saatiin 44,365 euroa.
+
+Seuraavaksi laskettiin sadan laitteen rakennuksen hinta. Sadan laitteen rakennus veisi yhdeltä ihmiseltä n. 33,3 tuntia, joka on vielä realistinen työtaakka yhdelle ihmiselle. Työtunnin hinta pysyi sama kuin aikaisemmissa laskelmissa. Piirilevyjen ja etupaneelien hinta saatiin suoraan JLCPCB:n projektiseurannasta. Komponenttimäärien satakertaistuminen voisi kuitenkin johtaa huomattaviin säästöihin, sillä useat komponenttijakelijat tarjoavat kappalehintoihin alennuksia tilausmäärän mukaan. 
+
+Työtuntien hinnaksi sadan laitteen kohdalla tuli 666,67 euroa, johon lisättiin kaikkien komponenttien hinta. Sadan laitteen rakennus maksaisi yhteensä 2678,57 euroa. Yhden laitteen hinnaksi tulisi tällöin 29,4841 euroa. Yhden laitteen hinta sadan laitteen joukosta olisi tällöin noin 66,45% yhden laitteen hinnasta, jos sitä tilattaisiin ja rakennettaisiin vain yksi kappale.
+
+![calcs001](./imgs/calcs001.png)
+
+_Laskelmia laitteen monistamisesta_
 
 **x Tulokset ja retrospektio**
 
