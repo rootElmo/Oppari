@@ -203,12 +203,6 @@ _Signaalien sisään- ja ulostulot. Sisöäntulevat signaalit mustalla tekstill�
   // Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
   // Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
 
-**x.3 Kokoonpano**
-
-  // Lopullisen prototyypin rakennus ja kokoonpano. Tähän juotoksista, käytetyistä materiaaleista jne. Vertaa muihin opinnäytetöihin/julkaisuihin, joissa aihe päättyy tähän vaiheeseen, eikä teknistä monistamista mietitä.
-
-  // Siirrä tämä alempaan kohtaan? Rikkoo jatkumon jos täällä keskellä esiintyy lopullisen laitteen rakennusta.
-
 ## x Tekninen monistaminen
 
   // Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaiheet. Tässä voidaan tarkastella muutoksia monistettavan version, sekä prototyypin välillä (esim. läpiladottavat komponentit vs. SMD, tavalliset nappikytkimet vs. Cherry MX tai vastaavat "kunnon kytkimet").
@@ -321,14 +315,6 @@ Projektin laitteen komponentit koottiin aluksi Mouser verkkokaupassa ostoskoriin
 ![bom002.png](./imgs/bom002.png)
 
 _Ostoskori muutettuna projektiksi_
-
-**x.3 Monistamisen laskelmat (otsikko työn alla)**
-
-  // BOM * haluttujen laitteiden määrä
-  // Muutaman laitteen käsin asennus (Tätä ennen käytävä lopullisen laitteen rakennus ja ajoitus)
-  // Pintaliitoskomponentteja ei oteta laskuissa mukaan, sillä ne saadaan suoraan piirilevylle asennettuna tehtailta.
-
-  // SIIRRÄ POIS TÄÄLTÄ ALEMMAKSI
 
 **x Laitteen rakennus ja laskelmat monistamisesta**
 
