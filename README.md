@@ -1,6 +1,6 @@
 **Tämä on vielä keskeneräinen opinnäytetyö**, mutta voit lueskella sitä jo rullaamalla alaspäin.
 
-![pcb_done002](./imgs/pcb_done002.png)
+![kisse001](./imgs/kisse001.png)
 
 _KISSen testailua_
 
