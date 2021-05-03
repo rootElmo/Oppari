@@ -1,6 +1,6 @@
 **Tämä on vielä keskeneräinen opinnäytetyö**, mutta voit lueskella sitä jo rullaamalla alaspäin.
 
-![kisse001](./imgs/kisse001.png)
+![kisse001](./imgs/kisse001.jpg)
 
 _KISSen testailua_
 
