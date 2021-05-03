@@ -68,7 +68,7 @@ Arduino a. What is Arduino?. Luettavissa: https://www.arduino.cc/en/Guide/Introd
 
 Arduino b.
 
-  * Arduino - Avoimen lähdekoodin alusta elektroniikka projektien kehitykseen [(Arduino a)](https://www.arduino.cc/en/Guide/Introduction).
+  * Arduino - Avoimen lähdekoodin alusta elektroniikka projektien kehitykseen. [(Louis 2016, 21)](https://www.arduino.cc/en/Guide/Introduction).
   * Teensy - Arduinon kaltainen, elektroniikka projektien kehitysalusta [(PJRC)](https://www.pjrc.com/teensy/).
   * Eurorack - De-facto standardi pienikokoisille modulaarisille syntetisaattoreille [(Leonora Tindall 2020)](https://nora.codes/post/modular-synthesis-and-unix/).
   * CV (Control Voltage) - Ohjausjännite, jolla voidaan ohjata analogisten syntetisaattoreiden eri osia.
@@ -76,8 +76,8 @@ Arduino b.
   * Oskillaattori - 
   * Sekvensseri - Musiikin tuotannossa käytetty ylensä elektroninen laite tai ohjelmisto, jonka avulla voidaan toistaa, muokata ja soittaa musikaalisia sekvenssejä.
   * Step - Askel. Sekvenssereissä käytetty määre, jolla mitataan sekvenssin pituutta.
-  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi. (Tähän lähde)
-  * SPI (Serial Peripheral Interface) - Tietoteknisten järjestelmiän käyttämä väylä, jonka avulla kokonaisen laitteen eri komponentit keskustelevat keskenään. (Etsi tähän lähde)
+  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi. (Rahman & al. 2016 s. 151)
+  * SPI (Serial Peripheral Interface) - Kaksisuuntainen kommunikaatioprotokolla, jolla yksi päälaite keskustelee useiden alilaitteiden kanssa. (Leens 2009)
   * PCB (Printed Circuit Board) - Piirilevy.
 
 ## 2. Taustaa
@@ -107,7 +107,7 @@ Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järje
 
 Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
 
-Tekninen monistaminen voidaan nähdä osana "rapid prototyping" teknologioita. "Rapid prototyping" teknologiat sekä prosessit ovat teollisuudessa käytettyjä prosesseja, joilla pyritään nopeuttamaan tuotteiden ja prototyyppien valmistusta. Näihin teknologioihin kuuluu esimerkiksi 3D-tulostus (/*Vaihda lähde, kirjoita uudestaan.*/ Kai, C. C., & Fai, L. K. (1997). Rapid Prototyping. Nanyang technological university). Esimerkiksi opinnäytetyön laitteen piirilevyt piirretään CAD-ohjelmistolla, jonka jälkeen piirilevyt tilataan niitä valmistavalta tehtaalta. Tällä prosessilla vältyytään piirilevyjen valmistamiselta itse ja lopputuloksena ovat yhdenmukaiset piirilevyt.
+Tekninen monistaminen voidaan nähdä osana "rapid prototyping" teknologioita. "Rapid prototyping" teknologiat sekä prosessit ovat teollisuudessa käytettyjä prosesseja, joilla pyritään nopeuttamaan tuotteiden ja prototyyppien valmistusta. Näihin teknologioihin kuuluu esimerkiksi 3D-tulostus [(Yue, Gu 1996, s. 307)](https://doi.org/10.1016/0010-4485(95)00035-6). Esimerkiksi opinnäytetyön laitteen piirilevyt piirretään CAD-ohjelmistolla, jonka jälkeen piirilevyt tilataan niitä valmistavalta tehtaalta. Tällä prosessilla vältyytään piirilevyjen valmistamiselta itse ja lopputuloksena ovat yhdenmukaiset piirilevyt.
 
 Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältämään kuin pakollisen määrän komponentteja, jotka vaativat ihmisen niiden asennukseen. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
 
@@ -145,7 +145,7 @@ Karpilla kertoo valmistuksessa ja suunnittelussa pyrkineensä yksinkertaisuuteen
 
 Jotta Karppilan laite saavuttaisi halutun laajan kohderyhmänsä tulisi laitteen kytkentöjen olla pysyviä ja laitteen eri komponenttien osana yhtä kokonaisuutta. Karppilan laitteen kohderyhmää rajoittaa näin ollen se, että laitetta tulisi harkitsemaan vain ne, joilla olisi osaamista ja halukkuutta rakentaa käsin Arduino-kehitysalustalle oma laitteensa.
 
-Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekseen, vaan Arduino-alustan komponenteista oltaisiin voitu rakentaa "Arduino-kilpi". Arduino-kilvet ovat valmiita laitekokonaisuuksia, jotka voidaan kytkeä suoraan Arduino-kehitysalustaan [(Arduino b)](https://www.arduino.cc/en/Main/arduinoShields). Laitteen käyttäjän olisi vielä kuitenkin tarvinnut ohjelmoida laite.
+Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekseen, vaan Arduino-alustan komponenteista oltaisiin voitu rakentaa "Arduino-kilpi". Arduino-kilvet ovat valmiita laitekokonaisuuksia, jotka voidaan kytkeä suoraan Arduino-kehitysalustaan. [(Louis 2016, 22.)](https://doi.org/10.5121/ijcacs.2016.1203) Laitteen käyttäjän olisi vielä kuitenkin tarvinnut ohjelmoida laite.
 
   // Viittaa täällä vielä konkreettisiin prosesseihin, joita Karppila olisi voinut tehdä (Kicad, kytkentäkaavat jne.) Viittaa tähän opinnäytetyön ja projektin rakennusvaiheisiin
 
@@ -234,6 +234,14 @@ Etupaneelin grafiikoiden suunnittelussa käytettiin KiCadin lisäksi myös GIMP-
 
 **x.1.1 Piirilevy**
 
+Ennen varsinaisten piirilevyjen piirtoa kannattaa selvittää piirilevyjä valmistavia yrityksiä, sekä näiden yritysten tarjoamia palveluita. Komponenttien ja piirien kannalta on hyvä tarkastella yrityksen piirilevyille asettamia rajoituksia. Rajoituksia voivat olla esimerkiksi piirien johtimien minimimitta tai piirilevyn minimi- ja maksimitat. Rajoitukset voivat vaikuttaa komponenttien valintaan, jos halutaan käyttää esimerkiksi todella pieniä mikropiirejä, tai ohuita ja toisiaan lähellä olevia johtimia.
+
+![jlcspec](./imgs/jlcspecs001.png)
+
+_JLCPCB:n minimimittoja johtimille_
+
+Piirilevyjen valmistajaksi valittiin tässä projektissa JLCPCB. Valinta tehtiin opinnäytetyöntekijän aikaisemman kokemuksen johdosta. Muita vastaavia palveluja tuottavia yrityksiä ovat mm. ALLPCB sekä Seeed Studio.
+
 Teknisen monistamisen helpottamiseksi piirilevyllä päätettiin käyttää pintaliitoskomponentteja niin paljon kuin mahdollista. Pintaliitoskomponentit on mahdollista juotatuttaa kiinni piirilevyyn valmiiksi monilla piirilevyjä valmistavilla tehtailla. Tämä laskisi merkittävästi laitteen rakennusaikaa ja näin laskisi laitteen mahdollista katteetonta hintaa.
 
 Piirilevyn piirron aikana ensiksi asetettiin paikoilleen käyttöliittymän kriittisimmät komponentit, kuten painikkeet, segmenttinäytöt sekä ulostulojakit.
@@ -294,10 +302,23 @@ _Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa 
 
 _Valmiin etupaneelin 3D-renderi_
 
-**x.2 Komponenttien listaus ja tilaus**
+**x.2 Piirilevyjen ja etupaneelien tilaus**
 
-  // BOM
-  // Mouser
+Laitteen piirilevyjen ja etupaneelien tilauksen pystyisi tekemään samalta yritykseltä, sillä laitteen etupaneeliksi käy lujuutensa puolesta "tyhjä" piirilevy. Ennen tilausta tulisi piirilevypiirrokset kääntää Gerber-tiedostomuotoon, jota tehtaiden koneet pystyvät lukemaan [(Moreno-Báez & al. 2012, s.241)](https://doi.org/10.1016/j.proeng.2012.04.186).
+
+Piirilevypiirroksen kääntäminen onnistuu KiCad-ohjelmiston sisällä. Kun piirilevyjä valmistava taho on valittu kannattaa tarkistaa missä muodossa kyseinen yritys haluaa Gerber-tiedostot. Yritysten välillä on eroa esimerkiksi siinä, mitä tasoja pitää olla mukana Gerber-tiedostoissa. Ylensä yritykset tarjoavat myös kuvalliset ohjeet tunnetuimmille ohjelmistoille.
+
+![jlcspecs002](./imgs/jlcspecs002.png)
+
+_JLCPCB tarjoaa kuvalliset ohjeet Gerber-tiedostojen luontiin_
+
+Useimmiten piirilevyjä voidaan tilata monissa eri paksuuksissa, mitoissa ja väreissä. JLCPCB:n tilaussivulla tulee myös näkyviin kuvat piirilevyjen molemmista puolista, jos Gerber-tiedostot on luotu onnistuneesti.
+
+![jlcpcb002](./imgs/jlcpcb002.png)
+
+_Etupaneeli esikatseluikkunassa JLCPCB:n tilaussivulla_
+
+**x.3 Komponenttien listaus ja tilaus**
 
 KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
 
@@ -353,11 +374,37 @@ Harjoittelun myötä laiteen asennukseen kuluva aika voisi olla 15 minuuttia. La
 
 Tämän opinnäytetyön projektin aikana on jätetty pois tarkka laitteen ohjelmistokehitykseen kuluva aika, sekä tästä koituvat kustannukset. Projektisuunnitelmassa tämän ajan on kuitenkin arvioitu kustantavan 10 000 euroa. Tämä luku on muodostunut 750 euron teoreettisesta viikkopalkasta, joka on kerrottu 13:sta työviikolla. Tätä lukua ei kuitenkaan tulla suhteuttamaan laitteen rakennuskustannuksiin.
 
-Laitteen rakennuksen kustannuksissa oletetaan yhden työtunnin maksavan 20 euroa. Yhden tunnin aikana pystyisi realistisesti rakentamaan kolme valmista laitetta. Yhden laitteen rakennukseen käytettävä aika tulisi siis maksamaan n. 6,67 euroa. Seuraavaksi kaikkien komponenttien hinta lisättiin laskuihin. Piirilevyjen ja etupaneelien hinta saatiin suoraan aiemmin tehdyn tilauksen tilausvahvistuksesta. Yhden laitteen rakentamisen kokonaiskustannuksiksi saatiin 44,365 euroa.
+Laitteen rakennuksen kustannuksissa oletetaan yhden työtunnin maksavan 20 euroa. Yhden tunnin aikana pystyisi realistisesti rakentamaan kolme valmista laitetta. Yhden laitteen rakennukseen käytettävä aika tulisi siis maksamaan n. 6,67 euroa. Komponenttien, piirilevyjen, sekä etupaneelien hinnat saatiin suoraan projektin aikana tehdyistä tilauksista, tai verkkokauppojen projektienhallinnasta.
 
-Seuraavaksi laskettiin sadan laitteen rakennuksen hinta. Sadan laitteen rakennus veisi yhdeltä ihmiseltä n. 33,3 tuntia, joka on vielä realistinen työtaakka yhdelle ihmiselle. Työtunnin hinta pysyi sama kuin aikaisemmissa laskelmissa. Piirilevyjen ja etupaneelien hinta saatiin suoraan JLCPCB:n projektiseurannasta. Komponenttimäärien satakertaistuminen voisi kuitenkin johtaa huomattaviin säästöihin, sillä useat komponenttijakelijat tarjoavat kappalehintoihin alennuksia tilausmäärän mukaan. 
+Yhden laitteen rakennuksen hinta koostui rakennukseen käytetystä ajasta, komponenttien, etupaneelin, sekä piirilevyn hinnasta. Rakennukseen kuluneessa ajassa ei otettu huomioon pintaliitoskomponenttien juottamiseen kulunutta aikaa, sillä tavallisesti se olisi tehty jo piirilevyjä valmistavalla tehtaalla.
 
-Työtuntien hinnaksi sadan laitteen kohdalla tuli 666,67 euroa, johon lisättiin kaikkien komponenttien hinta. Sadan laitteen rakennus maksaisi yhteensä 2678,57 euroa. Yhden laitteen hinnaksi tulisi tällöin 29,4841 euroa. Yhden laitteen hinta sadan laitteen joukosta olisi tällöin noin 66,45% yhden laitteen hinnasta, jos sitä tilattaisiin ja rakennettaisiin vain yksi kappale.
+Yhden laitteen kustannukset jaoteltuna:
+
+  * Rakennuksen kulut: 6,67€ ((20€/h) / laitteen rakennukseen kulunut aika).
+  * Mouserin komponenttien hinta: 27,89€.
+  * TME:n komponenttien hinta: 2,285€
+  * Reicheltin komponenttien hinta: 12,6€
+  * UK-Electronic:n komponenttien hinta: 2,25€
+  * Piirilevy: 2,234€
+  * Etupaneeli: 2,436€
+
+Yhdelle laitteelle tuli hintaa yhteensä 56,365 euroa.
+
+Yhden yksittäin rakennetun laitteen hinta on aina kalliimpi kuin useamman, sillä komponenttien jakelijat antavat alennuksia komponenttien hintoihin tilausmäärän kasvaessa. Seuraavaksi laskettiin sadan laitteen mahdolliset kustannukset.
+
+Sadan laitteen kustannukset jaoteltuna:
+
+  * Rakennuksen kulut: 666,67€ (yhden laitteen hinta * 100).
+  * Mouserin komponenttien hinta: 1643,2€
+  * TME:n komponenttien hinta: 133,88€
+  * Reicheltin komponenttien hinta: 882€
+  * UK-electronic:n komponenttien hinta: 186,86€
+  * Piirilevyt: 126,42€
+  * Etupaneelit: 143,42€
+
+Sadalle laitteelle tulisi hintaa yhteensä 3782,45 euroa. Tällöin yhdelle laitteelle sadan laitteen sarjasta tulisi hintaa n. 37,82 euroa.
+
+Sadan laitteen erässä yhden laitteen hinta olisi vain 67,1 prosenttia yhden yksittäin rakennetun laitteen hinnasta.
 
 ![calcs001](./imgs/calcs001.png)
 
@@ -369,13 +416,15 @@ _Laskelmia laitteen monistamisesta_
 
 ## Lähteet
 
-Arduino a. What is Arduino?. Luettavissa: https://www.arduino.cc/en/Guide/Introduction. Luettu 26.4.2021.
-
-Arduino b. Shields. Luettavissa: https://www.arduino.cc/en/Main/arduinoShields. Luettu 26.4.2021.
+Louis, L. 2016. Working principle of Arduino and using it as a tool for study and research. Gujarat International Journal of Control, Automation, Communication and Systems. s. 21-29. Luettavissa: https://doi.org/10.5121/ijcacs.2016.1203. Luettu 30.4.2021.
 
 PJRC. Teensy® USB Development Board. Luettavissa: https://www.pjrc.com/teensy/. Luettu 26.4.2021.
 
 Leonora Tindall 2020. Modular Synthesis and UNIX. Luettavissa: https://nora.codes/post/modular-synthesis-and-unix/. Luettu 26.4.2021
+
+Rahman, L. F. & al. 2016 The evolution of digital to analog converter. International Conference on Advances in Electrical, Electronic and Systems Engineering (ICAEES). Luettavissa: https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics. Luettu 30.4.2021.
+
+Leens, F. 2009. An introduction to I2C and SPI protocols. IEEE Instrumentation & Measurement Magazine. s. 9. Luettavissa: https://ieeexplore.ieee.org/abstract/document/4762946. Luettu 30.4.2021.
 
 Reverb 2020. Beginner's Guide to Eurorack: Case Basics, Power Supplies, and Your First Modules. Luettavissa: https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters. Luettu 26.4.2021.
 
@@ -394,9 +443,9 @@ PlatformIO. What is PlatformIO?. Luettavissa: https://docs.platformio.org/en/lat
 
 Microchip. MCP23017/MCP23S17. Luettavissa: https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf. Luettu 26.4.2021.
 
+Moreno-Báez, A & al. 2012. Processing Gerber files for manufacturing printed circuitboards. Procedia Engineering. Vol.35. s. 240-244. Luettavissa: https://doi.org/10.1016/j.proeng.2012.04.186. Luettu 30.4.2021.
+
 Mitchell Grant 2020. Bill of Materials (BOM). Investopedia. Luettavissa: https://www.investopedia.com/terms/b/bill-of-materials.asp. Luettu 26.4.2021.
 
-/* X. Kai, C. C., & Fai, L. K. (1997). Rapid Prototyping. _Nanyang technological university_. */
-
-// Yllä oleva kadonnut internetistä? Katso joku vastaava, korjaa luku 2.3.
+Yan, X. Gu, P. E. N. G. 1996. A review of rapid prototyping technologies and systems. Computer-aided design. Vol.28:4 s. 307-318. Luettavissa: https://doi.org/10.1016/0010-4485(95)00035-6. Luettu 30.4.2021.
 
