@@ -64,14 +64,10 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
 
   // Etsi näille myös lähteitä.
 
-Arduino a. What is Arduino?. Luettavissa: https://www.arduino.cc/en/Guide/Introduction. Luettu 26.4.2021.
-
-Arduino b.
-
   * Arduino - Avoimen lähdekoodin alusta elektroniikka projektien kehitykseen. [(Louis 2016, 21)](https://www.arduino.cc/en/Guide/Introduction).
   * Teensy - Arduinon kaltainen, elektroniikka projektien kehitysalusta [(PJRC)](https://www.pjrc.com/teensy/).
   * Eurorack - De-facto standardi pienikokoisille modulaarisille syntetisaattoreille [(Leonora Tindall 2020)](https://nora.codes/post/modular-synthesis-and-unix/).
-  * CV (Control Voltage) - Ohjausjännite, jolla voidaan ohjata analogisten syntetisaattoreiden eri osia.
+  * Volts-per-octave (1V/oct) - Standardi analogisille syntetisaattoreille, jossa yhden voltin nouse ohjausjännitteessä vastaa yhden oktaavin nousua esimerkiksi oskillattorin taajuudessa [(Pinch 2008 s. 472)](https://doi.org/10.1007/s11186-008-9069-x).
   * Gate - 
   * Oskillaattori - 
   * Sekvensseri - Musiikin tuotannossa käytetty ylensä elektroninen laite tai ohjelmisto, jonka avulla voidaan toistaa, muokata ja soittaa musikaalisia sekvenssejä.
@@ -192,25 +188,30 @@ Käyttäjä voi myös lähettää signaaleja muista Eurorack-moduuleista. Laitte
 
 _Signaalien sisään- ja ulostulot. Sisöäntulevat signaalit mustalla tekstillä valkoisella taustalla_
 
-**x.1.2 Sekvensseri**
+**x.1.2 Eurorack yhteensopivuus**
 
-  // Sekvenssin soitto, muokkaus, luonti, tallennus
+Jotta sekvensserillä pystyisi ohjaamaan Eurorack-moduuleita tulisi sen noudattaa mm. "1V/oct"-periaatetta. Tällöin sekvensserillä voitaisiin ohjata mm. oskillaattoreiden sävelkorkeutta. Sävelkorkeuden ohjaamisesta vastaa signaali "Pitch". Sekvensseriin lisättiin myös ulostulot "Clock"-, "Gate"-, sekä "Mod"-signaalille. "Clock"-signaali koostuisi tietyin aikavälein toistuvista pulsseista, joilla voitaisiin ohjata moduuleita, joissa olisi sisääntulo ajoitussignaalille. "Gate"-signaali on digitaalinen signaali, joka on joko päällä tai pois päältä. Sekvensserin käyttäjä pystyisi päättämään signaalin keston. Tällä signaalilla voitaisiin ohjata moduuleita, jotka toimivat "binäärisesti". "Mod"-signaali toimisi samalla tavoin kuin "1V/oct"-signaali, jolloin ulostulon jännite on liukuva luku käyttäjän määritelmän mukaan. Signaali ei kuitenkaan noudattaisi mitään standardia ohjausjännitteen suuruuden suhteen.
 
+"Clock"- ja "Gate"-signaalit pystyttäisiin ottamaan suoraan mikroprosessorin ulostuloista. "Pitch"- ja "Mod"-signaalit ovat kuitenkin liukuvia arvoja, joten mikroprosessorin ja ulostulon väliin vaaditaan DAC (Digital-to-Analog-Converter), jolla mikroprosessorin digitaalisen signaalin voi muuntaa liukuvaksi ohjausjännitteeksi. Sekvensserin DAC:ksi valittiin Microchipin valmistama kaksi kanavainen ja 12-bittinen "MCP4822" [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Kahden kanavan ansiosta yhdellä laitteella voitaisiin tuottaa molemmat "Pitch"-, sekä "Mod"-signaalit.
 
+12-bittiä DAC:ssa vastaa 4096 mahdollista eri arvoa jännitteessä. MCP4822:ssa nämä arvot voivat olla väliltä 0-2,048 volttia, tai 0-4,096 volttia [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Jos sekvensserillä haluttaisiin soittaa 8 oktaavin väliltä jouduttaisiin DAC:n ulostulojännitettä skaalaamaan oikein. Jännitteen skaalaamiseen kävisi mikä tahansa nykyaikainen operaatiovahvistin. Operaatiovahvistimen ulostulon vahvistamisen määrä riippuu sen tuloliittimiin kytketyistä vastuksista [(Carter & al. 2001, s. 8)](https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf). Vahvistuksen määrän ja tarvittavien vastuksien arvot voi laskea helposti internetistä löytyvillä laskureilla.
 
-**x.1.3 Eurorack yhteensopivuus**
+![mfos001](./imgs/mfos001.png)
 
-  // DAC (tietty malli ja kirjasto, jota käytetty)
-  // 1V/oct, Gate, clock jne.
+_"Music From Outer Space":n laskuri operaatiovahvistimille_
 
 **x.2 Fyysinen laitteisto**
 
   // Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
   // Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
 
-## x Tekninen monistaminen
+Prototyyppiä rakennettaessa alustana kaikille kytkennöille käytettiin useampaa koekytkentälautaa. Koekytkentälaudoissa osa kytkentäaukoista on fyysisesti kytketty toisiinsa ja eri kytkentöjä voi yhdistää joko komponenteilla tai hyppylangoilla. Prototyypin koon kasvaessa eri elementtejä piireistä pystyttäisiin rakentamaan omille koekytkentälaudoille, jotka voitaisiin myöhemmin yhdistää osaksi isompaa kokonaisuutta. Rakennetuista piireistä pidettiin yllä kytkentäkaavioita, jonka avulla piirit pystyttäisiin kääntämään piirilevypiiroksiksi.
 
-  // Tässä luvussa käydään läpi tekninen monistaminen, sekä sen vaatimat vaiheet. Tässä voidaan tarkastella muutoksia monistettavan version, sekä prototyypin välillä (esim. läpiladottavat komponentit vs. SMD, tavalliset nappikytkimet vs. Cherry MX tai vastaavat "kunnon kytkimet").
+![prototyping_combo001](./imgs/prototyping_combo001.jpg)
+
+_Prototyyppi alkuvaiheessa, sekä piireistä tehty kytkentäkaavio_
+
+## x Tekninen monistaminen
 
 Prototyypin kaikkien merkittävien komponenttien testauksen jälkeen seuraava työvaihe oli suunnitella laite monistettavaan muotoon. Laitteen monistaminen toiselle koekytkentälaudalle olisi erittäin työläs prosessi, eikä laitetta voisi millään tapaa käyttää integroituna osana Eurorack-syntetisaattoria laitteen suuren koon takia.
 
@@ -422,6 +423,8 @@ PJRC. Teensy® USB Development Board. Luettavissa: https://www.pjrc.com/teensy/.
 
 Leonora Tindall 2020. Modular Synthesis and UNIX. Luettavissa: https://nora.codes/post/modular-synthesis-and-unix/. Luettu 26.4.2021
 
+Pinch, T. 2008. Technology and institutions: Living in a material world. Theory and society, 37(5), s. 461-483. Luettavissa: https://doi.org/10.1007/s11186-008-9069-x. Luettu 4.5.2021.
+
 Rahman, L. F. & al. 2016 The evolution of digital to analog converter. International Conference on Advances in Electrical, Electronic and Systems Engineering (ICAEES). Luettavissa: https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics. Luettu 30.4.2021.
 
 Leens, F. 2009. An introduction to I2C and SPI protocols. IEEE Instrumentation & Measurement Magazine. s. 9. Luettavissa: https://ieeexplore.ieee.org/abstract/document/4762946. Luettu 30.4.2021.
@@ -441,7 +444,11 @@ koulutusohjelma. Luettavissa: https://www.theseus.fi/handle/10024/81790. Luettu 
 
 PlatformIO. What is PlatformIO?. Luettavissa: https://docs.platformio.org/en/latest/what-is-platformio.html. Luettu 26.4.2021.
 
-Microchip. MCP23017/MCP23S17. Luettavissa: https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf. Luettu 26.4.2021.
+Microchip a. MCP23017/MCP23S17. Luettavissa: https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf. Luettu 26.4.2021.
+
+Microchip b. MCP4802/4812/4822. Luettavissa: https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf. Luettu 4.5.2021.
+
+Carter, B., Brown, T.R., 2001. Handbook of operational amplifier applications. Texas Instruments. Luettavissa: https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf. Luettu 4.5.2021.
 
 Moreno-Báez, A & al. 2012. Processing Gerber files for manufacturing printed circuitboards. Procedia Engineering. Vol.35. s. 240-244. Luettavissa: https://doi.org/10.1016/j.proeng.2012.04.186. Luettu 30.4.2021.
 
