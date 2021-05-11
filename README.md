@@ -30,7 +30,7 @@ Haaga-Helia ammattikorkeakoulu
 
 Opinnäytetyö keskittyy sulautetun järjestelmän luomiseen Arduino-kehitysalustalle sopivilla työkaluilla. Luodun sulautetun järjestelmän prototyyppi tullaan saattamaan valmiiksi teknistä monistamista varten. Teknistä monistamista varten laitteelle tullaan luomaan piirilevypiirustukset, piirustukset mahdollisesti tarvittavasta etupaneelista, sekä kustannusarvioit projektin viemisestä sarjatuotantoon.
 
-Luotu laite tulee olemaan sekvensseri Eurorack-syntetisaattoreille.
+Luotu laite tulee olemaan sekvensseri Eurorack-syntetisaattoreille. Sekvernsseri on musiikin tuotannossa käytetty laite tai ohjelmisto, jolla voidaan luoda, muokata ja soittaa musikaalisia sekvenssejä.Eurorack on syntetisaattoriformaatti, jossa kokonainen syntetisaattori koostuu useasta eri moduulista.
 
 Laitteen luominen tullaan käymään läpi tarkemmin tarkastelemalla tarvittavia teknologioita, työkaluja, sekä laitteen lähdekoodia ja toimintaa. Laitteen luomisen prosessi käsittää sisälleen kaiken alkuperäisestä ideasta aina valmiin piirilevyn luomiseen komponentteineen.
 
@@ -40,7 +40,7 @@ Lopussa arvioidaan itse projektin onnistumista, sekä monistamisprosessin hyödy
 
 **Asiasanat**
 
-Eurorack, Arduino, sulautettu järjestelmä, monistaminen, c++, sekvensseri
+Arduino, sulautettu järjestelmä, monistaminen, sekvensseri, Eurorack
 
 ## 1. Johdanto
 
@@ -50,19 +50,15 @@ Eurorack, Arduino, sulautettu järjestelmä, monistaminen, c++, sekvensseri
 
 Opinnäytetyön tavoitteena on selkeyttää teknisen monistamisen prosessia. Opinnäytetyön aikana luotu Eurorack-sekvensseri toimii tämän teknisen monistamisen kohteena. Näihin tavoitteisiin pääsemiseen vaaditaan myös itse laitteen luominen, joten valmis laite, tai ainakin sen pitkälle viety prototyyppi syntyy myös projektin aikana.
 
-  // Päätä alle julkaisun lisenssi!!!!
+Valmiita opinnäytetöitä sulautettujen järjestelmien luomisesta löytyy useita, mutta harvassa ollaan edes mietitty niiden tuotoksien monistamista, taikka viemistä kevyestä prototyypistä eteenpäin. Tämän opinnäytetyön teknisen monistamisen prosessin kuvaaminen ja läpikäynti tulisi auttamaan muiden vastaavien projektien viemisessä eteenpäin kohti sarjatuotantoa. Vaikka tämän opinnäytetyön puitteissa keskitytään hyvin spesifin laitteen luomiseen, pystyisi vastaavilla prosesseilla ja työkaluilla luomaan pienemmän mittakaavan sarjatuotantoa harrastus-, koulu-, tai yritysprojekteihin.
 
-Laitteen kehittämisestä syntyvä dokumentaatio, lähdekoodi, sekä kytkentäkaaviot tullaan julkaisemaan GitHubissa.
-
-Valmiita opinnäytetöitä sulautettujen järjestelmien luomisesta löytyy useita, mutta harvassa ollaan edes mietitty niiden tuotoksien monistamista, taikka viemistä kevyestä prototyypistä eteenpäin. Tämän opinnäytetyön teknisen monistamisen prosessin kuvaaminen ja läpikäynti tulisi auttamaan muiden vastaavien projektien viemisessä eteenpäin kohti sarjatuotantoa. Vaikka tämän opinnäytetyön puitteissa keskitytään hyvin spesifiin laitteeseen, sekä suhteellisen suureen teoreettiseen tuotantomäärään teknisen monistamisen osuudessa, pystyisi vastaavilla prosesseilla ja työkaluilla luomaan pienemmän mittakaavan sarjatuotantoa harrastus-, koulu-, tai yritysprojekteihin.
-
-Tekninen monistaminen tämän opinnäytetyön puitteissa keskittyy yhden tai muutaman valmiin laitteen rakennukseen, rakennuksen keston ajoittamiseen kustannusarvioita varten, sekä sarjatuotannon kustannuksien arviointiin. Näistä eri kustannusarvioista saadaan laitekohtainen hinta, kun arvoidaan teknisen monistamisen tuloksia.
+Tekninen monistaminen keskittyy yhden tai muutaman valmiin laitteen rakennukseen, rakennuksen keston ajoittamiseen kustannusarvioita varten, sekä mahdollisen pienimuotoisen sarjatuotannon kustannuksien arviointiin. Näistä eri kustannusarvioista saadaan laitekohtainen hinta, kun arvoidaan teknisen monistamisen tuloksia.
 
 Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettavan laitteen tuotteeksi viemistä. Vaikka monistamisprosessista syntyy kustannusarvioita, ovat nämä pelkästään arvioita laitteen sarjatuotannosta. Tuotteistamista varten tulisi tehdä selvitys kilpailijoista, markkinoista, sekä selvitys siitä, olisiko kukaan todellisuudessa valmis ostamaan mahdollisesti valmistuvaa tuotetta.
 
-**1.2 Käsitteet**
+Opinnäytetyön prosessi ei myöskään pyri olemaan asteittain etenevä ohje, vaan laajempi prosessikuvaus. Ohjelmistojen laajempi opettelu, sekä prosessien yksityiskohtien selvittäminen jäävät laajalti tätä opinnäytetyötä mahdollisesti apunaan käyttävän henkilön vastuulle.
 
-  // Etsi näille myös lähteitä.
+**1.2 Käsitteet**
 
   * Arduino - Avoimen lähdekoodin alusta elektroniikka projektien kehitykseen. [(Louis 2016, 21)](https://www.arduino.cc/en/Guide/Introduction).
   * Teensy - Arduinon kaltainen, elektroniikka projektien kehitysalusta [(PJRC)](https://www.pjrc.com/teensy/).
@@ -72,7 +68,7 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
   * Oskillaattori - 
   * Sekvensseri - Musiikin tuotannossa käytetty ylensä elektroninen laite tai ohjelmisto, jonka avulla voidaan toistaa, muokata ja soittaa musikaalisia sekvenssejä.
   * Step - Askel. Sekvenssereissä käytetty määre, jolla mitataan sekvenssin pituutta.
-  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi. (Rahman & al. 2016 s. 151)
+  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi [(Rahman & al. 2016 s. 151).](https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics)
   * SPI (Serial Peripheral Interface) - Kaksisuuntainen kommunikaatioprotokolla, jolla yksi päälaite keskustelee useiden alilaitteiden kanssa. (Leens 2009)
   * PCB (Printed Circuit Board) - Piirilevy.
 
@@ -83,23 +79,35 @@ Opinnäytetyön teknisen monistamisen prosessi ei pidä sisällään monistettav
 
 **2.1 Eurorack**
 
-Eurorack-syntetisaattori formaatti on Dieter Doepferin vuonna 1996 kehittämä formaatti modulaariselle syntetisaattorille [(Reverb 2020)](https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters). Eurorack syntetisaattoriformaatti perustuu 19 tuuman räkki standardille. Eurorack-syntetisaattorissa moduulien korkeus on noin kolme räkkiyksikköä (tai 128,5mm). Laskennallisesti korkeuden tulisi olla 133,4mm, mutta moduuleitten korkeudessa ollaan otettu huomioon kiinnityskiskojen "lippa". [(Doepfer a.)](http://www.doepfer.de/a100_man/a100m_e.htm) 
+Eurorack-syntetisaattori formaatti on Dieter Doepferin vuonna 1996 kehittämä formaatti modulaariselle syntetisaattorille [(Reverb 2020)](https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters). Eurorack syntetisaattoriformaatti perustuu 19 tuuman räkki standardille. Eurorack-syntetisaattorissa moduulien korkeus on noin kolme räkkiyksikköä (tai 128,5mm). Laskennallisesti korkeuden tulisi olla 133,4mm, mutta moduuleitten korkeudessa ollaan otettu huomioon kiinnityskiskojen "lippa". [(Doepfer a.)](http://www.doepfer.de/a100_man/a100m_e.htm)
 
-Eurorack-syntetisaattorit, sekä modulaariset syntetisaattorit yleisesti eivät sisällä koskettimistoa ja harvoin koskettimiston integroiminen modulaariseen syntetisaattoriin on mahdollista. Eurorack-syntetisaattorin eri moduuleita ohjataan käyttäen erinäisiä ohjausjännitteitä (Control Voltage/CV) [(Doepfer b)](http://www.doepfer.de/a100_man/a100t_e.htm). Ohjausjännite on analoginen signaali, joka syötetään yhteen tai useampaan moduliin, joka tuottaa muutoksen syntetisaattorin signaaliketjussa suhteutettuna ohjausjännitteen määrään. Esimerkiksi oskillaattorin sävelkorkeuden nostaminen yhdellä oktaavilla vastaa yhden voltin korotusta ohjausjännitteessä 1V/Oct-standardilla [(learningmodular)](https://learningmodular.com/glossary/1-voct/).
+Modulaarisuus Eurorack-syntetisaattoreissa tarkoittaa, että kokonainen järjestelmä koostuu pääasiallisesti käyttäjän itse valitsemista erillisistä moduuleista [(Doepfer a).](http://www.doepfer.de/a100_man/a100m_e.htm) Kuvassa XYZ esitettynä kolmen eri valmistajan moduuleita yhdessä Eurorack-kokoonpanossa.
 
-Eurorack-syntetisaattoreita on myös mahdollista ohjata ulkopuolisilla laitteistoilla, sekä ohjelmistoilla, mutta näiden lähettämät signaalit muutetaan aina analogiseen muotoon.
+![eurorack001](./imgs/eurorack001.jpg)
 
-  // Esimerkkejä järjestelmistä.
+_Kuva XYZ. Kolmen moduulin Eurorack-kokoonpano_
+
+Eurorack-syntetisaattorit, sekä modulaariset syntetisaattorit yleisesti eivät sisällä koskettimistoa ja harvoin koskettimiston integroiminen modulaariseen syntetisaattoriin on mahdollista. Eurorack-syntetisaattorin eri moduuleita ohjataan käyttäen erinäisiä ohjausjännitteitä (Control Voltage/CV) [(Doepfer b)](http://www.doepfer.de/a100_man/a100t_e.htm). 
+
+Ohjausjännite on analoginen signaali, joka syötetään yhteen tai useampaan moduliin, joka tuottaa muutoksen syntetisaattorin signaaliketjussa suhteutettuna ohjausjännitteen määrään. Analoginen ohjausjännite voi olla digitaaliseen ohjausjännitteeseen verrattuna mikä tahansa jännite kahden ääripään väliltä (Warren & al. 2011, s. 30). Digitaalinen signaali tai ohjausjännite on aina ennalta määrätyn jännitevälin jompi kumpi ääripää (Warren & al. 2011, s. 27).
+
+Esimerkiksi oskillaattorin sävelkorkeuden nostaminen yhdellä oktaavilla vastaa yhden voltin korotusta ohjausjännitteessä 1V/Oct-standardilla [(learningmodular)](https://learningmodular.com/glossary/1-voct/). Kuvassa ABC yhden moduulin sävelkorkeutta hallitaan toisen moduulin ulostulolla. Signaaleja ohjataan moduulien välillä 3,5mm patchikaapeleilla (Etsi lähde, korjaa "3,5mm patchikaapeli" oikeaan muotoon). 
+
+![eurorack002](./imgs/eurorack002.jpg)
+
+_Kuva ABC. Eurorack moduuleja yhdistettynä toisiinsa_
+
+Eurorack-syntetisaattoreita on myös mahdollista ohjata ulkopuolisilla laitteistoilla, sekä ohjelmistoilla, mutta näiden lähettämät signaalit muutetaan aina analogiseen muotoon. Jotkin laitteet toimivat suoraan Eurorack-moduulien kanssa.
 
 **2.2 Sulautettu järjestelmä**
 
 Sulautettu järjestelmä on digitalisoitu järjestelmä, jonka toiminta on suppeampaa kuin tavallisen tietokoneen. Sulautettu järjestelmä on vain tiettyä tarkoitusta varten luotu järjestelmä. Sulautetuille järjestelmille on myös tyypillistä laskentaresurssien niukkuus, sekä suppea tuki ulkoisille laitteille. (Elicia White 2011, luku 1.)
 
-Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järjestelmä. Laite itsessään ei pidä sisällään mitään käyttöjärjestelmää ja sen ensisijainen tarkoitus on toimia Eurorack-syntetisaattorin sekvensserinä.
+Elektroniikkaharrastajien keskuudessa sulautettujen järjestelmien kehittämiseen käytetään hyvin usein Arduino-kehitysalustaa. Arduino-kehitysalusta pitää sisällään aina jonkin mikroprosessorin, sekä sen ohjelmointiin ja ulkoisiin kytkentöihin liittyviä komponentteja. 
+
+Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järjestelmä. Laite itsessään ei pidä sisällään mitään käyttöjärjestelmää ja sen ensisijainen tarkoitus on toimia Eurorack-syntetisaattorin sekvensserinä. Sekvensseri-laiteelle annettiin nimi "KISSe", joka on lyhenne sanoista "Keep It Simple Sequencer". Sekvensseri on laite tai ohjelmisto, jota käytetään musiikintuotannossa. Sekvensserillä voidaan luoda, muokata ja toistaa musikaalisia sekvenssejä. 
 
 **2.3 Tekninen monistaminen**
-
-  // Listaa tänne oppareita/julkaisuja, joissa prototyyppi/valmis laite ei koskaan joudu teknisen monistamisen kohteeksi.
 
 Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
 
@@ -121,23 +129,25 @@ Opinnäytetyön projekti prototyypistä teknisesti monistettavaan laitteeseen on
   * Laskelmien teko ja tulosten läpikäynti. Tässä vaiheessa lasketaan laitteen rakennuksen ja suunnittelun kulut, sekä näiden perusteella tehdään laskelmia mahdollista sarjatuotantoa varten. Projektin tuloksia käydään myös läpi niiltä osin kun ne ovat merkittäviä.
 
 
-## x Tutkimuksen tavoite ja hyödyt (viilaa vielä otsikkoa)
+**2.x Aikaisemmat työt (viilaa vielä otsikkoa)**
 
-Tässä opinnäytetyössä haluan tarkastella jo kirjoitettujen opinnäytetöiden, sekä artikkelien pohjalta teknistä monistamista. Prototyyppien rakennusta käsitteleviä opinnäytetöitä on monia, mutta harvoissa mietitään prototyypin viemistä monistettavaan muotoon.
+Tässä opinnäytetyössä haluan tarkastella jo kirjoitetun opinnäytetyön, pohjalta teknistä monistamista. Prototyyppien rakennusta käsitteleviä opinnäytetöitä on monia, mutta harvoissa mietitään prototyypin viemistä monistettavaan muotoon.
 
+/*
 Julkaistuista opinnäytetöistä ja artikkeleista katsotaan kuinka kirjoittajat ovat luoneet toimivan prototyypin, mutta jättäneet avoimeksi laitteen jatkokehityksen. Näiden töiden myötä annan myös ehdotuksia ja ideoita siitä, kuinka laitteita oltaisiin voitu viedä teknisesti monistettavampaan muotoon.
+*/
+
+
+/* Siirrä alempi johonkin muualle luvussa 2?
 
 Opinnäytetyön tuloksista alasta kiinnostuneet harrastajat, opiskelijat ja ehkä jopa ammattilaiset saavat yleisen kuvan siitä, mitä sulautetun järjestelmän prototyypin luominen vaatii. Tämän lisäksi opinnäytetyön tavoitteena on antaa yleistä kuvaa prosesseista, joilla luotu prototyyppi voitaisiin muokata teknisesti monistettavaan muotoon.
+*/
 
-**x.1 Esimerkkityö 1 (Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin)**
-
-  // Aleksi Karppila - Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin (2014)
+**Esimerkki projektista**
 
 Aleksi Karppilan opinnäytetyö "Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin" käsittelee Arduino-pohjaisen monitorointilaitteen rakentamista (Karppila 2014, 1). Projektin aikana Karppila rakentaa toimivan laitteen, käy läpi sen toimintaa, ohjelmointia, sekä yleisiä käsitteitä Arduino-kehitysalustaan liittyen.
 
-Karpilla kertoo valmistuksessa ja suunnittelussa pyrkineensä yksinkertaisuuteen, jotta laitteen toiminta olisi moitteetonta ja luodulla laitteella olisi mahdollisimman laaja kohderyhmä (Karppila 2014, 13). Kuitenkin lopullinen laite, jota opinnäytetyössä on kuvattu muistuttaa pitkälti prototyypinomaista laitetta, jossa kytkennät ovat tehty hyppylangoilla korkytkentälaudan kautta. 
-
-/*Tähän vaikka kuva Karppilan opinnäytetyön laitteesta*/
+Karpilla kertoo valmistuksessa ja suunnittelussa pyrkineensä yksinkertaisuuteen, jotta laitteen toiminta olisi moitteetonta ja luodulla laitteella olisi mahdollisimman laaja kohderyhmä (Karppila 2014, 13). Kuitenkin lopullinen laite, jota opinnäytetyössä on kuvattu muistuttaa pitkälti prototyypinomaista laitetta, jossa kytkennät ovat tehty hyppylangoilla korkytkentälaudan kautta.
 
 Jotta Karppilan laite saavuttaisi halutun laajan kohderyhmänsä tulisi laitteen kytkentöjen olla pysyviä ja laitteen eri komponenttien osana yhtä kokonaisuutta. Karppilan laitteen kohderyhmää rajoittaa näin ollen se, että laitetta tulisi harkitsemaan vain ne, joilla olisi osaamista ja halukkuutta rakentaa käsin Arduino-kehitysalustalle oma laitteensa.
 
@@ -145,16 +155,7 @@ Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekse
 
   // Viittaa täällä vielä konkreettisiin prosesseihin, joita Karppila olisi voinut tehdä (Kicad, kytkentäkaavat jne.) Viittaa tähän opinnäytetyön ja projektin rakennusvaiheisiin
 
-**x.2 Esimerkkityö 2**
-
-  // Tähän esimerkkityö 2
-  // Käy läpi samalla tavalla kuin ylemmässä kohdassa.
-  // Etsi jokin samantyylinen, mutta sellainen työ, joka on käynyt projektissa eri työvaiheita kuin Karppilan työ
-
-
 ## x Sekvensserin prototyypin rakentaminen
-
-  // Tässä luvussa käsitellään sekvensserin prototyypin rakentamista
 
 Sekvensserin prototyypin rakennus tapahtui asteittain ja jokaista laitteen osaa ja toiminnallisuutta pyrittiin testaamaan yksitellen, sekä osana suurempaa kokonaisuutta. Laitteen pohjana ja inspiraationa toimi pitkälti Matthew Cieplakin "Super Sixteen"-sekvensseri.
 
@@ -164,7 +165,13 @@ Rakennuksessa käytettiin pelkästään koekytkentälautaa projektin alussa, mut
 
   // Ohjelmakoodin läpikäyntiä tärkeimmiltä komponenteilta. Kerro myös menetelmistä ja työkaluista (VSCode, PlatformIO, Teensy LC)
 
-Laitteen lähdekoodi kirjoitettiin C++-ohjelmointikielellä Arduino koodipohjalle. Kehitysympäristönä toimi PlatformIO, joka on Arduino-yhteensopiva integroitu kehitysympäristö Visual Studio Codelle [(PlatformIO)](https://docs.platformio.org/en/latest/what-is-platformio.html). Kehitysalustana laitteessa toimii Teensy LC. Lopullisen laitteen on suunniteltu käyttävän ATmega328 mikroprosessoria, mutta kehityksen aikana Teensy LC oli pienemmän koonsa takia parempi vaihtoehto kuin esimerkiksi Arduino Uno.
+Laitteen lähdekoodi kirjoitettiin C++-ohjelmointikielellä Arduino koodipohjalle. Kehitysympäristönä toimi PlatformIO, joka on Arduino-yhteensopiva integroitu kehitysympäristö Visual Studio Codelle [(PlatformIO)](https://docs.platformio.org/en/latest/what-is-platformio.html). Kehitysalustana laitteessa toimii Teensy LC. Lopullisen laitteen on suunniteltu käyttävän ATmega328-mikroprosessoria, mutta kehityksen jäädessä osittain kesken luotiin laitteelle mahdollisuus käyttää joko ATmega328-mikroprosessoria, tai Teensy LC-kehitysalustaa.
+
+Ohjelmistokehityksen aikana käytettiin myös KiCadia laitteen piirien ylläpidossa ja seurannassa. Laitteessa kulloinkin käytettävät piirit ja komponentit käännettiin kytkentäkaavaan KiCadin sisällä. Kuvassa 123 esimerkkinä laitteen segmenttinäyttöjen piirit. Näin ajan myötä saatiin luotua laitteelle kokonainen kytkentäkaavio. Vahinkojen sattuessa kytkentäkaavojen pohjalta oltaisiin myös voitu koota laite uudestaan.
+
+![kicad_schem001](./imgs/kicad_schem001.png)
+
+_Kuva 123. Segmenttinäyttöjen kytkentäkaavio KiCad:ssä_
 
 **x.1.1 Käyttäjän syötteet**
 
@@ -333,6 +340,8 @@ _Bill of Materials -työkalun eri vaihtoehtoja listan luomiselle_
 
 Tämän opinnäytetyön projektia varten tavallinen Excel-taulukko toimisi BOM:na. Taulukosta näkyisi kaikkien komponenttien kytkentäkaavassa käytetty viite, komponenttien arvo tai nimi, vaadittu lukumäärä, sekä Mouser verkkokaupan viitenumero kyseiselle komponentille. Niiden komponenttien osalta, joita Mouserin valikoimista ei löydy on ilmoitettu vaihtoehtoisen yrityksen nimi, sekä heidän komponentille käyttämänsä viite.
 
+Mouser on elektroisten komponenttien jakelija, joka valittiin opinnäytetyön projektiin laajan valikoimansa ansiosta. Mouserin verkkokaupasta löytyy myös useita työkaluja projektienhallintaan, jotka mahdollistavat komponenttilistauksien helpon luomisen ja päivittämisen.
+
 ![bom001.png](./imgs/bom001.png)
 
 _Mouser verkkokaupan ostoskori, sekä KISSe-projektin Bill of Materials_
@@ -413,7 +422,15 @@ _Laskelmia laitteen monistamisesta_
 
 **x Tulokset ja retrospektio**
 
-  // Tässä käydään läpi opinnäytetyön tuloksia, katsotaan onnistumiset, epäonnistumiset ja arvioidaan tulosten vaikuttavuus.
+Henkilökohtaisesti olen hyvin tyytyväinen opinnäytetyön tuloksiin. Ohjelmistokehityksen aikana vastaan tuli useita vaikeuksia sekä viivästymisiä, jonka johdosta ohjelmisto kokonaisuutena jäi testaamatta. Tästä syystä myös rakennettua laitetta ei päästy kokeilemaan sille tarkoitetussa ympäristössä.
+
+Edellämainitut ongelmat eivät kuitenkaan ole vaikuttaneet varsinaisen opinnäytetyön tuloksiin. Vaikka toimiva laite projektin lopuksi olisi ollut hieno lopputulos, sen jääminen lopputuloksista ei ole vaikuttanut opinnäytetyön keskeisiin tuloksiin.
+
+Suurimpana onnistumisena koen henkilökohtaisesti olleen koko prosessin oppimisen, sekä sen onnistuneen läpikäymisen suhteellisen lyhyessä ajassa. Olen harrastuksieni puolesta aiemmin tehnyt teknisen monistamisen prosessin osista yhden tai useamman aina jotakin pientä projektia varten. En kuitenkaan koskaan ole käynyt koko prosessia läpi yhden projektin puitteissa.
+
+Itse teknisen monistamisen prosessista ei jäänyt käymättä mitään oleellista ja prosessi on toivottavasti toistettavissa ulkopuolisten tahojen toimesta. Tältä osin on vaikea arvioida opinnäytetyön onnistumista, sillä jotta prosessin voi todeta olevan toimiva ja selkeä tulee sen olla toistettavissa. Toivon, että tulevaisuudessa joillekin on tämän opinnäytetyön tuloksista hyötyä.
+
+Varsinaisen laitteen kustannuksista olin yllättynyt. Olin ajatellut aluksi, että yksittäisen laitteen hinta olisi ollut paljon korkeampi. Teoreettisen 100 kappaleen joukosto yhden laitteen hinnan alhaisuus hämmästytti myös. Vallitsevan koronatilanteen takia jotkin automatisoidut prosessit jäivät kokeilematta, joten "normaaliolojen" hintaa laitteelle on vaikea arvioida.
 
 ## Lähteet
 
@@ -434,6 +451,8 @@ Reverb 2020. Beginner's Guide to Eurorack: Case Basics, Power Supplies, and Your
 Doepfer a. A-100 Construction Details. Luettavissa: http://www.doepfer.de/a100_man/a100m_e.htm. Luettu 26.4.2021.
 
 Doepfer b. A-100 Construction Details. Luettavissa: http://www.doepfer.de/a100_man/a100t_e.htm. Luettu 26.4.2021.
+
+Warren, JD. Adams, J. Molle, H. 2011. Arduino for Robotics. Apress. Luettavissa: https://doi.org/10.1007/978-1-4302-3184-4_2. Luettu 7.5.2021.
 
 Chris Meyer 2016. 1 v/oct. Learning Modular. Luettavissa: https://learningmodular.com/glossary/1-voct/. Luettu 26.4.2021. /*Korjaa tämä myöhemmin, selvitä miten merkitään, kun ilmoitettu "julkaisija", sekä tekijä*/
 
