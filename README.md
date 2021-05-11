@@ -177,23 +177,23 @@ _Kuva 123. Segmenttinäyttöjen kytkentäkaavio KiCad:ssä_
 
 Sekvensserin toiminnan kannalta muutamia käyttäjän syötteitä pitäisi pystyä lukemaan. Laitteen suunnitteluvaiheessa 16 painikkeen painikematriisi tulisi vastaamaan sekvenssin askeleen valinnasta, sekä funktiopainikkeen kanssa käytettynä erinäisistä funktioista. Käyttäjän tulisi myös pystyä muokkaamaan liukuvia arvoja, kuten sekvenssin askeleiden nuottien korkeutta, tempoa, sekä erinäisiä asetuksia, jotka vaikuttavat sekvensserin toimintaan. Liukuvien arvojen muokkaamiseen laite käyttää 24 askeleen enkooderia. Laitteessa on myös potentiometri, jolla käyttäjä voi säätä nuottien välistä liukumaa.
 
-Painikematriisia luetaan MCP23S17 GPIO-laajentimen kanssa. Laitteella voidaan SPI-väylän välityksellä käyttää maksimissaan 16 GPIO-lisäpinniä [(Microchip)](https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf). Koska MCP23S17 vaatii onnistuneeseen tiedon välitykseen yhteensä 4 GPIO-pinniä mikroprosessorista saadaan MCP23S17:ta käyttämällä laajennettua mikroprosessorin GPIO-pinnien määrää 12:sta.
+Painikematriisia luetaan MCP23S17 GPIO-laajentimen kanssa. Laitteella voidaan SPI-väylän välityksellä käyttää maksimissaan 16 GPIO-lisäpinniä [(Microchip)](https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf). Koska MCP23S17 vaatii onnistuneeseen tiedon välitykseen yhteensä 4 GPIO-pinniä mikroprosessorista saadaan MCP23S17:ta käyttämällä laajennettua mikroprosessorin GPIO-pinnien määrää 12:sta. Kuvassa 001 näkyy painikematriisin ensimmäisen prototyypin versio koekytkentälaudalla.
 
 ![buttonmatrix001](./imgs/buttonmatrix001.png)
 
-_Painikematriisin skannausta prototyyppi-vaiheessa MCP23S17:n avulla._
+_Kuva 001. Painikematriisin skannausta prototyyppi-vaiheessa MCP23S17:n avulla._
 
-Resurssien säästämiseksi laitteen jokaisella funktiolla ei ole erillistä painiketta. Laitteesta löytyisi "funktio"-painike, jota painettaessa käyttäjä voisi käyttää laitteen painikematriisien painikkeita sekundaaristen funktioiden suorittamiseen. Tällöin 16 painikkeella pystyisiin teoreettisesti suorittamaan 32 eri toimintoa.
+Resurssien säästämiseksi laitteen jokaisella funktiolla ei ole erillistä painiketta. Laitteesta löytyisi "funktio"-painike, jota painettaessa käyttäjä voisi käyttää laitteen painikematriisien painikkeita sekundaaristen funktioiden suorittamiseen. Tällöin 16 painikkeella pystyisiin teoreettisesti suorittamaan 32 eri toimintoa. Kuva 002 esittää painikematriisin sekundaaristen funktioiden asettelun painikesarakkeittain.
 
 ![buttons001](./imgs/buttons001.jpg)
 
-_Painikkeiden sekundaariset funktiot lueteltu panikesarakkeittain_
+_Kuva 002. Painikkeiden sekundaariset funktiot lueteltuna etupaneelissa_
 
-Käyttäjä voi myös lähettää signaaleja muista Eurorack-moduuleista. Laitteessa on kaksi sisääntuloa signaaleille: "Clock" ja "Reset". "Clock"-signaalilla käyttäjä voi synkronoida laitteen toisten sekvensserien tai ohjainlaitteiden kanssa lähettämällä pulsseja sisääntuloon. "Reset"-signaalilla käyttäjä voi pysäyttää käynnissä olevan sekvenssin ulkoisella pulssilla. 
+Käyttäjä voi myös lähettää signaaleja muista Eurorack-moduuleista. Laitteessa on kaksi sisääntuloa signaaleille: "Clock" ja "Reset". "Clock"-signaalilla käyttäjä voi synkronoida laitteen toisten sekvensserien tai ohjainlaitteiden kanssa lähettämällä pulsseja sisääntuloon. "Reset"-signaalilla käyttäjä voi pysäyttää käynnissä olevan sekvenssin ulkoisella pulssilla. Kuten kuvassa 003 näkyy, laitteen sisään- ja ulostulot merkittiin laitteen etupaneeliin. Sisääntuloissa musta teksti valkoisella taustalla, ulostuloissa valkoinen teksti ilman taustaa.
 
 ![inputs001](./imgs/inputs001.jpg)
 
-_Signaalien sisään- ja ulostulot. Sisöäntulevat signaalit mustalla tekstillä valkoisella taustalla_
+_Kuva 003. Signaalien sisään- ja ulostulot merkittynä valmiissa etupaneelissa_
 
 **x.1.2 Eurorack yhteensopivuus**
 
@@ -201,40 +201,36 @@ Jotta sekvensserillä pystyisi ohjaamaan Eurorack-moduuleita tulisi sen noudatta
 
 "Clock"- ja "Gate"-signaalit pystyttäisiin ottamaan suoraan mikroprosessorin ulostuloista. "Pitch"- ja "Mod"-signaalit ovat kuitenkin liukuvia arvoja, joten mikroprosessorin ja ulostulon väliin vaaditaan DAC (Digital-to-Analog-Converter), jolla mikroprosessorin digitaalisen signaalin voi muuntaa liukuvaksi ohjausjännitteeksi. Sekvensserin DAC:ksi valittiin Microchipin valmistama kaksi kanavainen ja 12-bittinen "MCP4822" [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Kahden kanavan ansiosta yhdellä laitteella voitaisiin tuottaa molemmat "Pitch"-, sekä "Mod"-signaalit.
 
-12-bittiä DAC:ssa vastaa 4096 mahdollista eri arvoa jännitteessä. MCP4822:ssa nämä arvot voivat olla väliltä 0-2,048 volttia, tai 0-4,096 volttia [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Jos sekvensserillä haluttaisiin soittaa 8 oktaavin väliltä jouduttaisiin DAC:n ulostulojännitettä skaalaamaan oikein. Jännitteen skaalaamiseen kävisi mikä tahansa nykyaikainen operaatiovahvistin. Operaatiovahvistimen ulostulon vahvistamisen määrä riippuu sen tuloliittimiin kytketyistä vastuksista [(Carter & al. 2001, s. 8)](https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf). Vahvistuksen määrän ja tarvittavien vastuksien arvot voi laskea helposti internetistä löytyvillä laskureilla.
+12-bittiä DAC:ssa vastaa 4096 mahdollista eri arvoa jännitteessä. MCP4822:ssa nämä arvot voivat olla väliltä 0-2,048 volttia, tai 0-4,096 volttia [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Jos sekvensserillä haluttaisiin soittaa 8 oktaavin väliltä jouduttaisiin DAC:n ulostulojännitettä skaalaamaan oikein. Jännitteen skaalaamiseen kävisi mikä tahansa nykyaikainen operaatiovahvistin. Operaatiovahvistimen ulostulon vahvistamisen määrä riippuu sen tuloliittimiin kytketyistä vastuksista [(Carter & al. 2001, s. 8)](https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf). Vahvistuksen määrän ja tarvittavien vastuksien arvot voi laskea helposti internetistä löytyvillä laskureilla. Kuvassa 004 esitetty eräs internetistä löytyvä laskuri vaadittujen arvojen laskemiseen.
 
 ![mfos001](./imgs/mfos001.png)
 
-_"Music From Outer Space":n laskuri operaatiovahvistimille_
+_Kuva 004. "Music From Outer Space":n laskuri operaatiovahvistimille_
 
 **x.2 Fyysinen laitteisto**
 
   // Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
   // Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
 
-Prototyyppiä rakennettaessa alustana kaikille kytkennöille käytettiin useampaa koekytkentälautaa. Koekytkentälaudoissa osa kytkentäaukoista on fyysisesti kytketty toisiinsa ja eri kytkentöjä voi yhdistää joko komponenteilla tai hyppylangoilla. Prototyypin koon kasvaessa eri elementtejä piireistä pystyttäisiin rakentamaan omille koekytkentälaudoille, jotka voitaisiin myöhemmin yhdistää osaksi isompaa kokonaisuutta. Rakennetuista piireistä pidettiin yllä kytkentäkaavioita, jonka avulla piirit pystyttäisiin kääntämään piirilevypiiroksiksi.
+Prototyyppiä rakennettaessa alustana kaikille kytkennöille käytettiin useampaa koekytkentälautaa. Koekytkentälaudoissa osa kytkentäaukoista on fyysisesti kytketty toisiinsa ja eri kytkentöjä voi yhdistää joko komponenteilla tai hyppylangoilla. Prototyypin koon kasvaessa eri elementtejä piireistä pystyttäisiin rakentamaan omille koekytkentälaudoille, jotka voitaisiin myöhemmin yhdistää osaksi isompaa kokonaisuutta. Rakennetuista piireistä pidettiin yllä kytkentäkaavioita, jonka avulla piirit pystyttäisiin kääntämään piirilevypiiroksiksi. Kuvassa 005 esitettynä koekytkentälaudalle luotu alkuvaiheen prototyyppi, sekä siitä luotu kytkentäkaava.
 
 ![prototyping_combo001](./imgs/prototyping_combo001.jpg)
 
-_Prototyyppi alkuvaiheessa, sekä piireistä tehty kytkentäkaavio_
+_Kuva 005. Prototyyppi alkuvaiheessa, sekä piireistä tehty kytkentäkaavio_
 
 ## x Tekninen monistaminen
 
 Prototyypin kaikkien merkittävien komponenttien testauksen jälkeen seuraava työvaihe oli suunnitella laite monistettavaan muotoon. Laitteen monistaminen toiselle koekytkentälaudalle olisi erittäin työläs prosessi, eikä laitetta voisi millään tapaa käyttää integroituna osana Eurorack-syntetisaattoria laitteen suuren koon takia.
 
-Jotta laite olisi teknisesti monistettava täytyisi sen manuaalisia asennusvaiheita eliminoida niin pitkälle kuin mahdollista. Näin voitaisiin tehdä mm. piirilevyjen kanssa niin, että käytettäisiin niin paljon pintaliitoskomponentteja kuin mahdollista. Pintaliitoskomponentit ovat perinteisiä läpiladottavia komponentteja huomattavasti pienempiä ja niiden asennus piirilevyille voidaan useimmiten suorittaa piirilevyjä tuottavilla tehtailla.
+Jotta laite olisi teknisesti monistettava täytyisi sen manuaalisia asennusvaiheita eliminoida niin pitkälle kuin mahdollista. Näin voitaisiin tehdä mm. piirilevyjen kanssa niin, että käytettäisiin niin paljon pintaliitoskomponentteja kuin mahdollista. Pintaliitoskomponentit ovat perinteisiä läpiladottavia komponentteja huomattavasti pienempiä kuten kuvasta 001 on nähtävissä. Pintaliitoskomponenttien asennus piirilevyille voidaan useimmiten suorittaa piirilevyjä tuottavilla tehtailla.
 
 ![smdtht001](./imgs/smdtht001.jpg)
 
-_100 kilo-Ohmin vastuksia. Yllä yksi läpiladottava ja alla neljä pintaliitosvastusta_
-
-![jlcpcb001](./imgs/jlcpcb001.png)
-
-_JLCPCB tarjoaa piirilevyjen valmistuksen yhteydessä "SMT Assembly"-palvelua_
+_Kuva 001. 100 kilo-ohmin vastuksia_
 
 **x.1 Piirilevyn, sekä etupaneelin piirto**
 
-Laiten prototyypin valmistuttua siihen vaiheeseen, että kaikki kriittisimmät toiminnot olivat valmiita alkoi piirilevyn sekä etupaneelin suunnittelu. Etupaneelin muotoilu noudatti pitkälti piirilevypiirroksen luomia rajoitteita. Piirilevypiirros taas pohjautui käyttöliittymän suunnitteluvaiheessa tehtyihin päätöksiin. Prototyyppivaiheen aikana ylläpidetyn kytkentäkaavan avulla prototyypin kytkennät oli helppo kääntää piirilevyllä komponenttien välisiksi juoviksi, kun kytkentäkaavaa ei erikseen tarvinnut piirtää tyhjästä.
+Laitteen prototyypin valmistuttua siihen vaiheeseen, että kaikki kriittisimmät toiminnot olivat valmiita alkoi piirilevyn sekä etupaneelin suunnittelu. Etupaneelin muotoilu noudatti pitkälti piirilevypiirroksen luomia rajoitteita. Piirilevypiirros taas pohjautui käyttöliittymän suunnitteluvaiheessa tehtyihin päätöksiin. Prototyyppivaiheen aikana ylläpidetyn kytkentäkaavan avulla prototyypin kytkennät oli helppo kääntää piirilevyllä komponenttien välisiksi juoviksi, kun kytkentäkaavaa ei erikseen tarvinnut piirtää tyhjästä.
 
 Piirilevy, sekä etupaneeli suunniteltin KiCad-ohjelmistolla. Koska piirilevyissä käytetty FR4-lasikuitukomposiitti on ominaisuuksiltaan suhteellisen vahvaa käy se materiaaliksi myös etupaneeleissa.
 
@@ -242,73 +238,73 @@ Etupaneelin grafiikoiden suunnittelussa käytettiin KiCadin lisäksi myös GIMP-
 
 **x.1.1 Piirilevy**
 
-Ennen varsinaisten piirilevyjen piirtoa kannattaa selvittää piirilevyjä valmistavia yrityksiä, sekä näiden yritysten tarjoamia palveluita. Komponenttien ja piirien kannalta on hyvä tarkastella yrityksen piirilevyille asettamia rajoituksia. Rajoituksia voivat olla esimerkiksi piirien johtimien minimimitta tai piirilevyn minimi- ja maksimitat. Rajoitukset voivat vaikuttaa komponenttien valintaan, jos halutaan käyttää esimerkiksi todella pieniä mikropiirejä, tai ohuita ja toisiaan lähellä olevia johtimia.
+Ennen varsinaisten piirilevyjen piirtoa kannattaa selvittää piirilevyjä valmistavia yrityksiä, sekä näiden yritysten tarjoamia palveluita. Komponenttien ja piirien kannalta on hyvä tarkastella yrityksen piirilevyille asettamia rajoituksia. Rajoituksia voivat olla esimerkiksi piirien johtimien minimipaksuus tai piirilevyn minimi- ja maksimitat. Rajoitukset voivat vaikuttaa komponenttien valintaan, jos halutaan käyttää esimerkiksi todella pieniä mikropiirejä, tai ohuita ja toisiaan lähellä olevia johtimia. Kuvassa 002 esitettynä osa JLCPCB:n minimimitoista piirilevyjen johtimille.
 
 ![jlcspec](./imgs/jlcspecs001.png)
 
-_JLCPCB:n minimimittoja johtimille_
+_Kuva 002. JLCPCB:n minimimittoja johtimille_
 
 Piirilevyjen valmistajaksi valittiin tässä projektissa JLCPCB. Valinta tehtiin opinnäytetyöntekijän aikaisemman kokemuksen johdosta. Muita vastaavia palveluja tuottavia yrityksiä ovat mm. ALLPCB sekä Seeed Studio.
 
 Teknisen monistamisen helpottamiseksi piirilevyllä päätettiin käyttää pintaliitoskomponentteja niin paljon kuin mahdollista. Pintaliitoskomponentit on mahdollista juotatuttaa kiinni piirilevyyn valmiiksi monilla piirilevyjä valmistavilla tehtailla. Tämä laskisi merkittävästi laitteen rakennusaikaa ja näin laskisi laitteen mahdollista katteetonta hintaa.
 
-Piirilevyn piirron aikana ensiksi asetettiin paikoilleen käyttöliittymän kriittisimmät komponentit, kuten painikkeet, segmenttinäytöt sekä ulostulojakit.
+Piirilevyn piirron aikana ensiksi asetettiin paikoilleen käyttöliittymän kriittisimmät komponentit, kuten painikkeet, segmenttinäytöt sekä ulostulojakit. Kuvassa 003 esitettynä piirilevypiirros, jossa kaikki kriittisimmät komponentit ovat asetettuna paikoilleen.
 
 ![kicad_in_process001](./imgs/kicad_in_process001.png)
 
-_Piirilevyn mitat päätetty, sekä kriittisimmät komponentit asetettu paikoilleen._
+_Kuva 003. Varhainen piirilevypiirros_
 
-Laitteen komponentit sijoitettiin piirilevylle "funktioittain"; esimerkiksi segmenttinäytön ohjauksesta vastaavat piirit, vastukset ja transistorit reititettiin yhtenä kokonaisuutena. Tämän jälkeen näyttö kokonaisuutena sijoitettiin piirilevylle muiden komponenttien sekaan. Tarvittaessa komponentteja siirrettiin toisten tieltä, sekä reititystä optimoitiin.
+Laitteen komponentit sijoitettiin piirilevylle "funktioittain"; esimerkiksi segmenttinäytön ohjauksesta vastaavat piirit, vastukset ja transistorit reititettiin yhtenä kokonaisuutena. Tämän jälkeen näyttö kokonaisuutena sijoitettiin piirilevylle muiden komponenttien sekaan. Tarvittaessa komponentteja siirrettiin toisten tieltä, sekä reititystä optimoitiin. Esimerkiksi kuvassa 004 näkyvä segmenttinäyttöjen kokonaisuus luotiin erikseen ja tuotiin myöhemmin osaksi muuta piirilevyä.
 
 ![kicad_in_process002](./imgs/kicad_in_process002.png)
 
-_Segmenttinäytöt, sekä niiden ohjauksesta vastaavat komponentit._
+_Kuva 004. Segmenttinäyttöjen piirit_
 
-Piirien reititystapahtuu seuraamalla kytkentäkaaviota, sekä piirilevyn piirto-ohjelman "ratsnest"-verkkoa, joka näyttää kaikki piirilevyllä kytkemättä olevat piirit. Vaikka "ratsnest" tarjoaa helpon visuaalisen työkalun reititykseen, kytkentäkaavion seuraaminen on silti tärkeää.
+Piirien reititystapahtuu seuraamalla kytkentäkaaviota, sekä piirilevyn piirto-ohjelman "ratsnest"-verkkoa, joka näyttää kaikki piirilevyllä kytkemättä olevat piirit. Vaikka "ratsnest" tarjoaa helpon visuaalisen työkalun reititykseen, kytkentäkaavion seuraaminen on silti tärkeää. Avoimet piirit näkyvät ohjelmassa valkoisina viivoina, kuten kuvasta 005 näkyy.
 
 ![pcb_routing001](./imgs/pcb_routing001.png)
 
-_Osittain kytketty mikroprosessori. Avoimet piirit näkyvät valkoisina viivoina._
+_Kuva 005. Osittain kytketty mikroprosessori_
 
-Lopuksi kun kaikki komponentit olivat paikoillaan ja piirit reititetty otettiin käyttöliittymän kannalta kriittisistä komponenteista mitat suhteessa toisiinsa. Tämä helpottaisi etupaneelin suunnittelua. Piirilevyn piirto-ohjelmasta löytyy työkalu, jolla eri komponenttien välisiä etäisyyksiä pystyy mittaamaan ja asettamaan näkyville tasoille, jotka voidaan myöhemmin joko tulostaa tai kääntä pdf-tiedostoksi.
+Lopuksi kun kaikki komponentit olivat paikoillaan ja piirit reititetty otettiin käyttöliittymän kannalta kriittisistä komponenteista mitat suhteessa toisiinsa. Tämä helpottaisi etupaneelin suunnittelua. Piirilevyn piirto-ohjelmasta löytyy työkalu, jolla eri komponenttien välisiä etäisyyksiä pystyy mittaamaan ja asettamaan näkyville tasoille, jotka voidaan myöhemmin joko tulostaa tai kääntä pdf-tiedostoksi. 
+
+Esimerkiksi painikkeiden kohdalle olisi leikattava aukot, jotta painikkeita pystyttäisiin käyttämään. Kuvassa 006 näkyy funktiopainikkeiden mittaamista leikkausalueen määrittämiseksi. Kaikista piirilevyn mittoihin tai leikkauksiin vaikuttavista komponenteista otettiin mitat suhteutettuna toisiinsa, tai etupaneeliin. Kuvassa 007 esitettynä valmis vektoripiirros mitoista.
 
 ![pcb_measurements002](./imgs/pcb_measurements002.png)
 
-_Funktiopainikkeiden leikkausalueen mittausta näkyvälle tasolle._
+_Kuva 006. Funktiopainikkeiden leikkausalueen mittausta_
 
 ![pcb_measurements001](./imgs/pcb_measurements001.png)
 
-_Mittojen vektoripiirros. Sinisellä värillä komponenttien keskinäiset mitat ja punaisella värillä etupaneelin mitat._
+_Kuva 007. Mittojen vektoripiirros_
 
 **x.1.2 Etupaneeli**
 
-Etupaneelin piirto oli suhteellisen nopea prosessi, sillä Eurorack-formaatti määrittelee pitkälti paneelien mahdolliset mitat ja piirilevyn komponenttien asettelu määräsi mahdolliset reiät ja leikkaukset etupaneeliin. Käyttöliittymää laitteelle prototyypattiin paperilla, jotta saataisiin jonkin näköinen käsitys laitteen "käsituntumasta".
+Etupaneelin piirto oli suhteellisen nopea prosessi, sillä Eurorack-formaatti määrittelee pitkälti paneelien mahdolliset mitat ja piirilevyn komponenttien asettelu määräsi mahdolliset reiät ja leikkaukset etupaneeliin. Käyttöliittymää laitteelle prototyypattiin paperilla, jotta saataisiin jonkin näköinen käsitys laitteen "käsituntumasta". Prototyyppauksessa käytettiin osittain valmiista laitteesta löytyviä komponentteja, kuten kuvasta 008 näkyy.
 
 ![ui_planning001](./imgs/ui_planning001.jpg)
 
-_Etupaneelin prototyyppäystä paperilla, näppäinhatuilla ja erinäisillä laitteesta löytyvillä komponenteilla._
+_Kuva 008. Etupaneelin prototyyppäystä paperilla_
 
-Paneelin mittojen määrittelyn ja kiinnitysruuvien reikien jälkeen paneeliin leikattiin alueet kytkimille, sekä segmenttinäytöille. Myös potentiometrien, sekä ulos- ja sisääntulojakkien reiät asetettiin kohdilleen.
+Kuvassa 009 näkyvien kiinnitysruuvien reikien jälkeen paneeliin leikattiin alueet kytkimille, sekä segmenttinäytöille. Myös potentiometrien, sekä ulos- ja sisääntulojakkien reiät asetettiin kohdilleen. Etupaneeli kaikkine vaadittavine leikkauksineen ja reikineen on esitettynä kuvassa 010.
 
 ![panel001](./imgs/panel001.png)
 
-_Etupaneeli oikeissa mitoissaan_
+_Kuva 009. Etupaneeli oikeissa mitoissaan_
 
 ![panel003](./imgs/panel003.png)
 
-_Etupaneeli kaikkine vaadittavine leikkauksineen_
+_Kuva 010. Etupaneeli kaikkine vaadittavine leikkauksineen_
 
-  // Tähän tekstiä paneelin muiden leikkausten ja reikien teosta.
-
-Etupaneelin grafiikat luotiin GIMP-kuvankäsittelyohjelmalla, jonka jälkeen luodut kuvat muutettiin KiCadille sopivaan "footprint"-muotoon. Jokainen yksittäinen teksti tai muu graafinen elementti on oma "komponenttinsa" piirilevyllä. Jokaisen kuvan resoluutio asetettiin olemaan 1000ppcm, jolloin 1000 pixeliä leveys-, tai korkeussuunnassa vastaisi yhtä senttimetriä leveys-, tai korkeussuunnassa etupaneelilla. KiCad-ohjelmasta löytää aliohjelma "bitmap2component.exe", jolla kuvat muutetaan haluttuun muotoon. Ohjelma tunnistaa kuvan tarkkuuden automaattisesti.
+Etupaneelin grafiikat luotiin GIMP-kuvankäsittelyohjelmalla, jonka jälkeen luodut kuvat muutettiin KiCadille sopivaan "footprint"-muotoon. Kuvassa 011 esitettynä yhden graafisen elementin muoto GIMP:ssä, sekä KiCad:ssä. Jokainen yksittäinen teksti tai muu graafinen elementti on oma "komponenttinsa" piirilevyllä. Jokaisen kuvan resoluutio asetettiin olemaan 1000ppcm, jolloin 1000 pixeliä leveys-, tai korkeussuunnassa vastaisi yhtä senttimetriä leveys-, tai korkeussuunnassa etupaneelilla. KiCad-ohjelmasta löytää aliohjelma "bitmap2component.exe", jolla kuvat muutetaan haluttuun muotoon. Ohjelma tunnistaa kuvan tarkkuuden automaattisesti. Graafisten elementtien suhdetta etupaneeliin voitiin tarkastella KiCad:n 3D-näkymästä, josta havainnollistava kuvankaappaus kuvassa 012.
 
 ![panel002](./imgs/panel002.png)
 
-_Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa (vas.) ja valmiissa etupaneelipiirroksessa (oik.)_
+_Kuva 011. Potentiometrin kääntösädettä kuvaava kaari GIMP-kuvankäsittelyohjelmassa (vas.) ja valmiissa etupaneelipiirroksessa (oik.)_
 
 ![panel004](./imgs/panel004.png)
 
-_Valmiin etupaneelin 3D-renderi_
+_Kuva 012. Valmiin etupaneelin 3D-mallinnus_
 
 **x.2 Piirilevyjen ja etupaneelien tilaus**
 
@@ -316,41 +312,37 @@ Laitteen piirilevyjen ja etupaneelien tilauksen pystyisi tekemään samalta yrit
 
 Piirilevypiirroksen kääntäminen onnistuu KiCad-ohjelmiston sisällä. Kun piirilevyjä valmistava taho on valittu kannattaa tarkistaa missä muodossa kyseinen yritys haluaa Gerber-tiedostot. Yritysten välillä on eroa esimerkiksi siinä, mitä tasoja pitää olla mukana Gerber-tiedostoissa. Ylensä yritykset tarjoavat myös kuvalliset ohjeet tunnetuimmille ohjelmistoille.
 
-![jlcspecs002](./imgs/jlcspecs002.png)
-
-_JLCPCB tarjoaa kuvalliset ohjeet Gerber-tiedostojen luontiin_
-
-Useimmiten piirilevyjä voidaan tilata monissa eri paksuuksissa, mitoissa ja väreissä. JLCPCB:n tilaussivulla tulee myös näkyviin kuvat piirilevyjen molemmista puolista, jos Gerber-tiedostot on luotu onnistuneesti.
+Useimmiten piirilevyjä voidaan tilata monissa eri paksuuksissa, mitoissa ja väreissä. JLCPCB:n tilaussivulla tulee myös näkyviin kuvat piirilevyjen molemmista puolista, jos Gerber-tiedostot on luotu onnistuneesti. Kuvassa 013 näkyvissä osittainen näkymä JLCPCB:n tilaussivulta.
 
 ![jlcpcb002](./imgs/jlcpcb002.png)
 
-_Etupaneeli esikatseluikkunassa JLCPCB:n tilaussivulla_
+_Kuva 013. Etupaneeli esikatseluikkunassa JLCPCB:n tilaussivulla_
 
 **x.3 Komponenttien listaus ja tilaus**
 
-KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
+KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". KiCad:n sisäiset "Bill of Materials"-työkalut löytyvät kytkentäkaavio-aliohjelmasta (kuva 014, kuva 015). Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
 
 ![bomtools001](./imgs/bomtools001.png)
 
-_KiCadin Bill of Materials työkalu löytyy kytkentäkaavaohjelman ylävalikosta_
+_Kuva 014. KiCadin Bill of Materials työkalu löytyy kytkentäkaavaohjelman ylävalikosta_
 
 ![bomtools002](./imgs/bomtools002.png)
 
-_Bill of Materials -työkalun eri vaihtoehtoja listan luomiselle_
+_Kuva 015. Bill of Materials -työkalun eri vaihtoehtoja listan luomiselle_
 
-Tämän opinnäytetyön projektia varten tavallinen Excel-taulukko toimisi BOM:na. Taulukosta näkyisi kaikkien komponenttien kytkentäkaavassa käytetty viite, komponenttien arvo tai nimi, vaadittu lukumäärä, sekä Mouser verkkokaupan viitenumero kyseiselle komponentille. Niiden komponenttien osalta, joita Mouserin valikoimista ei löydy on ilmoitettu vaihtoehtoisen yrityksen nimi, sekä heidän komponentille käyttämänsä viite.
+Tämän opinnäytetyön projektia varten tavallinen Excel-taulukko toimisi BOM:na. Taulukosta näkyisi kaikkien komponenttien kytkentäkaavassa käytetty viite, komponenttien arvo tai nimi, vaadittu lukumäärä, sekä Mouser verkkokaupan viitenumero kyseiselle komponentille (kuva 016). Niiden komponenttien osalta, joita Mouserin valikoimista ei löydy on ilmoitettu vaihtoehtoisen yrityksen nimi, sekä heidän komponentille käyttämänsä viite.
 
 Mouser on elektroisten komponenttien jakelija, joka valittiin opinnäytetyön projektiin laajan valikoimansa ansiosta. Mouserin verkkokaupasta löytyy myös useita työkaluja projektienhallintaan, jotka mahdollistavat komponenttilistauksien helpon luomisen ja päivittämisen.
 
 ![bom001.png](./imgs/bom001.png)
 
-_Mouser verkkokaupan ostoskori, sekä KISSe-projektin Bill of Materials_
+_Kuva 016. Mouser verkkokaupan ostoskori, sekä KISSe-projektin Bill of Materials_
 
-Projektin laitteen komponentit koottiin aluksi Mouser verkkokaupassa ostoskoriin, jonka jälkeen ostoskori tallennettiin käyttäjän projekteihin. Näin tulevaisuudessa samat komponentit voitaisiin tilata pelkästään projektin viemisellä ostoskoriin. Sarjatuotantovaiheessa voitaisiin tässä kohti ostaa yksi "projekti" useita kertoja, jolloin projektien määrä kerrotaan haluttujen laitteiden määrällä.
+Projektin laitteen komponentit koottiin aluksi Mouser verkkokaupassa ostoskoriin, jonka jälkeen ostoskori tallennettiin käyttäjän projekteihin (kuva 017). Näin tulevaisuudessa samat komponentit voitaisiin tilata pelkästään projektin viemisellä ostoskoriin. Sarjatuotantovaiheessa voitaisiin tässä kohti ostaa yksi "projekti" useita kertoja, jolloin projektien määrä kerrotaan haluttujen laitteiden määrällä.
 
 ![bom002.png](./imgs/bom002.png)
 
-_Ostoskori muutettuna projektiksi_
+_Kuva 017. Ostoskori muutettuna projektiksi_
 
 **x Laitteen rakennus ja laskelmat monistamisesta**
 
@@ -360,23 +352,23 @@ Mahdollisesti tuotteeksi päätyvän laitteen lopullisen hinnan laskemiseksi tar
 
 **x.1 Laitteen kokoonpano**
 
-Laitteen kokoonpanossa pintaliitoskomponenttien asennukseen kulunutta aikaa ei olla otettu huomioon. Projektin ajoituksessa ollaan lähdetty oletuksesta, että pintaliitoskomponentit ovat juotettu tehtaalla valmiiksi piirilevyille. Tätä ei kuitenkaan tehty tämän projektin puitteissa komponenttien saatavuuden ja koronarajoitusten aiheuttamien mahdollisten tuotantoviivästyksien takia.
+Laitteen kokoonpanossa pintaliitoskomponenttien asennukseen kulunutta aikaa ei olla otettu huomioon. Projektin ajoituksessa ollaan lähdetty oletuksesta, että pintaliitoskomponentit ovat juotettu tehtaalla valmiiksi piirilevyille. Tätä ei kuitenkaan tehty tämän projektin puitteissa komponenttien saatavuuden ja koronarajoitusten aiheuttamien mahdollisten tuotantoviivästyksien takia. Pintaliitoskomponentit asennettiin käsin yhteen laitteeseen (kuva 001).
 
 ![smd_populated001](./imgs/smd_populated001.png)
 
-_Pintaliitoskomponentit asennettuna piirilevylle_
+_Kuva 001. Pintaliitoskomponentit asennettuna piirilevylle_
 
-Käsinasennusta varten piirilevy asetettiin piirilevytelineeseen. Etupaneelia käytettiin apuna lähtöjakkien, enkooderin, segmenttinäyttöjen, sekä potentiometrin asettamiseen paikoilleen. Asennus ajoitettiin puhelimen sekuntikellolla. Kaikki käsin asennettavat komponentit otettiin valmiiksi esille ja järjestettiin asennusjärjestyksen mukaan.
+Käsinasennusta varten piirilevy asetettiin piirilevytelineeseen (kuva 002). Etupaneelia käytettiin apuna lähtöjakkien, enkooderin, segmenttinäyttöjen, sekä potentiometrin asettamiseen paikoilleen. Asennus ajoitettiin puhelimen sekuntikellolla. Kaikki käsin asennettavat komponentit otettiin valmiiksi esille ja järjestettiin asennusjärjestyksen mukaan.
 
 ![smd_populated002](./imgs/smd_populated002.png)
 
-_Työpiste ennen asennusta_
+_Kuva 002. Työpiste ennen asennusta_
 
-Käsin asennus kesti yhteensä 21 minuuttia ja 19 sekuntia. Lopullisissa laskelmissa tämä voidaan pyöristää 20 minuuttiin, sillä asennuksen aikana piirilevytelineen ruuveja jouduttiin jatkuvasti kiristämään laitteen huonon kunnon takia. Laitteesta jäivät asentamatta ICSP-, sekä piikkirimaliittimet Teensy LC:lle. Näiden asentaminen on kuitenkin helppoa ja suoraviivaista, joten niiden puuttuminen ei vaikuta lopulliseen 20 minuutin aikaan.
+Käsin asennus kesti yhteensä 21 minuuttia ja 19 sekuntia. Lopullisissa laskelmissa tämä voidaan pyöristää 20 minuuttiin, sillä asennuksen aikana piirilevytelineen ruuveja jouduttiin jatkuvasti kiristämään laitteen huonon kunnon takia. Laitteesta jäivät asentamatta ICSP-, sekä piikkirimaliittimet Teensy LC:lle. Näiden asentaminen on kuitenkin helppoa ja suoraviivaista, joten niiden puuttuminen ei vaikuta lopulliseen 20 minuutin aikaan. 
 
 ![pcb_done001](./imgs/pcb_done001.png)
 
-_Valmis laite ilman etupaneelia_
+_Kuva 003. Valmis laite ilman etupaneelia_
 
 Harjoittelun myötä laiteen asennukseen kuluva aika voisi olla 15 minuuttia. Laitteen rakennukseen kuluva aika voitaisiin jopa puolittaa 10 minuuttiin, jos laitteen käyttämät kytkimet eivät vaatisi läpiladottavien LED-komponenttien käyttöä.
 
@@ -386,7 +378,7 @@ Tämän opinnäytetyön projektin aikana on jätetty pois tarkka laitteen ohjelm
 
 Laitteen rakennuksen kustannuksissa oletetaan yhden työtunnin maksavan 20 euroa. Yhden tunnin aikana pystyisi realistisesti rakentamaan kolme valmista laitetta. Yhden laitteen rakennukseen käytettävä aika tulisi siis maksamaan n. 6,67 euroa. Komponenttien, piirilevyjen, sekä etupaneelien hinnat saatiin suoraan projektin aikana tehdyistä tilauksista, tai verkkokauppojen projektienhallinnasta.
 
-Yhden laitteen rakennuksen hinta koostui rakennukseen käytetystä ajasta, komponenttien, etupaneelin, sekä piirilevyn hinnasta. Rakennukseen kuluneessa ajassa ei otettu huomioon pintaliitoskomponenttien juottamiseen kulunutta aikaa, sillä tavallisesti se olisi tehty jo piirilevyjä valmistavalla tehtaalla.
+Yhden laitteen rakennuksen hinta koostui rakennukseen käytetystä ajasta, komponenttien, etupaneelin, sekä piirilevyn hinnasta. Rakennukseen kuluneessa ajassa ei otettu huomioon pintaliitoskomponenttien juottamiseen kulunutta aikaa, sillä tavallisesti se olisi tehty jo piirilevyjä valmistavalla tehtaalla. Laskelmat tehtiin excel-taulukkoon (kuva 004).
 
 Yhden laitteen kustannukset jaoteltuna:
 
@@ -418,7 +410,7 @@ Sadan laitteen erässä yhden laitteen hinta olisi vain 67,1 prosenttia yhden yk
 
 ![calcs001](./imgs/calcs001.png)
 
-_Laskelmia laitteen monistamisesta_
+_Kuva 004. Laskelmia laitteen monistamisesta_
 
 **x Tulokset ja retrospektio**
 
