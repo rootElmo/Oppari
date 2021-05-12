@@ -62,14 +62,12 @@ Opinnäytetyön prosessi ei myöskään pyri olemaan asteittain etenevä ohje, v
 
   * Arduino - Avoimen lähdekoodin alusta elektroniikka projektien kehitykseen. [(Louis 2016, 21)](https://www.arduino.cc/en/Guide/Introduction).
   * Teensy - Arduinon kaltainen, elektroniikka projektien kehitysalusta [(PJRC)](https://www.pjrc.com/teensy/).
-  * Eurorack - De-facto standardi pienikokoisille modulaarisille syntetisaattoreille [(Leonora Tindall 2020)](https://nora.codes/post/modular-synthesis-and-unix/).
-  * Volts-per-octave (1V/oct) - Standardi analogisille syntetisaattoreille, jossa yhden voltin nouse ohjausjännitteessä vastaa yhden oktaavin nousua esimerkiksi oskillattorin taajuudessa [(Pinch 2008 s. 472)](https://doi.org/10.1007/s11186-008-9069-x).
-  * Gate - 
-  * Oskillaattori - 
+  * Eurorack - De-facto standardi pienikokoisille modulaarisille syntetisaattoreille [(Tindall 2020)](https://nora.codes/post/modular-synthesis-and-unix/).
+  * Volts-per-octave (1V/oct) - Standardi analogisille syntetisaattoreille, jossa yhden voltin nouse ohjausjännitteessä vastaa yhden oktaavin nousua esimerkiksi oskillattorin taajuudessa [(Pinch 2008, 472)](https://doi.org/10.1007/s11186-008-9069-x).
   * Sekvensseri - Musiikin tuotannossa käytetty ylensä elektroninen laite tai ohjelmisto, jonka avulla voidaan toistaa, muokata ja soittaa musikaalisia sekvenssejä.
   * Step - Askel. Sekvenssereissä käytetty määre, jolla mitataan sekvenssin pituutta.
-  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi [(Rahman & al. 2016 s. 151).](https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics)
-  * SPI (Serial Peripheral Interface) - Kaksisuuntainen kommunikaatioprotokolla, jolla yksi päälaite keskustelee useiden alilaitteiden kanssa. (Leens 2009)
+  * DAC (Digital to Analog Converter) - Mikropiiri, joka muuttaa sille annetun digitaalisen signaalin analogiseksi jännitteeksi [(Rahman & al. 2016, 151)](https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics).
+  * SPI (Serial Peripheral Interface) - Kaksisuuntainen kommunikaatioprotokolla, jolla yksi päälaite keskustelee useiden alilaitteiden kanssa. [(Leens 2009, 9.)](https://ieeexplore.ieee.org/abstract/document/4762946)
   * PCB (Printed Circuit Board) - Piirilevy.
 
 ## 2. Taustaa
@@ -89,9 +87,9 @@ _Kuva XYZ. Kolmen moduulin Eurorack-kokoonpano_
 
 Eurorack-syntetisaattorit, sekä modulaariset syntetisaattorit yleisesti eivät sisällä koskettimistoa ja harvoin koskettimiston integroiminen modulaariseen syntetisaattoriin on mahdollista. Eurorack-syntetisaattorin eri moduuleita ohjataan käyttäen erinäisiä ohjausjännitteitä (Control Voltage/CV) [(Doepfer b)](http://www.doepfer.de/a100_man/a100t_e.htm). 
 
-Ohjausjännite on analoginen signaali, joka syötetään yhteen tai useampaan moduliin, joka tuottaa muutoksen syntetisaattorin signaaliketjussa suhteutettuna ohjausjännitteen määrään. Analoginen ohjausjännite voi olla digitaaliseen ohjausjännitteeseen verrattuna mikä tahansa jännite kahden ääripään väliltä (Warren & al. 2011, s. 30). Digitaalinen signaali tai ohjausjännite on aina ennalta määrätyn jännitevälin jompi kumpi ääripää (Warren & al. 2011, s. 27).
+Ohjausjännite on analoginen signaali, joka syötetään yhteen tai useampaan moduliin, joka tuottaa muutoksen syntetisaattorin signaaliketjussa suhteutettuna ohjausjännitteen määrään. Analoginen ohjausjännite voi olla digitaaliseen ohjausjännitteeseen verrattuna mikä tahansa jännite kahden ääripään väliltä (Warren & al. 2011, 30). Digitaalinen signaali tai ohjausjännite on aina ennalta määrätyn jännitevälin jompi kumpi ääripää (Warren, Adams & Molle. 2011, s. 27).
 
-Esimerkiksi oskillaattorin sävelkorkeuden nostaminen yhdellä oktaavilla vastaa yhden voltin korotusta ohjausjännitteessä 1V/Oct-standardilla [(learningmodular)](https://learningmodular.com/glossary/1-voct/). Kuvassa ABC yhden moduulin sävelkorkeutta hallitaan toisen moduulin ulostulolla. Signaaleja ohjataan moduulien välillä 3,5mm patchikaapeleilla (Etsi lähde, korjaa "3,5mm patchikaapeli" oikeaan muotoon). 
+Esimerkiksi oskillaattorin sävelkorkeuden nostaminen yhdellä oktaavilla vastaa yhden voltin korotusta ohjausjännitteessä 1V/Oct-standardilla [(Meyer 2016)](https://learningmodular.com/glossary/1-voct/). Kuvassa ABC yhden moduulin sävelkorkeutta hallitaan toisen moduulin ulostulolla. Signaaleja ohjataan moduulien välillä 3,5mm patchikaapeleilla (Etsi lähde, korjaa "3,5mm patchikaapeli" oikeaan muotoon). 
 
 ![eurorack002](./imgs/eurorack002.jpg)
 
@@ -101,7 +99,7 @@ Eurorack-syntetisaattoreita on myös mahdollista ohjata ulkopuolisilla laitteist
 
 **2.2 Sulautettu järjestelmä**
 
-Sulautettu järjestelmä on digitalisoitu järjestelmä, jonka toiminta on suppeampaa kuin tavallisen tietokoneen. Sulautettu järjestelmä on vain tiettyä tarkoitusta varten luotu järjestelmä. Sulautetuille järjestelmille on myös tyypillistä laskentaresurssien niukkuus, sekä suppea tuki ulkoisille laitteille. (Elicia White 2011, luku 1.)
+Sulautettu järjestelmä on digitalisoitu järjestelmä, jonka toiminta on suppeampaa kuin tavallisen tietokoneen. Sulautettu järjestelmä on vain tiettyä tarkoitusta varten luotu järjestelmä. Sulautetuille järjestelmille on myös tyypillistä laskentaresurssien niukkuus, sekä suppea tuki ulkoisille laitteille. (White 2011, luku 1.)
 
 Elektroniikkaharrastajien keskuudessa sulautettujen järjestelmien kehittämiseen käytetään hyvin usein Arduino-kehitysalustaa. Arduino-kehitysalusta pitää sisällään aina jonkin mikroprosessorin, sekä sen ohjelmointiin ja ulkoisiin kytkentöihin liittyviä komponentteja. 
 
@@ -111,7 +109,7 @@ Tämän opinnäytetyön aikana valmistuva sekvensseri on myös sulautettu järje
 
 Tekninen monistaminen tämän opinnäytetyön puitteissa tarkoittaa opinnäytetyön aikana valmistuvan laitteen laitteen prototyypin kehittämistä siihen tilaan, että käsityötä vaativat prosessit ovat minimoitu ja suuri osa työstä saatettu automatisoitavaan tilaan. Laitteen prototyyppivaiheessa rakennus vaatii paljon komponenttien asettelua ja kolvaamista käsin.
 
-Tekninen monistaminen voidaan nähdä osana "rapid prototyping" teknologioita. "Rapid prototyping" teknologiat sekä prosessit ovat teollisuudessa käytettyjä prosesseja, joilla pyritään nopeuttamaan tuotteiden ja prototyyppien valmistusta. Näihin teknologioihin kuuluu esimerkiksi 3D-tulostus [(Yue, Gu 1996, s. 307)](https://doi.org/10.1016/0010-4485(95)00035-6). Esimerkiksi opinnäytetyön laitteen piirilevyt piirretään CAD-ohjelmistolla, jonka jälkeen piirilevyt tilataan niitä valmistavalta tehtaalta. Tällä prosessilla vältyytään piirilevyjen valmistamiselta itse ja lopputuloksena ovat yhdenmukaiset piirilevyt.
+Tekninen monistaminen voidaan nähdä osana "rapid prototyping" teknologioita. "Rapid prototyping" teknologiat sekä prosessit ovat teollisuudessa käytettyjä prosesseja, joilla pyritään nopeuttamaan tuotteiden ja prototyyppien valmistusta. Näihin teknologioihin kuuluu esimerkiksi 3D-tulostus [(Yue, Gu 1996, 307)](https://doi.org/10.1016/0010-4485(95)00035-6). Esimerkiksi opinnäytetyön laitteen piirilevyt piirretään CAD-ohjelmistolla, jonka jälkeen piirilevyt tilataan niitä valmistavalta tehtaalta. Tällä prosessilla vältyytään piirilevyjen valmistamiselta itse ja lopputuloksena ovat yhdenmukaiset piirilevyt.
 
 Valmistuvan laitteen teknisesti monistettava muoto ei tulisi sisältämään kuin pakollisen määrän komponentteja, jotka vaativat ihmisen niiden asennukseen. Esimerkiksi laitteen piirilevyjen valmistuksen aikana olisi mahdollista myös juottaa suuri osa komponenteista tehtaalla, jos laite rakentuisi pintaliitoskomponenteista.
 
@@ -152,8 +150,6 @@ Karpilla kertoo valmistuksessa ja suunnittelussa pyrkineensä yksinkertaisuuteen
 Jotta Karppilan laite saavuttaisi halutun laajan kohderyhmänsä tulisi laitteen kytkentöjen olla pysyviä ja laitteen eri komponenttien osana yhtä kokonaisuutta. Karppilan laitteen kohderyhmää rajoittaa näin ollen se, että laitetta tulisi harkitsemaan vain ne, joilla olisi osaamista ja halukkuutta rakentaa käsin Arduino-kehitysalustalle oma laitteensa.
 
 Laitetta ei välttämättä olisi tarvinnut koota täysin omaksi kokonaisuudekseen, vaan Arduino-alustan komponenteista oltaisiin voitu rakentaa "Arduino-kilpi". Arduino-kilvet ovat valmiita laitekokonaisuuksia, jotka voidaan kytkeä suoraan Arduino-kehitysalustaan. [(Louis 2016, 22.)](https://doi.org/10.5121/ijcacs.2016.1203) Laitteen käyttäjän olisi vielä kuitenkin tarvinnut ohjelmoida laite.
-
-  // Viittaa täällä vielä konkreettisiin prosesseihin, joita Karppila olisi voinut tehdä (Kicad, kytkentäkaavat jne.) Viittaa tähän opinnäytetyön ja projektin rakennusvaiheisiin
 
 ## x Sekvensserin prototyypin rakentaminen
 
@@ -201,7 +197,7 @@ Jotta sekvensserillä pystyisi ohjaamaan Eurorack-moduuleita tulisi sen noudatta
 
 "Clock"- ja "Gate"-signaalit pystyttäisiin ottamaan suoraan mikroprosessorin ulostuloista. "Pitch"- ja "Mod"-signaalit ovat kuitenkin liukuvia arvoja, joten mikroprosessorin ja ulostulon väliin vaaditaan DAC (Digital-to-Analog-Converter), jolla mikroprosessorin digitaalisen signaalin voi muuntaa liukuvaksi ohjausjännitteeksi. Sekvensserin DAC:ksi valittiin Microchipin valmistama kaksi kanavainen ja 12-bittinen "MCP4822" [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Kahden kanavan ansiosta yhdellä laitteella voitaisiin tuottaa molemmat "Pitch"-, sekä "Mod"-signaalit.
 
-12-bittiä DAC:ssa vastaa 4096 mahdollista eri arvoa jännitteessä. MCP4822:ssa nämä arvot voivat olla väliltä 0-2,048 volttia, tai 0-4,096 volttia [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Jos sekvensserillä haluttaisiin soittaa 8 oktaavin väliltä jouduttaisiin DAC:n ulostulojännitettä skaalaamaan oikein. Jännitteen skaalaamiseen kävisi mikä tahansa nykyaikainen operaatiovahvistin. Operaatiovahvistimen ulostulon vahvistamisen määrä riippuu sen tuloliittimiin kytketyistä vastuksista [(Carter & al. 2001, s. 8)](https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf). Vahvistuksen määrän ja tarvittavien vastuksien arvot voi laskea helposti internetistä löytyvillä laskureilla. Kuvassa 004 esitetty eräs internetistä löytyvä laskuri vaadittujen arvojen laskemiseen.
+12-bittiä DAC:ssa vastaa 4096 mahdollista eri arvoa jännitteessä. MCP4822:ssa nämä arvot voivat olla väliltä 0-2,048 volttia, tai 0-4,096 volttia [(Microchip b, s. 1)](https://ww1.microchip.com/downloads/en/DeviceDoc/20002249B.pdf). Jos sekvensserillä haluttaisiin soittaa 8 oktaavin väliltä jouduttaisiin DAC:n ulostulojännitettä skaalaamaan oikein. Jännitteen skaalaamiseen kävisi mikä tahansa nykyaikainen operaatiovahvistin. Operaatiovahvistimen ulostulon vahvistamisen määrä riippuu sen tuloliittimiin kytketyistä vastuksista [(Carter, Brown 2001, 8)](https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf). Vahvistuksen määrän ja tarvittavien vastuksien arvot voi laskea helposti internetistä löytyvillä laskureilla. Kuvassa 004 esitetty eräs internetistä löytyvä laskuri vaadittujen arvojen laskemiseen.
 
 ![mfos001](./imgs/mfos001.png)
 
@@ -308,7 +304,7 @@ _Kuva 012. Valmiin etupaneelin 3D-mallinnus_
 
 **x.2 Piirilevyjen ja etupaneelien tilaus**
 
-Laitteen piirilevyjen ja etupaneelien tilauksen pystyisi tekemään samalta yritykseltä, sillä laitteen etupaneeliksi käy lujuutensa puolesta "tyhjä" piirilevy. Ennen tilausta tulisi piirilevypiirrokset kääntää Gerber-tiedostomuotoon, jota tehtaiden koneet pystyvät lukemaan [(Moreno-Báez & al. 2012, s.241)](https://doi.org/10.1016/j.proeng.2012.04.186).
+Laitteen piirilevyjen ja etupaneelien tilauksen pystyisi tekemään samalta yritykseltä, sillä laitteen etupaneeliksi käy lujuutensa puolesta "tyhjä" piirilevy. Ennen tilausta tulisi piirilevypiirrokset kääntää Gerber-tiedostomuotoon, jota tehtaiden koneet pystyvät lukemaan [(Moreno-Báez & al. 2012, 241)](https://doi.org/10.1016/j.proeng.2012.04.186).
 
 Piirilevypiirroksen kääntäminen onnistuu KiCad-ohjelmiston sisällä. Kun piirilevyjä valmistava taho on valittu kannattaa tarkistaa missä muodossa kyseinen yritys haluaa Gerber-tiedostot. Yritysten välillä on eroa esimerkiksi siinä, mitä tasoja pitää olla mukana Gerber-tiedostoissa. Ylensä yritykset tarjoavat myös kuvalliset ohjeet tunnetuimmille ohjelmistoille.
 
@@ -320,7 +316,7 @@ _Kuva 013. Etupaneeli esikatseluikkunassa JLCPCB:n tilaussivulla_
 
 **x.3 Komponenttien listaus ja tilaus**
 
-KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". KiCad:n sisäiset "Bill of Materials"-työkalut löytyvät kytkentäkaavio-aliohjelmasta (kuva 014, kuva 015). Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Investopedia - Bill of Materials)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
+KiCad tarjoaa valmiit työkalut osalistojen luomiseen kytkentäkaavojen pohjalta, joka helpottaa huomattavasti projektien tekoa. Osalistoja kutsutaan yleisesti nimellä "Bill of Materials". KiCad:n sisäiset "Bill of Materials"-työkalut löytyvät kytkentäkaavio-aliohjelmasta (kuva 014, kuva 015). Kyseiseen listaan kuuluvat elektroniikkakomponenttien lisäksi myös kaikki muut laitteen rakentamiseen vaadittavat osat, kuten mm. piirilevyt, sekä etupaneelit. "Bill of Materials" on siis kattava, kaikkien komponenttien, osien ja raaka-aineiden lista joita vaaditaan minkä tahansa tuotteen rakentamiseen [(Grant 2020)](https://www.investopedia.com/terms/b/bill-of-materials.asp)
 
 ![bomtools001](./imgs/bomtools001.png)
 
@@ -426,17 +422,17 @@ Varsinaisen laitteen kustannuksista olin yllättynyt. Olin ajatellut aluksi, ett
 
 ## Lähteet
 
-Louis, L. 2016. Working principle of Arduino and using it as a tool for study and research. Gujarat International Journal of Control, Automation, Communication and Systems. s. 21-29. Luettavissa: https://doi.org/10.5121/ijcacs.2016.1203. Luettu 30.4.2021.
+Louis, L. 2016. Working principle of Arduino and using it as a tool for study and research. Gujarat International Journal of Control, Automation, Communication and Systems, 1(2), s. 21-29. Luettavissa: https://doi.org/10.5121/ijcacs.2016.1203. Luettu 30.4.2021.
 
 PJRC. Teensy® USB Development Board. Luettavissa: https://www.pjrc.com/teensy/. Luettu 26.4.2021.
 
-Leonora Tindall 2020. Modular Synthesis and UNIX. Luettavissa: https://nora.codes/post/modular-synthesis-and-unix/. Luettu 26.4.2021
+Tindall, L. 2020. Modular Synthesis and UNIX. Luettavissa: https://nora.codes/post/modular-synthesis-and-unix/. Luettu 26.4.2021
 
 Pinch, T. 2008. Technology and institutions: Living in a material world. Theory and society, 37(5), s. 461-483. Luettavissa: https://doi.org/10.1007/s11186-008-9069-x. Luettu 4.5.2021.
 
-Rahman, L. F. & al. 2016 The evolution of digital to analog converter. International Conference on Advances in Electrical, Electronic and Systems Engineering (ICAEES). Luettavissa: https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics. Luettu 30.4.2021.
+Rahman, L. F., Rudham, F. A., Reaz, M. B. I. & Marufuzzaman, M. 2016 The evolution of digital to analog converter. International Conference on Advances in Electrical, Electronic and Systems Engineering (ICAEES), s. 151-154. Luettavissa: https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics. Luettu 30.4.2021.
 
-Leens, F. 2009. An introduction to I2C and SPI protocols. IEEE Instrumentation & Measurement Magazine. s. 9. Luettavissa: https://ieeexplore.ieee.org/abstract/document/4762946. Luettu 30.4.2021.
+Leens, F. 2009. An introduction to I2C and SPI protocols. IEEE Instrumentation & Measurement Magazine, 12(1), s. 8-13. Luettavissa: https://ieeexplore.ieee.org/abstract/document/4762946. Luettu 30.4.2021.
 
 Reverb 2020. Beginner's Guide to Eurorack: Case Basics, Power Supplies, and Your First Modules. Luettavissa: https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters. Luettu 26.4.2021.
 
@@ -444,11 +440,11 @@ Doepfer a. A-100 Construction Details. Luettavissa: http://www.doepfer.de/a100_m
 
 Doepfer b. A-100 Construction Details. Luettavissa: http://www.doepfer.de/a100_man/a100t_e.htm. Luettu 26.4.2021.
 
-Warren, JD. Adams, J. Molle, H. 2011. Arduino for Robotics. Apress. Luettavissa: https://doi.org/10.1007/978-1-4302-3184-4_2. Luettu 7.5.2021.
+Warren, JD. Adams, J. Molle, H. 2011. Arduino Robotics. USA: Apress. 626 s. ISBN 978-1-4302-3184-4.
 
-Chris Meyer 2016. 1 v/oct. Learning Modular. Luettavissa: https://learningmodular.com/glossary/1-voct/. Luettu 26.4.2021. /*Korjaa tämä myöhemmin, selvitä miten merkitään, kun ilmoitettu "julkaisija", sekä tekijä*/
+Meyer, C. 2016. 1 v/oct. Learning Modular. Luettavissa: https://learningmodular.com/glossary/1-voct/. Luettu 26.4.2021.
 
-Elicia White 2011. Making Embedded Systems. O'Reilly Media. Luettavissa: https://www.oreilly.com/library/view/making-embedded-systems/9781449308889/. Luettu 26.4.2021.
+White, E. 2011. Making Embedded Systems. USA: O'Reilly Media. 300 s. ISBN 978-1-4493-0214-6.
 
 Karppila, A. 2014. Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin. Haaga-Helia ammattikorkeakoulu, Tietojenkäsittelyn
 koulutusohjelma. Luettavissa: https://www.theseus.fi/handle/10024/81790. Luettu 26.4.2021.
@@ -461,9 +457,9 @@ Microchip b. MCP4802/4812/4822. Luettavissa: https://ww1.microchip.com/downloads
 
 Carter, B., Brown, T.R., 2001. Handbook of operational amplifier applications. Texas Instruments. Luettavissa: https://www.tij.co.jp/jp/lit/an/sboa092b/sboa092b.pdf. Luettu 4.5.2021.
 
-Moreno-Báez, A & al. 2012. Processing Gerber files for manufacturing printed circuitboards. Procedia Engineering. Vol.35. s. 240-244. Luettavissa: https://doi.org/10.1016/j.proeng.2012.04.186. Luettu 30.4.2021.
+Moreno-B́aez, A., Miramontes-de Léon, G., Garćıa-Doḿınguez, E. & Sifuentes-Gallardo, C. 2012. Processing Gerber files for manufacturing printed circuitboards. Procedia Engineering. 35. s. 240-244. Luettavissa: https://doi.org/10.1016/j.proeng.2012.04.186. Luettu 30.4.2021.
 
-Mitchell Grant 2020. Bill of Materials (BOM). Investopedia. Luettavissa: https://www.investopedia.com/terms/b/bill-of-materials.asp. Luettu 26.4.2021.
+Grant, M. 2020. Bill of Materials (BOM). Investopedia. Luettavissa: https://www.investopedia.com/terms/b/bill-of-materials.asp. Luettu 26.4.2021.
 
-Yan, X. Gu, P. E. N. G. 1996. A review of rapid prototyping technologies and systems. Computer-aided design. Vol.28:4 s. 307-318. Luettavissa: https://doi.org/10.1016/0010-4485(95)00035-6. Luettu 30.4.2021.
+Yan, X. Gu, P. E. N. G. 1996. A review of rapid prototyping technologies and systems. Computer-aided design. 28(4) s. 307-318. Luettavissa: https://doi.org/10.1016/0010-4485(95)00035-6. Luettu 30.4.2021.
 
