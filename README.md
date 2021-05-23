@@ -40,11 +40,17 @@ Lopussa arvioidaan itse projektin onnistumista, sekä monistamisprosessin hyödy
 
 **Asiasanat**
 
-Arduino, sulautettu järjestelmä, monistaminen, sekvensseri, Eurorack
+Arduino, sulautettu järjestelmä, monistus, sekvensseri, syntetisaattori
 
 ## 1. Johdanto
 
-  // tekstiä
+Elektroniikkaprojektit jotka syntyvät internetartikkelien, opinnäytetöiden, sekä harrastajien toimesta ovat usein toiminnallisuudeltaan riittäviä. Kuitenkin näiden projektien laajuus käsittää vain toiminnallisuuden testaamisen, sekä sen viimeistelyn. Itse laitteisto ja sen useat komponentit muistuttavat projektien päätyttyä lähinnä väliaikaista koekytkentää ja laitteiston monistaminen sellaisenaan on melkein mahdotonta.
+
+Tässä opinnäytetyössä tullaan käymään läpi prosessi, jonka avulla elektroniikkaprojekteja ja laitteita voidaan saattaa teknisesti monistettavaan muotoon. Prosessia voidaan hyödyntää elektroniikkaprojekteissa riippumatta niissä valmistuvien laitteiden käyttötarkoituksesta. Opinnäytetyön aikana tätä prosessia kuvaamaan rakennettiin Eurorack-sekvensserin prototyyppi, joka opinnäytetyön edetessä saatettiin teknisesti monistettavaan muotoon.
+
+Projektin idea oli ollut mielessäni jo ennen opinnäytetyön aloittamista, mutta vasta opinnäytetyön aiheen tarkennuttua tajusin sen käyvän täydellisesti opinnäytetyöhön. Olen harrastuksieni puolesta tehnyt useita tässä opinnäytetyössä esitettyjä vaiheita elektroniikkaprojekteitteni niin vaatiessa. Kuitenkin opinnäytetyötä tehdessäni kävin itse ensimmäistä kertaa koko prosessin läpi.
+
+Opinnäytetyön aikana avataan projektille ominaista käsitteistöä ja avataan laajemmin sitä kontekstia, johon opinnäytetyön projektin aikana valmistuva laite tulee.
 
 **1.1 Tavoitteet ja rajaus**
 
@@ -72,8 +78,11 @@ Opinnäytetyön prosessi ei myöskään pyri olemaan asteittain etenevä ohje, v
 
 ## 2. Taustaa
 
-  Tämän luvun tarkoituksena on avata opinnäytetyön taustoja liittyen luotuun Eurorack-sekvensseriin, tekniseen monistamiseen, sekä erinäisiin kehitysmenetelmiin joita laitteen kehittämisessä tarvitaan. 
-  // Tähän ehdottomasti vähän enemmän tekstiä.
+Tämän luvun tarkoituksena on avata opinnäytetyön taustoja liittyen luotuun Eurorack-sekvensseriin, tekniseen monistamiseen, sekä erinäisiin kehitysmenetelmiin joita laitteen kehittämisessä tarvitaan. 
+
+Opinnäytetyön varsinaiset tulokset keskittyvät sulautetun järjestelmän luomisen, sekä sen teknisen monistamisen ympärille. Kyseinen järjestelmä tulee olemaan Eurorack-syntetisaattorin sekvensseri.
+
+Laitteen varsinainen muoto tai toiminta eivät ole kriittisiä tämän opinnäytetyön tuloksien kannalta. Laitteen toimintaympäristöä ja sen formaattia on kuitenkin kuvattu seuraavissa luvuissa opinnäytetyön kontekstin avaamiseksi.
 
 **2.1 Eurorack**
 
@@ -127,23 +136,9 @@ Opinnäytetyön projekti prototyypistä teknisesti monistettavaan laitteeseen on
   * Laskelmien teko ja tulosten läpikäynti. Tässä vaiheessa lasketaan laitteen rakennuksen ja suunnittelun kulut, sekä näiden perusteella tehdään laskelmia mahdollista sarjatuotantoa varten. Projektin tuloksia käydään myös läpi niiltä osin kun ne ovat merkittäviä.
 
 
-**2.x Aikaisemmat työt (viilaa vielä otsikkoa)**
+**2.x Aikaisemmat työt**
 
-Tässä opinnäytetyössä haluan tarkastella jo kirjoitetun opinnäytetyön, pohjalta teknistä monistamista. Prototyyppien rakennusta käsitteleviä opinnäytetöitä on monia, mutta harvoissa mietitään prototyypin viemistä monistettavaan muotoon.
-
-/*
-Julkaistuista opinnäytetöistä ja artikkeleista katsotaan kuinka kirjoittajat ovat luoneet toimivan prototyypin, mutta jättäneet avoimeksi laitteen jatkokehityksen. Näiden töiden myötä annan myös ehdotuksia ja ideoita siitä, kuinka laitteita oltaisiin voitu viedä teknisesti monistettavampaan muotoon.
-*/
-
-
-/* Siirrä alempi johonkin muualle luvussa 2?
-
-Opinnäytetyön tuloksista alasta kiinnostuneet harrastajat, opiskelijat ja ehkä jopa ammattilaiset saavat yleisen kuvan siitä, mitä sulautetun järjestelmän prototyypin luominen vaatii. Tämän lisäksi opinnäytetyön tavoitteena on antaa yleistä kuvaa prosesseista, joilla luotu prototyyppi voitaisiin muokata teknisesti monistettavaan muotoon.
-*/
-
-**Esimerkki projektista**
-
-Aleksi Karppilan opinnäytetyö "Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin" käsittelee Arduino-pohjaisen monitorointilaitteen rakentamista (Karppila 2014, 1). Projektin aikana Karppila rakentaa toimivan laitteen, käy läpi sen toimintaa, ohjelmointia, sekä yleisiä käsitteitä Arduino-kehitysalustaan liittyen.
+Opinnäytetöitä joissa valmistetaan jokin elektroniikkaprojektin prototyyppi löytyy useita. Harvoin näissä töissä kuitenkaan käydään läpi mahdollisuutta laitteen monistamiseen, tai laitteen viemistä viimeistellympään muotoon. Aleksi Karppilan opinnäytetyö "Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin" on yksi tällainen opinnäytetyö. Projektin aikana Karppila rakentaa toimivan laitteen, käy läpi sen toimintaa, ohjelmointia, sekä yleisiä käsitteitä Arduino-kehitysalustaan liittyen.
 
 Karpilla kertoo valmistuksessa ja suunnittelussa pyrkineensä yksinkertaisuuteen, jotta laitteen toiminta olisi moitteetonta ja luodulla laitteella olisi mahdollisimman laaja kohderyhmä (Karppila 2014, 13). Kuitenkin lopullinen laite, jota opinnäytetyössä on kuvattu muistuttaa pitkälti prototyypinomaista laitetta, jossa kytkennät ovat tehty hyppylangoilla korkytkentälaudan kautta.
 
@@ -158,8 +153,6 @@ Sekvensserin prototyypin rakennus tapahtui asteittain ja jokaista laitteen osaa 
 Rakennuksessa käytettiin pelkästään koekytkentälautaa projektin alussa, mutta projektin edetessä ja komponenttien määrän kasvaessa joitain laitteen osia jouduttiin rakentamaan omiksi irrallisiksi kokonaisuuksiksiin.
 
 **x.1 Ohjelmisto**
-
-  // Ohjelmakoodin läpikäyntiä tärkeimmiltä komponenteilta. Kerro myös menetelmistä ja työkaluista (VSCode, PlatformIO, Teensy LC)
 
 Laitteen lähdekoodi kirjoitettiin C++-ohjelmointikielellä Arduino koodipohjalle. Kehitysympäristönä toimi PlatformIO, joka on Arduino-yhteensopiva integroitu kehitysympäristö Visual Studio Codelle [(PlatformIO)](https://docs.platformio.org/en/latest/what-is-platformio.html). Kehitysalustana laitteessa toimii Teensy LC. Lopullisen laitteen on suunniteltu käyttävän ATmega328-mikroprosessoria, mutta kehityksen jäädessä osittain kesken luotiin laitteelle mahdollisuus käyttää joko ATmega328-mikroprosessoria, tai Teensy LC-kehitysalustaa.
 
@@ -204,9 +197,6 @@ Jotta sekvensserillä pystyisi ohjaamaan Eurorack-moduuleita tulisi sen noudatta
 _Kuva 004. "Music From Outer Space":n laskuri operaatiovahvistimille_
 
 **x.2 Fyysinen laitteisto**
-
-  // Teensy LC, leipälaudat, johdot, DACit, GPIO extenderit jne. Tähän myös kytkentäkaavoista, sekä laitteen eri iteraatioista (ekassa protossa enkooderi, tokassa button matrix jne.)
-  // Tähän voi laittaa kivan kuvajatkumon prototyypin etenemisestä (kuvat prototyping001-003)
 
 Prototyyppiä rakennettaessa alustana kaikille kytkennöille käytettiin useampaa koekytkentälautaa. Koekytkentälaudoissa osa kytkentäaukoista on fyysisesti kytketty toisiinsa ja eri kytkentöjä voi yhdistää joko komponenteilla tai hyppylangoilla. Prototyypin koon kasvaessa eri elementtejä piireistä pystyttäisiin rakentamaan omille koekytkentälaudoille, jotka voitaisiin myöhemmin yhdistää osaksi isompaa kokonaisuutta. Rakennetuista piireistä pidettiin yllä kytkentäkaavioita, jonka avulla piirit pystyttäisiin kääntämään piirilevypiiroksiksi. Kuvassa 005 esitettynä koekytkentälaudalle luotu alkuvaiheen prototyyppi, sekä siitä luotu kytkentäkaava.
 
@@ -342,8 +332,6 @@ _Kuva 017. Ostoskori muutettuna projektiksi_
 
 **x Laitteen rakennus ja laskelmat monistamisesta**
 
-  // Siirrä tänne "**x.3 Monistamisen laskelmat (otsikko työn alla)**", sekä "**x.3 Kokoonpano**" ja yhdistä ne järkeväksi kokonaisuudeksi. Nämä on luontevaa käydä näin opinnäytetyön lopussa, eikä keskellä, sillä kyseessä on prosessin yksi myöhäisimmistä vaiheista.
-
 Mahdollisesti tuotteeksi päätyvän laitteen lopullisen hinnan laskemiseksi tarvittaisiin laskelmat tai tarkat arvioit kaikista laitteen rakennukseen liittyvistä kuluista. Laite vaatii jonkin verran käsin asennusta ja tämän työmäärän rahallinen arvo on aina arvio riippuen siitä, kuinka nopeasti ja millä tuntipalkalla rakentaminen pystytään toteuttamaan. Näistä saaduista laskelmista voidaan laskea suhteellisen tarkka katteeton hinta laitteelle. 
 
 **x.1 Laitteen kokoonpano**
@@ -422,17 +410,17 @@ Varsinaisen laitteen kustannuksista olin yllättynyt. Olin ajatellut aluksi, ett
 
 ## Lähteet
 
-Louis, L. 2016. Working principle of Arduino and using it as a tool for study and research. Gujarat International Journal of Control, Automation, Communication and Systems, 1(2), s. 21-29. Luettavissa: https://doi.org/10.5121/ijcacs.2016.1203. Luettu 30.4.2021.
+Louis, L. 2016. Working principle of Arduino and using it as a tool for study and research. Gujarat International Journal of Control, Automation, Communication and Systems, 1(2). s. 21-29. Luettavissa: https://doi.org/10.5121/ijcacs.2016.1203. Luettu 30.4.2021.
 
 PJRC. Teensy® USB Development Board. Luettavissa: https://www.pjrc.com/teensy/. Luettu 26.4.2021.
 
 Tindall, L. 2020. Modular Synthesis and UNIX. Luettavissa: https://nora.codes/post/modular-synthesis-and-unix/. Luettu 26.4.2021
 
-Pinch, T. 2008. Technology and institutions: Living in a material world. Theory and society, 37(5), s. 461-483. Luettavissa: https://doi.org/10.1007/s11186-008-9069-x. Luettu 4.5.2021.
+Pinch, T. 2008. Technology and institutions: Living in a material world. Theory and society, 37(5). s. 461-483. Luettavissa: https://doi.org/10.1007/s11186-008-9069-x. Luettu 4.5.2021.
 
-Rahman, L. F., Rudham, F. A., Reaz, M. B. I. & Marufuzzaman, M. 2016 The evolution of digital to analog converter. International Conference on Advances in Electrical, Electronic and Systems Engineering (ICAEES), s. 151-154. Luettavissa: https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics. Luettu 30.4.2021.
+Rahman, L. F., Rudham, F. A., Reaz, M. B. I. & Marufuzzaman, M. 2016 The evolution of digital to analog converter. International Conference on Advances in Electrical, Electronic and Systems Engineering (ICAEES). s. 151-154. Luettavissa: https://ieeexplore.ieee.org/abstract/document/7888028/metrics#metrics. Luettu 30.4.2021.
 
-Leens, F. 2009. An introduction to I2C and SPI protocols. IEEE Instrumentation & Measurement Magazine, 12(1), s. 8-13. Luettavissa: https://ieeexplore.ieee.org/abstract/document/4762946. Luettu 30.4.2021.
+Leens, F. 2009. An introduction to I2C and SPI protocols. IEEE Instrumentation & Measurement Magazine, 12(1). s. 8-13. Luettavissa: https://ieeexplore.ieee.org/abstract/document/4762946. Luettu 30.4.2021.
 
 Reverb 2020. Beginner's Guide to Eurorack: Case Basics, Power Supplies, and Your First Modules. Luettavissa: https://reverb.com/news/beginners-guide-to-eurorack-case-basics-oscillators-filters. Luettu 26.4.2021.
 
@@ -440,11 +428,11 @@ Doepfer a. A-100 Construction Details. Luettavissa: http://www.doepfer.de/a100_m
 
 Doepfer b. A-100 Construction Details. Luettavissa: http://www.doepfer.de/a100_man/a100t_e.htm. Luettu 26.4.2021.
 
-Warren, JD. Adams, J. Molle, H. 2011. Arduino Robotics. USA: Apress. 626 s. ISBN 978-1-4302-3184-4.
+Warren, JD. Adams, J. Molle, H. 2011. Arduino Robotics. Yhdysvallat: Apress. 626 s. ISBN 978-1-4302-3184-4.
 
 Meyer, C. 2016. 1 v/oct. Learning Modular. Luettavissa: https://learningmodular.com/glossary/1-voct/. Luettu 26.4.2021.
 
-White, E. 2011. Making Embedded Systems. USA: O'Reilly Media. 300 s. ISBN 978-1-4493-0214-6.
+White, E. 2011. Making Embedded Systems. Yhdysvallat: O'Reilly Media. 300 s. ISBN 978-1-4493-0214-6.
 
 Karppila, A. 2014. Arduino-pohjainen laite liikkeen ja lämpötilan monitorointiin. Haaga-Helia ammattikorkeakoulu, Tietojenkäsittelyn
 koulutusohjelma. Luettavissa: https://www.theseus.fi/handle/10024/81790. Luettu 26.4.2021.
@@ -461,5 +449,5 @@ Moreno-B́aez, A., Miramontes-de Léon, G., Garćıa-Doḿınguez, E. & Sifuente
 
 Grant, M. 2020. Bill of Materials (BOM). Investopedia. Luettavissa: https://www.investopedia.com/terms/b/bill-of-materials.asp. Luettu 26.4.2021.
 
-Yan, X. Gu, P. E. N. G. 1996. A review of rapid prototyping technologies and systems. Computer-aided design. 28(4) s. 307-318. Luettavissa: https://doi.org/10.1016/0010-4485(95)00035-6. Luettu 30.4.2021.
+Yan, X. Gu, P. E. N. G. 1996. A review of rapid prototyping technologies and systems. Computer-aided design, 28(4) s. 307-318. Luettavissa: https://doi.org/10.1016/0010-4485(95)00035-6. Luettu 30.4.2021.
 
